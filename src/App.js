@@ -1,10 +1,10 @@
 import "./App.css";
+import Navigation from "./Components/Shared/Navigation/Navigation";
 
 function App() {
     return (
         <div className="App">
-            <h1>Hello from team project</h1>
-            <p>Pranta</p>
+            <Navigation></Navigation>
         </div>
     );
 }
