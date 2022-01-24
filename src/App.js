@@ -1,12 +1,12 @@
-import './App.css';
+import "./App.css";
+import Navigation from "./Components/Shared/Navigation/Navigation";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello from team project..</h1>
-      <h2>I am anik just checked it.</h2>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Navigation></Navigation>
+        </div>
+    );
 }
 
 export default App;
