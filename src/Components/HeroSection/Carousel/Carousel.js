@@ -31,12 +31,12 @@ const Carousel = () => {
                 </div>
                 <div className="h-screen flex justify-center items-center bg-inherit">
                     <div>
-                        <h1 className="text-7xl py-3">LADY FASHION</h1>
-                        <p className="text-2xl">
+                        <h1 className="text-7xl m-4">LADY FASHION</h1>
+                        <p className="text-2xl mx-3">
                             RETHINK YOUR SWIMWEARAND TAKE IT <br /> TO THE
                             STREET
                         </p>
-                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 my-3">
+                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4">
                             VIEW THE LOOKBOOK
                         </button>
                     </div>
