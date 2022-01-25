@@ -29,7 +29,20 @@ const Carousel = () => {
                         alt="Exotic Fasion"
                     />
                 </div>
+                <div className="h-screen flex justify-center items-center bg-inherit">
+                    <div>
+                        <h1 className="text-7xl py-3">LADY FASHION</h1>
+                        <p className="text-2xl">
+                            RETHINK YOUR SWIMWEARAND TAKE IT <br /> TO THE
+                            STREET
+                        </p>
+                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 my-3">
+                            VIEW THE LOOKBOOK
+                        </button>
+                    </div>
+                </div>
             </div>
+
             <button
                 className="carousel-control-prev w-6 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
                 type="button"
