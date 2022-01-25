@@ -133,13 +133,11 @@ const DressCollection = () => {
     const [popular, setPopular] = useState("text-4xl font-bold");
     const [recent, setRecent] = useState("text-2xl font-bold");
     const [random, setRandom] = useState("text-2xl font-bold");
-    const [heading, setHeading] = useState("Popular");
 
     const [products, setProducts] = useState(PopularProducts);
 
     const handlePopular = () => {
         setProducts([]);
-        setHeading("Popular");
         setProducts(PopularProducts);
         setPopular("text-4xl font-bold");
         setRecent("text-2xl font-bold");
@@ -147,7 +145,6 @@ const DressCollection = () => {
     };
     const handleRecent = () => {
         setProducts([]);
-        setHeading("Recent");
         setProducts(RecentProducts);
         setPopular("text-2xl font-bold");
         setRecent("text-4xl font-bold");
@@ -155,7 +152,6 @@ const DressCollection = () => {
     };
     const handleRandom = () => {
         setProducts([]);
-        setHeading("Random");
         setProducts(RandomProducts);
         setPopular("text-2xl font-bold");
         setRecent("text-2xl font-bold");
@@ -190,13 +186,18 @@ const DressCollection = () => {
                 <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
                     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         {products.map((product, index) => (
-                            <div key={index} className="group relative">
-                                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:scale-110 duration-300 lg:h-80 lg:aspect-none">
+                            <div key={index} className="group relative product">
+                                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-110 duration-300">
                                     <img
                                         src={product.imgUrl}
                                         alt=""
                                         className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                                     />
+                                </div>
+                                <div className="absolute top-32 left-10 z-20 price">
+                                    <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                        VIEW DETAILS
+                                    </button>
                                 </div>
                                 <div className="mt-4">
                                     <h3 className="text-sm text-gray-700 py-3">
