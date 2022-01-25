@@ -1,4 +1,5 @@
 import React from "react";
+import "./Trending.css";
 
 const Images = [
     "https://i.ibb.co/VSfFKWw/rocknwool-GUzkgot7-LN8-unsplash.jpg",
@@ -29,21 +30,35 @@ const Trending = () => {
             {/* Products Section */}
             <div className="bg-white m-6 flex object-fill">
                 <div className="w-full flex">
-                    <div className="w-1/4 h-full overflow-hidden">
+                    <div className="w-1/4 h-full overflow-hidden relative cursor-crosshair product">
                         <img
                             src="https://i.ibb.co/C0kXRgr/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg"
                             alt=""
                             className="h-full hover:scale-125 duration-300"
                         />
+                        <div className="absolute top-60 left-14 animate-pulse rounded-t-md price">
+                            <p className="text-2xl font-bold">$ 99.00</p>
+                            <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
+                                VIEW DETAILS
+                            </button>
+                        </div>
                     </div>
                     <div className="w-3/4 h-full columns-3 gap-0">
                         {Images.map((url) => (
-                            <div className="h-1/2 overflow-hidden">
+                            <div className="h-1/2 overflow-hidden relative cursor-crosshair product">
                                 <img
                                     src={url}
                                     alt=""
                                     className="w-full h-full hover:scale-125 duration-300"
                                 />
+                                <div className="absolute top-28 left-14 animate-pulse rounded-t-md price">
+                                    <p className="text-2xl font-bold">
+                                        $ 99.00
+                                    </p>
+                                    <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
+                                        VIEW DETAILS
+                                    </button>
+                                </div>
                             </div>
                         ))}
                     </div>
