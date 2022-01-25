@@ -44,8 +44,11 @@ const Trending = () => {
                         </div>
                     </div>
                     <div className="w-3/4 h-full columns-3 gap-0">
-                        {Images.map((url) => (
-                            <div className="h-1/2 overflow-hidden relative cursor-crosshair product">
+                        {Images.map((url, index) => (
+                            <div
+                                key={index}
+                                className="h-1/2 overflow-hidden relative cursor-crosshair product"
+                            >
                                 <img
                                     src={url}
                                     alt=""
@@ -64,7 +67,6 @@ const Trending = () => {
                     </div>
                 </div>
             </div>
-            <p>Next</p>
         </div>
     );
 };
