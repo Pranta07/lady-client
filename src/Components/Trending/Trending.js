@@ -7,7 +7,7 @@ const Images = [
     "https://i.ibb.co/16wQdgX/ehimetalor-akhere-unuabona-qi3qc-Q3v-Yu-I-unsplash.jpg",
     "https://i.ibb.co/MNPgwyc/kayan-baby-msq6-ZTv-Manw-unsplash.jpg",
     "https://i.ibb.co/4sXYH1C/jasmin-chew-4-IULx-F9-Z0-YA-unsplash.jpg",
-    "https://i.ibb.co/cw62M5M/timothee-pons-95-XV8-Bsm-Xn8-unsplash.jpg",
+    "https://i.ibb.co/MnBPN6s/engin-akyurt-RSm7-GBu-Mqos-unsplash.jpg",
 ];
 
 const Trending = () => {
