@@ -108,7 +108,7 @@ const Navigation = () => {
                                                     leaveFrom="transform opacity-100 scale-100"
                                                     leaveTo="transform opacity-0 scale-95"
                                                 >
-                                                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                    <Menu.Items className="origin-top-right absolute z-40 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                         {userNavigation.map(
                                                             (item) => (
                                                                 <Menu.Item
@@ -236,23 +236,6 @@ const Navigation = () => {
                         </>
                     )}
                 </Disclosure>
-
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold text-gray-900">
-                            Home
-                        </h1>
-                    </div>
-                </header>
-                <main>
-                    <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                        {/* Replace with your content */}
-                        {/* <div className="px-4 py-6 sm:px-0">
-                            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
-                        </div> */}
-                        {/* /End replace */}
-                    </div>
-                </main>
             </div>
         </>
     );
