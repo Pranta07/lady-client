@@ -29,20 +29,20 @@ const Trending = () => {
             {/* Products Section */}
             <div className="bg-white m-6 flex object-fill">
                 <div className="w-full flex">
-                    <div className="w-1/4 h-full">
+                    <div className="w-1/4 h-full overflow-hidden">
                         <img
                             src="https://i.ibb.co/C0kXRgr/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg"
                             alt=""
-                            className="h-full"
+                            className="h-full hover:scale-125 duration-300"
                         />
                     </div>
                     <div className="w-3/4 h-full columns-3 gap-0">
                         {Images.map((url) => (
-                            <div className="h-1/2">
+                            <div className="h-1/2 overflow-hidden">
                                 <img
                                     src={url}
                                     alt=""
-                                    className="w-full h-full"
+                                    className="w-full h-full hover:scale-125 duration-300"
                                 />
                             </div>
                         ))}
