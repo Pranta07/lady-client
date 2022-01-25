@@ -138,6 +138,7 @@ const DressCollection = () => {
     const [products, setProducts] = useState(PopularProducts);
 
     const handlePopular = () => {
+        setProducts([]);
         setHeading("Popular");
         setProducts(PopularProducts);
         setPopular("text-4xl font-bold");
@@ -145,6 +146,7 @@ const DressCollection = () => {
         setRandom("text-2xl font-bold");
     };
     const handleRecent = () => {
+        setProducts([]);
         setHeading("Recent");
         setProducts(RecentProducts);
         setPopular("text-2xl font-bold");
@@ -152,6 +154,7 @@ const DressCollection = () => {
         setRandom("text-2xl font-bold");
     };
     const handleRandom = () => {
+        setProducts([]);
         setHeading("Random");
         setProducts(RandomProducts);
         setPopular("text-2xl font-bold");
@@ -166,7 +169,7 @@ const DressCollection = () => {
                 <p className="uppercase py-4 tracking-widest">
                     Dress Collecton
                 </p>
-                <h1 className="uppercase tracking-widest text-3xl">
+                <h1 className="uppercase tracking-widest text-3xl cursor-pointer">
                     <span className={popular} onClick={() => handlePopular()}>
                         Popular
                     </span>
@@ -179,19 +182,15 @@ const DressCollection = () => {
                         Random
                     </span>
                 </h1>
-                <p className="w-1/5 h-3 bg-yellow-400 my-4 mx-auto "></p>
+                <p className="w-1/5 h-3 bg-yellow-400 my-4 mx-auto"></p>
             </div>
 
             {/* Products Section */}
             <div className="">
-                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <h2 className="text-3xl tracking-wide text-gray-900 uppercase">
-                        {heading} Products
-                    </h2>
-
+                <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
                     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {products.map((product) => (
-                            <div key={product.name} className="group relative">
+                        {products.map((product, index) => (
+                            <div key={index} className="group relative">
                                 <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
                                     <img
                                         src={product.imgUrl}
@@ -200,7 +199,7 @@ const DressCollection = () => {
                                     />
                                 </div>
                                 <div className="mt-4">
-                                    <h3 className="text-sm text-gray-700">
+                                    <h3 className="text-sm text-gray-700 py-3">
                                         <a href={product.href}>
                                             <span
                                                 aria-hidden="true"
@@ -209,8 +208,8 @@ const DressCollection = () => {
                                             {product.name}
                                         </a>
                                     </h3>
-                                    <p className="text-sm font-medium text-gray-900">
-                                        {product.price}
+                                    <p className="text-xl font-medium text-gray-900">
+                                        $ {product.price}
                                     </p>
                                 </div>
                             </div>
