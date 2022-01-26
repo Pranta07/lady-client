@@ -5,7 +5,7 @@ import Top from "../Top/Top";
 
 const DressGallery = () => {
     return (
-        <div className="mx-4 pb-10 flex">
+        <div className="container mx-auto lg:px-6 pb-10 flex">
             <NewIn></NewIn>
             <Featured></Featured>
             <Top></Top>

@@ -39,14 +39,16 @@ const topProducts = [
 
 const Top = () => {
     return (
-        <div className="w-1/3">
+        <div className="w-1/3 mx-4">
             <div className="flex justify-start">
-                <div className="my-3 p-8">
-                    <h1 className="uppercase text-4xl tracking-widest">top</h1>
+                <div className="my-3 py-8">
+                    <h1 className="uppercase text-4xl tracking-widest">
+                        featured
+                    </h1>
                     <p className="h-3 bg-yellow-400 mt-5"></p>
                 </div>
             </div>
-            <div className="bg-white p-6 ml-8">
+            <div className="bg-white p-6">
                 <div
                     id="carouselTop"
                     className="carousel slide relative"
@@ -67,12 +69,12 @@ const Top = () => {
                                         <div className="w-1/3">
                                             <img
                                                 src={product.imgUrl}
-                                                className="block w-full"
+                                                className="w-full lg:h-36 xl:h-40"
                                                 alt="lady-shopping"
                                             />
                                         </div>
-                                        <div className="m-5">
-                                            <h3 className="text-sm text-gray-700 py-3">
+                                        <div className="lg:mx-3 xl:mx-5">
+                                            <h3 className="text-sm text-gray-700 lg:py-1 xl:py-3">
                                                 <a href={product.href}>
                                                     <span
                                                         aria-hidden="true"
@@ -84,7 +86,7 @@ const Top = () => {
                                             <p className="text-xl font-medium text-gray-900">
                                                 $ {product.price}
                                             </p>
-                                            <button className="z-20 bg-black text-yellow-400 tracking-wider px-8 py-3 my-2 hover:bg-gray-900 cursor-pointer">
+                                            <button className="bg-black text-yellow-400 tracking-wider lg:px-3 xl:px-8 py-3 mt-2 hover:bg-gray-900 cursor-pointer">
                                                 VIEW DETAILS
                                             </button>
                                         </div>
