@@ -32,7 +32,7 @@ const HappyCustomers = () => {
             {/* Reviews */}
             <div
                 id="carouselExampleControls"
-                className="carousel slide relative pb-8"
+                className="carousel slide relative pb-12"
                 data-bs-ride="carousel"
             >
                 <div className="carousel-inner relative mx-auto p-3 w-3/4 md:w-2/3 overflow-hidden bg-yellow-400 text-black rounded-md">
