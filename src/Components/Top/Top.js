@@ -39,12 +39,10 @@ const topProducts = [
 
 const Top = () => {
     return (
-        <div className="w-1/3 mx-4">
+        <div className="mx-4">
             <div className="flex justify-start">
                 <div className="my-3 py-8">
-                    <h1 className="uppercase text-4xl tracking-widest">
-                        featured
-                    </h1>
+                    <h1 className="uppercase text-4xl tracking-widest">top</h1>
                     <p className="h-3 bg-yellow-400 mt-5"></p>
                 </div>
             </div>
@@ -73,7 +71,7 @@ const Top = () => {
                                                 alt="lady-shopping"
                                             />
                                         </div>
-                                        <div className="lg:mx-3 xl:mx-5">
+                                        <div className="mx-3 xl:mx-5">
                                             <h3 className="text-sm text-gray-700 lg:py-1 xl:py-3">
                                                 <a href={product.href}>
                                                     <span
@@ -86,7 +84,7 @@ const Top = () => {
                                             <p className="text-xl font-medium text-gray-900">
                                                 $ {product.price}
                                             </p>
-                                            <button className="bg-black text-yellow-400 tracking-wider lg:px-3 xl:px-8 py-3 mt-2 hover:bg-gray-900 cursor-pointer">
+                                            <button className="bg-black text-yellow-400 tracking-wider px-3 xl:px-8 py-3 mt-2 hover:bg-gray-900 cursor-pointer">
                                                 VIEW DETAILS
                                             </button>
                                         </div>
