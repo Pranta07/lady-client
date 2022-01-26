@@ -187,14 +187,14 @@ const DressCollection = () => {
                     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         {products.map((product, index) => (
                             <div key={index} className="group relative product">
-                                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-110 duration-300">
+                                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
                                     <img
                                         src={product.imgUrl}
                                         alt=""
                                         className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                                     />
                                 </div>
-                                <div className="absolute top-32 left-10 z-20 price">
+                                <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
                                     <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
                                         VIEW DETAILS
                                     </button>
