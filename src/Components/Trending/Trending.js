@@ -28,33 +28,33 @@ const Trending = () => {
             </div>
 
             {/* Products Section */}
-            <div className="bg-white m-6 flex object-fill">
-                <div className="w-full flex">
-                    <div className="w-1/4 h-full overflow-hidden relative cursor-crosshair product">
+            <div className="bg-white m-6 flex">
+                <div className="w-full lg:flex">
+                    <div className="md:w-full lg:w-1/4 overflow-hidden relative cursor-crosshair product">
                         <img
                             src="https://i.ibb.co/C0kXRgr/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg"
                             alt=""
                             className="h-full hover:scale-125 duration-300"
                         />
-                        <div className="absolute top-60 left-14 animate-pulse rounded-t-md price">
+                        <div className="absolute lg:top-48 xl:top-60 md:left-20 lg:left-8 xl:left-14 animate-pulse rounded-t-md price">
                             <p className="text-2xl font-bold">$ 99.00</p>
                             <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
                                 VIEW DETAILS
                             </button>
                         </div>
                     </div>
-                    <div className="w-3/4 h-full columns-3 gap-0">
+                    <div className="md:w-full lg:w-3/4 h-full grid md:grid-cols-2 lg:grid-cols-3 gap-0">
                         {Images.map((url, index) => (
                             <div
                                 key={index}
-                                className="h-1/2 overflow-hidden relative cursor-crosshair product"
+                                className="h-full overflow-hidden relative cursor-crosshair product"
                             >
                                 <img
                                     src={url}
                                     alt=""
                                     className="w-full h-full hover:scale-125 duration-300"
                                 />
-                                <div className="absolute top-28 left-14 animate-pulse rounded-t-md price">
+                                <div className="absolute md:top-6 lg:top-16 xl:top-24 lg:left-7 xl:left-14 animate-pulse rounded-t-md price">
                                     <p className="text-2xl font-bold">
                                         $ 99.00
                                     </p>
