@@ -2,6 +2,7 @@ import "./App.css";
 import DressCollection from "./Components/DressCollection/DressCollection";
 import HappyCustomers from "./Components/HappyCustomers/HappyCustomers";
 import HeroSection from "./Components/HeroSection/HeroSection/HeroSection";
+import NewIn from "./Components/NewIn/NewIn";
 // import NotFound from "./Components/NotFound/NotFound";
 import Navigation from "./Components/Shared/Navigation/Navigation";
 import SubscribeSection from "./Components/SubscribeSection/SubscribeSection";
@@ -15,6 +16,7 @@ function App() {
             <Trending></Trending>
             <DressCollection></DressCollection>
             <HappyCustomers></HappyCustomers>
+            <NewIn></NewIn>
             <SubscribeSection></SubscribeSection>
             {/* <NotFound></NotFound> */}
         </div>
