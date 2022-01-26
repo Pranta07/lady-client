@@ -35,7 +35,7 @@ const HappyCustomers = () => {
                 className="carousel slide relative pb-8"
                 data-bs-ride="carousel"
             >
-                <div className="carousel-inner relative mx-auto w-2/3 overflow-hidden bg-yellow-400 text-black rounded-md">
+                <div className="carousel-inner relative mx-auto p-3 w-3/4 md:w-2/3 overflow-hidden bg-yellow-400 text-black rounded-md">
                     {reviews.map((review, index) => (
                         <div
                             key={index}
@@ -58,29 +58,28 @@ const HappyCustomers = () => {
                 </div>
 
                 <button
-                    className="carousel-control-prev w-6 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-24"
+                    class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
                     type="button"
                     data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev"
                 >
                     <span
-                        className="carousel-control-prev-icon inline-block bg-no-repeat bg-gray-900 py-10"
+                        class="carousel-control-prev-icon inline-block bg-no-repeat"
                         aria-hidden="true"
                     ></span>
-                    <span className="visually-hidden">Previous</span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-
                 <button
-                    className="carousel-control-next w-6 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-24"
+                    class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
                     type="button"
                     data-bs-target="#carouselExampleControls"
                     data-bs-slide="next"
                 >
                     <span
-                        className="carousel-control-next-icon inline-block bg-no-repeat bg-gray-900 py-10"
+                        class="carousel-control-next-icon inline-block bg-no-repeat"
                         aria-hidden="true"
                     ></span>
-                    <span className="visually-hidden">Next</span>
+                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
