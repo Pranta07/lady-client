@@ -4,6 +4,7 @@ import HappyCustomers from "./Components/HappyCustomers/HappyCustomers";
 import HeroSection from "./Components/HeroSection/HeroSection/HeroSection";
 // import NotFound from "./Components/NotFound/NotFound";
 import Navigation from "./Components/Shared/Navigation/Navigation";
+import SubscribeSection from "./Components/SubscribeSection/SubscribeSection";
 import Trending from "./Components/Trending/Trending";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Trending></Trending>
             <DressCollection></DressCollection>
             <HappyCustomers></HappyCustomers>
+            <SubscribeSection></SubscribeSection>
             {/* <NotFound></NotFound> */}
         </div>
     );
