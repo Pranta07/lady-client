@@ -36,7 +36,7 @@ const Trending = () => {
                             alt=""
                             className="h-full hover:scale-125 duration-300"
                         />
-                        <div className="absolute md:top-96 lg:top-48 xl:top-60 md:left-64 lg:left-8 xl:left-14 animate-pulse rounded-t-md price">
+                        <div className="absolute top-60 md:top-96 lg:top-48 xl:top-60 left-24 md:left-64 lg:left-8 xl:left-14 animate-pulse rounded-t-md price">
                             <p className="text-2xl font-bold">$ 99.00</p>
                             <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
                                 VIEW DETAILS
@@ -54,7 +54,7 @@ const Trending = () => {
                                     alt=""
                                     className="w-full h-full hover:scale-125 duration-300"
                                 />
-                                <div className="absolute md:top-32 lg:top-16 xl:top-24 md:left-20 lg:left-7 xl:left-14 animate-pulse rounded-t-md price">
+                                <div className="absolute top-32 md:top-32 lg:top-16 xl:top-24 left-24 md:left-20 lg:left-7 xl:left-14 animate-pulse rounded-t-md price">
                                     <p className="text-2xl font-bold">
                                         $ 99.00
                                     </p>
