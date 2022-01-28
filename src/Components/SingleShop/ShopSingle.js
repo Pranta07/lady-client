@@ -2,6 +2,29 @@ import React from "react";
 import { useState } from "react/cjs/react.development";
 import DressGallery from "../DressGallery/DressGallery";
 
+const relatedProducts = [
+    {
+        imgUrl: "https://i.ibb.co/zsJV92D/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
+        name: "ABSTRACT DOOTED DRESS",
+        price: "21.5",
+    },
+    {
+        imgUrl: "https://i.ibb.co/8M6wWCd/tamara-bellis-21fa847g-ZBs-unsplash.jpg",
+        name: "CHIFON & FLORAL DRESS",
+        price: "21.5",
+    },
+    {
+        imgUrl: "https://i.ibb.co/WWVtBMp/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
+        name: "CAMI STRAP DRESS",
+        price: "23.5",
+    },
+    {
+        imgUrl: "https://i.ibb.co/17jgrXW/tamara-bellis-Rqp-HXWNHep8-unsplash.jpg",
+        name: "FLARE STRAP DRESS",
+        price: "19.6",
+    },
+];
+
 const ShopSingle = ({ product }) => {
     const [quantity, setQuantity] = useState(0);
 
@@ -16,6 +39,7 @@ const ShopSingle = ({ product }) => {
 
     return (
         <>
+            {/* Single Item */}
             <div className="container mx-auto">
                 <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
                     Dress Collection /{" "}
@@ -98,11 +122,51 @@ const ShopSingle = ({ product }) => {
                 </div>
             </div>
 
+            {/* Related Items */}
             <div className="bg-white p-10">
                 <h1 className="uppercase text-4xl font-bold tracking-widest">
                     related items
                 </h1>
                 <p className="w-1/6 h-3 bg-yellow-400 my-5 mx-auto "></p>
+                <div>
+                    <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
+                        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                            {relatedProducts.map((product, index) => (
+                                <div
+                                    key={index}
+                                    className="group relative product"
+                                >
+                                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
+                                        <img
+                                            src={product.imgUrl}
+                                            alt=""
+                                            className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                                        />
+                                    </div>
+                                    <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
+                                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                            VIEW DETAILS
+                                        </button>
+                                    </div>
+                                    <div className="mt-4">
+                                        <h3 className="text-sm text-gray-700 py-3">
+                                            <a href={product.href}>
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="absolute inset-0"
+                                                />
+                                                {product.name}
+                                            </a>
+                                        </h3>
+                                        <p className="text-xl font-medium text-gray-900">
+                                            $ {product.price}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* New in Featured Top */}
