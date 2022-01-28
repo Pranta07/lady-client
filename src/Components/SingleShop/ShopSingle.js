@@ -47,7 +47,7 @@ const ShopSingle = ({ product }) => {
                         Shop Single
                     </span>
                 </p>
-                <div className="grid md:grid-cols-2 gap-10 mx-8 mb-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-8 mb-16">
                     <div>
                         <img
                             src="https://i.ibb.co/0fWRMGf/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg"
@@ -61,23 +61,23 @@ const ShopSingle = ({ product }) => {
                             FLARE STRAP DRESS
                         </h1>
                         <p className="h-3 bg-yellow-400 my-6"></p>
-                        <h1 className="uppercase tracking-widest text-2xl font-semibold mb-8">
+                        <h1 className="uppercase tracking-widest text-2xl font-semibold mb-6">
                             size chart
                         </h1>
-                        <div className="cursor-pointer text-xl">
-                            <span className="bg-black text-yellow-400 px-8 py-2 mr-3">
+                        <div className="cursor-pointer text-xl flex flex-wrap">
+                            <span className="bg-black text-yellow-400 px-8 py-2 mr-3 mt-2">
                                 S
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 hover:bg-black hover:text-yellow-400">
+                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
                                 M
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 hover:bg-black hover:text-yellow-400">
+                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
                                 L
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 hover:bg-black hover:text-yellow-400">
+                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
                                 XL
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 hover:bg-black hover:text-yellow-400">
+                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
                                 XXL
                             </span>
                         </div>
