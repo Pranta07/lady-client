@@ -10,11 +10,11 @@ const user = {
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-    { name: "Home", href: "#", current: true },
-    { name: "Features", href: "#", current: false },
-    { name: "Blogs", href: "#", current: false },
-    { name: "Deals", href: "#", current: false },
-    { name: "Contact", href: "#", current: false },
+    { name: "Home", href: "/home", current: true },
+    { name: "Features", href: "/features", current: false },
+    { name: "Blogs", href: "/blogs", current: false },
+    { name: "Deals", href: "/deals", current: false },
+    { name: "Contact", href: "/contact", current: false },
 ];
 const userNavigation = [
     { name: "Your Profile", href: "#" },
