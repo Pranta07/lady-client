@@ -6,6 +6,7 @@ import Navigation from "./Components/Shared/Navigation/Navigation";
 import SubscribeSection from "./Components/SubscribeSection/SubscribeSection";
 import Footer from "./Components/Shared/Footer/Footer";
 import ShopSingle from "./Components/SingleShop/ShopSingle";
+import ShopCatalog from "./Components/ShopCatalog/ShopCatalog";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="home" element={<Home />} />
                     <Route path="shopSingle" element={<ShopSingle />} />
+                    <Route path="shopCatalog" element={<ShopCatalog />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <SubscribeSection></SubscribeSection>
