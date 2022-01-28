@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
     return (
         <div className="pt-16 bg-black text-white">
-            <div className="grid lg:grid-cols-4 text-white sm:grid-cols-1 md:grid-cols-2 sm:grid-cols-1 justify-items-center gap-4">
+            <div className="grid lg:grid-cols-4 text-white sm:grid-cols-1 md:grid-cols-2 justify-items-center gap-4">
                 <div>
                     <h2 className="hover:underline-offset-8 title font-bold hover:text-slate-400">
                         QUICK-LINKS
@@ -63,10 +63,10 @@ const Footer = () => {
                         FIND US ON
                     </h2>
                     <div className="mt-8 font">
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-twitter "></i>
-                        <i class="fab fa-instagram "></i>
-                        <i class="fab fa-google-plus-g "></i>
+                        <i className="fab fa-facebook-f"></i>
+                        <i className="fab fa-twitter "></i>
+                        <i className="fab fa-instagram "></i>
+                        <i className="fab fa-google-plus-g "></i>
                     </div>
                     <div className=" mx-2 mt-6">
                         <h4 className="font-bold"> @AKES</h4>
