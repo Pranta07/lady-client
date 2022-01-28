@@ -68,6 +68,7 @@ const ShopSingle = ({ product }) => {
                             -
                         </button>
                         <input
+                            readOnly
                             type="text"
                             name=""
                             id=""
