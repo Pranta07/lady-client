@@ -6,6 +6,7 @@ import HeroSection from "../HeroSection/HeroSection/HeroSection";
 import Navigation from "../Shared/Navigation/Navigation";
 import Trending from "../Trending/Trending";
 import SubscribeSection from "../SubscribeSection/SubscribeSection";
+import Footer from "../Shared/Footer/Footer";
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <HappyCustomers></HappyCustomers>
             <DressGallery></DressGallery>
             <SubscribeSection></SubscribeSection>
+            <Footer></Footer>
         </>
     );
 };

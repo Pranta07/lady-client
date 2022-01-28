@@ -1,0 +1,58 @@
+.title{
+    text-decoration: transparent;
+}
+.title:hover{
+    text-decoration: underline;
+ text-decoration-color: rgb(247, 3, 3);
+}
+.link a{
+border-left:5px solid transparent ;
+margin-top: 0.3rem;
+padding: 0.4rem;
+}
+.link a:hover{
+    border-left:4px solid rgb(8, 225, 253) ;
+    border-radius:8px ;
+    color: rgb(252, 14, 232);
+    margin-left: 0.8rem;
+    transition: all 0.5s;
+
+}
+.font i{
+    padding: 0.5rem;
+    margin: 0.2rem;
+    font-size: 1.5rem;
+    border: 1px solid transparent;
+}
+.font i:hover{
+    border: 1px solid grey;
+    border-radius: 0.5rem;
+    color: darkturquoise;
+}
+.box span{
+    background-color:rgb(70, 69, 69);
+    margin: 0.2rem;
+    border-radius: 2px;
+    text-align: center;
+    padding: 0.3rem;
+    font-size: 1rem;
+}
+.box span:hover{
+    background-color: rgb(250, 175, 12);
+    color: #000;
+    transition: all 0.2s;
+    cursor:pointer;
+    font-weight: 400;
+}
+.blogs-item p{
+    border-left:4px transparent;
+    border-left:5px solid transparent ;
+    margin-top: 0.3rem;
+    padding: 0.4rem;
+}
+.blogs-item p:hover {
+    border-left:4px solid rgb(8, 225, 253) ;
+    border-radius:8px ;
+    margin-left: 0.8rem;
+    transition: all 0.5s;
+}
