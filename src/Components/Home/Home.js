@@ -4,7 +4,6 @@ import DressGallery from "../DressGallery/DressGallery";
 import HappyCustomers from "../HappyCustomers/HappyCustomers";
 import HeroSection from "../HeroSection/HeroSection/HeroSection";
 import Trending from "../Trending/Trending";
-import SubscribeSection from "../SubscribeSection/SubscribeSection";
 
 const Home = () => {
     return (
