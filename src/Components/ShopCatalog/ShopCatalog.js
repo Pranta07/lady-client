@@ -229,6 +229,7 @@ const ShopCatalog = () => {
 
                         {[...Array(pageCount).keys()].map((number) => (
                             <button
+                                key={number}
                                 onClick={() => {
                                     setPageNum(number);
                                     const Products = allProducts.filter(
@@ -238,7 +239,11 @@ const ShopCatalog = () => {
                                     );
                                     setDisplayProducts(Products);
                                 }}
-                                className="bg-white border-gray-300 text-gray-500 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                className={
+                                    pageNum === number
+                                        ? "bg-yellow-400 border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                        : "bg-white border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                }
                             >
                                 {number}
                             </button>
