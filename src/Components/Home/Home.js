@@ -10,13 +10,11 @@ import SubscribeSection from "../SubscribeSection/SubscribeSection";
 const Home = () => {
     return (
         <>
-            <Navigation></Navigation>
             <HeroSection></HeroSection>
             <Trending></Trending>
             <DressCollection></DressCollection>
             <HappyCustomers></HappyCustomers>
             <DressGallery></DressGallery>
-            <SubscribeSection></SubscribeSection>
         </>
     );
 };
