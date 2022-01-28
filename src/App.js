@@ -5,6 +5,7 @@ import ShopSingle from "./Components/ShopSingle/ShopSingle";
 import NotFound from "./Components/NotFound/NotFound";
 import Navigation from "./Components/Shared/Navigation/Navigation";
 import SubscribeSection from "./Components/SubscribeSection/SubscribeSection";
+import Footer from "./Components/Shared/Footer/Footer";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <SubscribeSection></SubscribeSection>
+                <Footer></Footer>
             </Router>
         </div>
     );
