@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
-import ShopSingle from "./Components/ShopSingle/ShopSingle";
 import NotFound from "./Components/NotFound/NotFound";
 import Navigation from "./Components/Shared/Navigation/Navigation";
 import SubscribeSection from "./Components/SubscribeSection/SubscribeSection";
 import Footer from "./Components/Shared/Footer/Footer";
+import ShopSingle from "./Components/SingleShop/ShopSingle";
 
 function App() {
     return (
