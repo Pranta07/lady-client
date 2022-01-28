@@ -59,10 +59,10 @@ const Footer = () => {
                 <div className='text-justify'>
                     <h2 className='hover:underline-offset-8 title font-bold hover:text-slate-400'>FIND US ON</h2>
                     <div className='mt-8 font'>
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-twitter "></i>
-                        <i class="fab fa-instagram "></i>
-                        <i class="fab fa-google-plus-g "></i>
+                        <i className="fab fa-facebook-f"></i>
+                        <i className="fab fa-twitter "></i>
+                        <i className="fab fa-instagram "></i>
+                        <i className="fab fa-google-plus-g "></i>
                     </div>
                     <div className=' mx-2 mt-6'>
                         <h4 className='font-bold'> @AKES</h4>
