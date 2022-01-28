@@ -56,4 +56,5 @@ padding: 0.4rem;
     color:  rgb(252, 14, 232);
     margin-left: 0.8rem;
     transition: all 0.5s;
+   cursor: pointer;
 }
