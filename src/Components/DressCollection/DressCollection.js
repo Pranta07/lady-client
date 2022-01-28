@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const PopularProducts = [
     {
@@ -194,11 +195,13 @@ const DressCollection = () => {
                                         className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                                     />
                                 </div>
-                                <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
-                                    <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
-                                        VIEW DETAILS
-                                    </button>
-                                </div>
+                                <Link to="/shopSingle">
+                                    <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
+                                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                            VIEW DETAILS
+                                        </button>
+                                    </div>
+                                </Link>
                                 <div className="mt-4">
                                     <h3 className="text-sm text-gray-700 py-3">
                                         <a href={product.href}>

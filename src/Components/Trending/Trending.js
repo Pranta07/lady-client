@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Trending.css";
 
 const Images = [
@@ -38,9 +39,11 @@ const Trending = () => {
                         />
                         <div className="absolute top-60 md:top-96 lg:top-48 xl:top-60 left-24 md:left-64 lg:left-8 xl:left-14 animate-pulse rounded-t-md price">
                             <p className="text-2xl font-bold">$ 99.00</p>
-                            <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
-                                VIEW DETAILS
-                            </button>
+                            <Link to="/shopSingle">
+                                <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
+                                    VIEW DETAILS
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="md:w-full lg:w-3/4 h-full grid md:grid-cols-2 lg:grid-cols-3 gap-0">
@@ -58,9 +61,11 @@ const Trending = () => {
                                     <p className="text-2xl font-bold">
                                         $ 99.00
                                     </p>
-                                    <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
-                                        VIEW DETAILS
-                                    </button>
+                                    <Link to="/shopSingle">
+                                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
+                                            VIEW DETAILS
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
