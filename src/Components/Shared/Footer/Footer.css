@@ -53,6 +53,7 @@ padding: 0.4rem;
 .blogs-item p:hover {
     border-left:4px solid rgb(8, 225, 253) ;
     border-radius:8px ;
+    color:  rgb(252, 14, 232);
     margin-left: 0.8rem;
     transition: all 0.5s;
 }
