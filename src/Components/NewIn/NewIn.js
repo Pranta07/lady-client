@@ -70,8 +70,11 @@ const NewIn = () => {
                                         : "carousel-item relative float-left w-full"
                                 }
                             >
-                                {products.map((product) => (
-                                    <div className="flex items-center text-left py-2">
+                                {products.map((product, ind) => (
+                                    <div
+                                        key={ind}
+                                        className="flex items-center text-left py-2"
+                                    >
                                         <div className="w-1/3">
                                             <img
                                                 src={product.imgUrl}
