@@ -9,6 +9,7 @@ import ShopSingle from "./Components/SingleShop/ShopSingle";
 import ShopCatalog from "./Components/ShopCatalog/ShopCatalog";
 import TopHeader from "./Components/Shared/Navigation/TopHeader";
 import Deals from "./Components/Deals/Deals";
+import Blogs from "./Components/Blogs/Blogs";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <Route path="shopSingle" element={<ShopSingle />} />
                     <Route path="shopCatalog" element={<ShopCatalog />} />
                     <Route path="deals" element={<Deals />} />
+                    <Route path="blogs" element={<Blogs />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <SubscribeSection></SubscribeSection>
