@@ -1,3 +1,4 @@
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -27,33 +28,69 @@ const Blogs = () => {
                 Home /{" "}
                 <span className=" bg-black text-yellow-400 p-2">Blogs</span>
             </p>
-            <div className="w-2/3 mx-8 mb-10">
-                {blogs.map((blog) => (
-                    <div className="bg-white border-2 border-gray-300 rounded-md p-6 mb-8">
-                        <div className="overflow-hidden">
-                            <img
-                                src={blog.imgUrl}
-                                alt=""
-                                className="hover:scale-110 duration-300"
-                            />
+            <div>
+                {/* blogs */}
+                <div className="w-2/3 mx-8 mb-10">
+                    {blogs.map((blog) => (
+                        <div className="bg-white border-2 border-gray-300 rounded-md p-6 mb-8">
+                            <div className="overflow-hidden">
+                                <img
+                                    src={blog.imgUrl}
+                                    alt=""
+                                    className="hover:scale-110 duration-300"
+                                />
+                            </div>
+                            <h1 className="text-xl text-left font-medium tracking-widest mt-6">
+                                {blog.title}
+                            </h1>
+                            <p className="font-thin text-xl text-left my-4">
+                                Like your favorite lightweight sweater, only
+                                sleeker, chicer, and longer. Like your favorite
+                                lightweight sweater, only sleeker, chicer, and
+                                longer.. Like your favorite lightweight sweater,
+                                only sleeker, chicer, and longer...
+                            </p>
+                            <Link to="/blogSingle">
+                                <button className="flex uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 mt-4 hover:bg-yellow-400 hover:text-black cursor-pointer">
+                                    read more
+                                </button>
+                            </Link>
                         </div>
-                        <h1 className="text-xl text-left font-medium tracking-widest mt-6">
-                            {blog.title}
-                        </h1>
-                        <p className="font-thin text-xl text-left my-4">
-                            Like your favorite lightweight sweater, only
-                            sleeker, chicer, and longer. Like your favorite
-                            lightweight sweater, only sleeker, chicer, and
-                            longer.. Like your favorite lightweight sweater,
-                            only sleeker, chicer, and longer...
-                        </p>
-                        <Link to="/blogSingle">
-                            <button className="flex uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 mt-4 hover:bg-yellow-400 hover:text-black cursor-pointer">
-                                read more
+                    ))}
+
+                    {/* pagination */}
+                    <div className="mb-6">
+                        <nav
+                            className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                            aria-label="Pagination"
+                        >
+                            <button className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400">
+                                <span className="sr-only">Previous</span>
+                                <ChevronLeftIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                />
                             </button>
-                        </Link>
+
+                            {[...Array(4).keys()].map((number) => (
+                                <button
+                                    key={number}
+                                    className="bg-white border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                >
+                                    {number}
+                                </button>
+                            ))}
+
+                            <button className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400">
+                                <span className="sr-only">Next</span>
+                                <ChevronRightIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                />
+                            </button>
+                        </nav>
                     </div>
-                ))}
+                </div>
             </div>
         </div>
     );
