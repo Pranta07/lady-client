@@ -21,6 +21,18 @@ const blogs = [
     },
 ];
 
+const categories = [
+    "new arrivals",
+    "popular",
+    "top",
+    "featured",
+    "women",
+    "men",
+    "bags",
+    "shoes",
+    "sale-off",
+];
+
 const Blogs = () => {
     return (
         <div className="container mx-auto">
@@ -28,7 +40,7 @@ const Blogs = () => {
                 Home /{" "}
                 <span className=" bg-black text-yellow-400 p-2">Blogs</span>
             </p>
-            <div>
+            <div className="flex">
                 {/* blogs */}
                 <div className="w-2/3 mx-8 mb-10">
                     {blogs.map((blog) => (
@@ -90,6 +102,18 @@ const Blogs = () => {
                             </button>
                         </nav>
                     </div>
+                </div>
+
+                {/* categories */}
+                <div className="w-1/3 text-left uppercase tracking-widest mt-6">
+                    <h1 className="text-xl border-2 border-b-stone-900 pb-3 mb-6">
+                        Categories
+                    </h1>
+                    {categories.map((category) => (
+                        <p className="mb-6 hover:p-2 hover:bg-black hover:text-yellow-400 duration-300">
+                            {category}
+                        </p>
+                    ))}
                 </div>
             </div>
         </div>
