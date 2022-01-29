@@ -42,7 +42,7 @@ const Blogs = () => {
             </p>
             <div className="flex">
                 {/* blogs */}
-                <div className="w-2/3 mx-8 mb-10">
+                <div className="lg:w-2/3 mx-4 md:mx-8 mb-10">
                     {blogs.map((blog) => (
                         <div className="bg-white border-2 border-gray-300 rounded-md p-6 mb-8">
                             <div className="overflow-hidden">
@@ -105,7 +105,7 @@ const Blogs = () => {
                 </div>
 
                 {/* categories */}
-                <div className="w-1/3 text-left uppercase tracking-widest mt-6">
+                <div className="hidden lg:block w-1/3 text-left uppercase tracking-widest mt-6 pr-6">
                     <h1 className="text-xl border-2 border-b-stone-900 pb-3 mb-6">
                         Categories
                     </h1>
