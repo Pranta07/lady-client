@@ -44,7 +44,10 @@ const Blogs = () => {
                 {/* blogs */}
                 <div className="lg:w-2/3 mx-4 md:mx-8 mb-10">
                     {blogs.map((blog) => (
-                        <div className="bg-white border-2 border-gray-300 rounded-md p-6 mb-8">
+                        <div
+                            key={blog.title}
+                            className="bg-white border-2 border-gray-300 rounded-md p-6 mb-8"
+                        >
                             <div className="overflow-hidden">
                                 <img
                                     src={blog.imgUrl}
@@ -109,8 +112,11 @@ const Blogs = () => {
                     <h1 className="text-xl border-2 border-b-stone-900 pb-3 mb-6">
                         Categories
                     </h1>
-                    {categories.map((category) => (
-                        <p className="mb-6 hover:p-2 hover:bg-black hover:text-yellow-400 duration-300">
+                    {categories.map((category, index) => (
+                        <p
+                            key={index}
+                            className="mb-6 hover:p-2 hover:bg-black hover:text-yellow-400 duration-300"
+                        >
                             {category}
                         </p>
                     ))}
