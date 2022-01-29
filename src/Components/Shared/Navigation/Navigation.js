@@ -12,10 +12,10 @@ const user = {
 };
 const navigation = [
     { name: "Home", to: "/home", current: true },
-    { name: "Features", to: "/features", current: false },
     { name: "Shop Catalog", to: "/shopCatalog", current: false },
     { name: "Blogs", to: "/blogs", current: false },
     { name: "Deals", to: "/deals", current: false },
+    { name: "About Us", to: "/about", current: false },
     { name: "Contact", to: "/contact", current: false },
 ];
 const userNavigation = [
