@@ -1,4 +1,6 @@
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const deals = [
     {
@@ -26,6 +28,8 @@ const Deals = () => {
                 Home /{" "}
                 <span className=" bg-black text-yellow-400 p-2">Deals</span>
             </p>
+
+            {/* Deals Items */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-8 mb-10">
                 {deals.map((deals, index) => (
                     <div key={index} className="bg-white p-6">
@@ -43,11 +47,46 @@ const Deals = () => {
                             Like your favorite lightweight sweater, only
                             sleeker, chicer, and longer...
                         </p>
-                        <button className="flex uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 mt-4 hover:bg-gray-900 cursor-pointer">
-                            Get it now
-                        </button>
+                        <Link to="/shopSingle">
+                            <button className="flex uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 mt-4 hover:bg-gray-900 cursor-pointer">
+                                Get it now
+                            </button>
+                        </Link>
                     </div>
                 ))}
+            </div>
+
+            {/* pagination */}
+            <div className="mb-6">
+                <nav
+                    className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                    aria-label="Pagination"
+                >
+                    <button className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400">
+                        <span className="sr-only">Previous</span>
+                        <ChevronLeftIcon
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                        />
+                    </button>
+
+                    {[...Array(4).keys()].map((number) => (
+                        <button
+                            key={number}
+                            className="bg-white border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                        >
+                            {number}
+                        </button>
+                    ))}
+
+                    <button className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400">
+                        <span className="sr-only">Next</span>
+                        <ChevronRightIcon
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                        />
+                    </button>
+                </nav>
             </div>
         </div>
     );
