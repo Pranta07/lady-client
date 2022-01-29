@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DressGallery from "../DressGallery/DressGallery";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
@@ -108,9 +108,14 @@ const ShopCatalog = () => {
     const [pageCount, setPageCount] = useState(
         Math.ceil(allProducts.length / 4)
     );
-    const [displayProducts, setDisplayProducts] = useState(
-        allProducts.filter((product, id) => id < 4)
-    );
+    const [displayProducts, setDisplayProducts] = useState([]);
+
+    useEffect(() => {
+        const Products = allProducts.filter(
+            (product, id) => id >= pageNum * 4 && id < pageNum * 4 + 4
+        );
+        setDisplayProducts(Products);
+    }, [pageNum]);
 
     return (
         <>
@@ -232,12 +237,6 @@ const ShopCatalog = () => {
                                 key={number}
                                 onClick={() => {
                                     setPageNum(number);
-                                    const Products = allProducts.filter(
-                                        (product, id) =>
-                                            id >= pageNum * 4 &&
-                                            id < pageNum * 4 + 4
-                                    );
-                                    setDisplayProducts(Products);
                                 }}
                                 className={
                                     pageNum === number
