@@ -5,7 +5,7 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 const SubscribeSection = () => {
     return (
         <div className="bg-white text-black">
-            <div className="my-3 p-8">
+            <div className="p-8">
                 <p className="uppercase py-4 tracking-widest">
                     GET LASTEST NEW AND COUPON FROM LADY Fashion
                 </p>
@@ -14,7 +14,7 @@ const SubscribeSection = () => {
                 </h1>
                 <p className="w-1/5 h-3 bg-yellow-400 my-5 mx-auto "></p>
 
-                <div className="relative mt-1 rounded-md shadow-sm md:w-2/3 lg:w-1/3 xl:w-1/3 mx-auto">
+                <div className="relative mt-1 rounded-md shadow-sm md:w-2/3 lg:w-1/3 xl:w-1/3 mx-auto mb-0">
                     <span className="absolute top-6 left-0 text-gray-500 sm:text-md px-4">
                         <FontAwesomeIcon icon={faPaperPlane} />
                     </span>
