@@ -32,7 +32,10 @@ const Deals = () => {
             {/* Deals Items */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-8 mb-10">
                 {deals.map((deals, index) => (
-                    <div key={index} className="bg-white p-6">
+                    <div
+                        key={index}
+                        className="bg-white p-6 border-2 border-gray-300 rounded-md"
+                    >
                         <div className="overflow-hidden">
                             <img
                                 src={deals.imgUrl}
