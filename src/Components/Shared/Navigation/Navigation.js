@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
 const user = {
     name: "Tom Cook",
@@ -10,16 +11,17 @@ const user = {
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-    { name: "Home", href: "/home", current: true },
-    { name: "Features", href: "/features", current: false },
-    { name: "Blogs", href: "/blogs", current: false },
-    { name: "Deals", href: "/deals", current: false },
-    { name: "Contact", href: "/contact", current: false },
+    { name: "Home", to: "/home", current: true },
+    { name: "Shop Catalog", to: "/shopCatalog", current: false },
+    { name: "Blogs", to: "/blogs", current: false },
+    { name: "Deals", to: "/deals", current: false },
+    { name: "About Us", to: "/about", current: false },
+    { name: "Contact", to: "/contact", current: false },
 ];
 const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
+    { name: "Your Profile", to: "/profile" },
+    { name: "Settings", to: "/settings" },
+    { name: "Sign out", to: "/" },
 ];
 
 function classNames(...classes) {
@@ -46,23 +48,26 @@ const Navigation = () => {
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
                                                 {navigation.map((item) => (
-                                                    <a
+                                                    <Link
                                                         key={item.name}
-                                                        href={item.href}
-                                                        className={classNames(
-                                                            item.current
-                                                                ? "bg-gray-900 text-white"
-                                                                : "text-black hover:bg-gray-900 hover:text-white",
-                                                            "px-3 py-2 rounded-md text-sm font-medium"
-                                                        )}
-                                                        aria-current={
-                                                            item.current
-                                                                ? "page"
-                                                                : undefined
-                                                        }
+                                                        to={item.to}
                                                     >
-                                                        {item.name}
-                                                    </a>
+                                                        <button
+                                                            className={classNames(
+                                                                item.current
+                                                                    ? "bg-gray-900 text-white"
+                                                                    : "text-black hover:bg-gray-900 hover:text-white",
+                                                                "px-3 py-2 rounded-md text-sm font-medium"
+                                                            )}
+                                                            aria-current={
+                                                                item.current
+                                                                    ? "page"
+                                                                    : undefined
+                                                            }
+                                                        >
+                                                            {item.name}
+                                                        </button>
+                                                    </Link>
                                                 ))}
                                             </div>
                                         </div>
@@ -119,21 +124,24 @@ const Navigation = () => {
                                                                     {({
                                                                         active,
                                                                     }) => (
-                                                                        <a
-                                                                            href={
-                                                                                item.href
+                                                                        <Link
+                                                                            to={
+                                                                                item.to
                                                                             }
-                                                                            className={classNames(
-                                                                                active
-                                                                                    ? "bg-gray-700 text-white"
-                                                                                    : "text-gray-700",
-                                                                                "block px-4 py-2 text-sm"
-                                                                            )}
                                                                         >
-                                                                            {
-                                                                                item.name
-                                                                            }
-                                                                        </a>
+                                                                            <button
+                                                                                className={classNames(
+                                                                                    active
+                                                                                        ? "bg-gray-700 text-white"
+                                                                                        : "text-gray-700",
+                                                                                    "block w-full px-4 py-2 text-sm"
+                                                                                )}
+                                                                            >
+                                                                                {
+                                                                                    item.name
+                                                                                }
+                                                                            </button>
+                                                                        </Link>
                                                                     )}
                                                                 </Menu.Item>
                                                             )
@@ -168,24 +176,23 @@ const Navigation = () => {
                             <Disclosure.Panel className="md:hidden">
                                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                                     {navigation.map((item) => (
-                                        <Disclosure.Button
-                                            key={item.name}
-                                            as="a"
-                                            href={item.href}
-                                            className={classNames(
-                                                item.current
-                                                    ? "bg-gray-900 text-white"
-                                                    : "text-black hover:bg-gray-900 hover:text-white",
-                                                "block px-3 py-2 rounded-md text-base font-medium"
-                                            )}
-                                            aria-current={
-                                                item.current
-                                                    ? "page"
-                                                    : undefined
-                                            }
-                                        >
-                                            {item.name}
-                                        </Disclosure.Button>
+                                        <Link key={item.name} to={item.to}>
+                                            <Disclosure.Button
+                                                className={classNames(
+                                                    item.current
+                                                        ? "bg-gray-900 text-white"
+                                                        : "text-black hover:bg-gray-900 hover:text-white",
+                                                    "block px-3 py-2 rounded-md text-base font-medium"
+                                                )}
+                                                aria-current={
+                                                    item.current
+                                                        ? "page"
+                                                        : undefined
+                                                }
+                                            >
+                                                {item.name}
+                                            </Disclosure.Button>
+                                        </Link>
                                     ))}
                                 </div>
 
@@ -221,14 +228,11 @@ const Navigation = () => {
                                     </div>
                                     <div className="mt-3 px-2 space-y-1">
                                         {userNavigation.map((item) => (
-                                            <Disclosure.Button
-                                                key={item.name}
-                                                as="a"
-                                                href={item.href}
-                                                className="block px-3 py-2 rounded-md text-base font-medium text-black hover:text-white hover:bg-gray-900"
-                                            >
-                                                {item.name}
-                                            </Disclosure.Button>
+                                            <Link key={item.name} to={item.to}>
+                                                <Disclosure.Button className="block w-full px-3 py-2 rounded-md text-base font-medium text-black hover:text-white hover:bg-gray-900">
+                                                    {item.name}
+                                                </Disclosure.Button>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>
