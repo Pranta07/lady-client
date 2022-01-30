@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import "./Trending.css";
 
 const Images = [
-    "https://i.ibb.co/VSfFKWw/rocknwool-GUzkgot7-LN8-unsplash.jpg",
-    "https://i.ibb.co/ZNQFtFV/mohammad-metri-E-0-ON3-VGr-Bc-unsplash.jpg",
-    "https://i.ibb.co/16wQdgX/ehimetalor-akhere-unuabona-qi3qc-Q3v-Yu-I-unsplash.jpg",
-    "https://i.ibb.co/MNPgwyc/kayan-baby-msq6-ZTv-Manw-unsplash.jpg",
-    "https://i.ibb.co/4sXYH1C/jasmin-chew-4-IULx-F9-Z0-YA-unsplash.jpg",
-    "https://i.ibb.co/MnBPN6s/engin-akyurt-RSm7-GBu-Mqos-unsplash.jpg",
+    "https://i.ibb.co/VwKdPPJ/rocknwool-GUzkgot7-LN8-unsplash.jpg",
+    "https://i.ibb.co/bvWNJvB/ehimetalor-akhere-unuabona-qi3qc-Q3v-Yu-I-unsplash.jpg",
+    "https://i.ibb.co/chF8MKG/jasmin-chew-4-IULx-F9-Z0-YA-unsplash.jpg",
+    "https://i.ibb.co/DM8JFzM/kayan-baby-msq6-ZTv-Manw-unsplash.jpg",
+    "https://i.ibb.co/RDk0Bf0/mohammad-metri-E-0-ON3-VGr-Bc-unsplash.jpg",
+    "https://i.ibb.co/BGHqWwk/engin-akyurt-RSm7-GBu-Mqos-unsplash.jpg",
 ];
 
 const Trending = () => {
@@ -33,7 +33,7 @@ const Trending = () => {
                 <div className="w-full lg:flex">
                     <div className="md:w-full lg:w-1/4 overflow-hidden relative cursor-crosshair product">
                         <img
-                            src="https://i.ibb.co/C0kXRgr/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg"
+                            src="https://i.ibb.co/jHWpfRY/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg"
                             alt=""
                             className="h-full hover:scale-125 duration-300"
                         />
