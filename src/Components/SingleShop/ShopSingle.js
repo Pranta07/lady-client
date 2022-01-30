@@ -26,7 +26,7 @@ const relatedProducts = [
     },
 ];
 
-const ShopSingle = ({ product }) => {
+const ShopSingle = () => {
     const quantity = useSelector((state) => state.counter.quantity); //read data from store
     const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ const ShopSingle = ({ product }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-8 mb-16">
                     <div>
                         <img
-                            src="https://i.ibb.co/0fWRMGf/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg"
+                            src="https://i.ibb.co/ccNcX9R/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg"
                             alt=""
                             className="w-full"
                         />

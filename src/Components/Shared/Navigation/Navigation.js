@@ -182,7 +182,7 @@ const Navigation = () => {
                                                     item.current
                                                         ? "bg-gray-900 text-white"
                                                         : "text-black hover:bg-gray-900 hover:text-white",
-                                                    "block px-3 py-2 rounded-md text-base font-medium"
+                                                    "block w-full px-3 py-2 rounded-md text-base font-medium"
                                                 )}
                                                 aria-current={
                                                     item.current
