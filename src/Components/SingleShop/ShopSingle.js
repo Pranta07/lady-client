@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react/cjs/react.development";
 import DressGallery from "../DressGallery/DressGallery";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "../../Redux/slices/counterSlice";
 
 const relatedProducts = [
     {
@@ -26,16 +27,8 @@ const relatedProducts = [
 ];
 
 const ShopSingle = ({ product }) => {
-    const [quantity, setQuantity] = useState(0);
-
-    const handleQuantity = (e) => {
-        const name = e.target.name;
-        if (name === "plus") {
-            setQuantity(quantity + 1);
-        } else {
-            if (quantity !== 0) setQuantity(quantity - 1);
-        }
-    };
+    const quantity = useSelector((state) => state.counter.quantity); //read data from store
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -85,8 +78,7 @@ const ShopSingle = ({ product }) => {
                             Quantity
                         </h1>
                         <button
-                            onClick={handleQuantity}
-                            name="minus"
+                            onClick={() => dispatch(decrement())}
                             className="py-1 px-3 bg-black text-yellow-400 text-xl hover:bg-gray-900 cursor-pointer"
                         >
                             -
@@ -100,8 +92,7 @@ const ShopSingle = ({ product }) => {
                             className="w-10 mx-2 p-1 bg-gray-200"
                         />
                         <button
-                            onClick={handleQuantity}
-                            name="plus"
+                            onClick={() => dispatch(increment())}
                             className="py-1 px-2 bg-black text-yellow-400 text-xl hover:bg-gray-900 cursor-pointer"
                         >
                             +
