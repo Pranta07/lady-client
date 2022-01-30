@@ -26,7 +26,7 @@ const relatedProducts = [
     },
 ];
 
-const ShopSingle = ({ product }) => {
+const ShopSingle = () => {
     const quantity = useSelector((state) => state.counter.quantity); //read data from store
     const dispatch = useDispatch();
 
