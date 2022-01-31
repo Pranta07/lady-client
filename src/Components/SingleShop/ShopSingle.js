@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DressGallery from "../DressGallery/DressGallery";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../Redux/slices/counterSlice";
+import { useParams } from "react-router-dom";
 
 const relatedProducts = [
     {
@@ -30,6 +31,15 @@ const ShopSingle = () => {
     const quantity = useSelector((state) => state.counter.quantity); //read data from store
     const dispatch = useDispatch();
 
+    const [singleProduct, setSingleProduct] = useState({});
+
+    const { id } = useParams();
+    useEffect(() => {
+        fetch(`http://localhost:5000/singleProduct/${id}`)
+            .then((res) => res.json())
+            .then((data) => setSingleProduct(data));
+    }, [id]);
+
     return (
         <>
             {/* Single Item */}
@@ -43,15 +53,17 @@ const ShopSingle = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-8 mb-16">
                     <div>
                         <img
-                            src="https://i.ibb.co/ccNcX9R/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg"
+                            src={singleProduct.imgUrl}
                             alt=""
                             className="w-full"
                         />
                     </div>
                     <div className="tracking-widest text-left">
-                        <p className="uppercase text-3xl py-4 my-4">$ 23.5</p>
+                        <p className="uppercase text-3xl py-4 my-4">
+                            $ {singleProduct.price}
+                        </p>
                         <h1 className="uppercase tracking-widest text-4xl font-semibold">
-                            FLARE STRAP DRESS
+                            {singleProduct.name}
                         </h1>
                         <p className="h-3 bg-yellow-400 my-6"></p>
                         <h1 className="uppercase tracking-widest text-2xl font-semibold mb-6">
