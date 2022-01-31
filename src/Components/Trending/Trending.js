@@ -31,9 +31,9 @@ const Trending = () => {
             <div className="bg-white m-6 lg:flex">
                 <div className="w-full lg:flex">
                     <div className="grid grid-rows-2 grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-0">
-                        {trendingProducts.map((product, index) => (
+                        {trendingProducts.map((product) => (
                             <div
-                                key={index}
+                                key={product._id}
                                 className="h-full overflow-hidden relative cursor-crosshair product first:row-span-2"
                             >
                                 <img
@@ -45,7 +45,7 @@ const Trending = () => {
                                     <p className="text-2xl font-bold">
                                         $ {product.price}
                                     </p>
-                                    <Link to="/shopSingle">
+                                    <Link to={`/shopSingle/${product._id}`}>
                                         <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
                                             VIEW DETAILS
                                         </button>
