@@ -6,7 +6,7 @@ const Trending = () => {
     const [trendingProducts, setTrendingProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/trending")
+        fetch("http://localhost:5000/products?type=trending")
             .then((res) => res.json())
             .then((data) => setTrendingProducts(data));
     }, []);
