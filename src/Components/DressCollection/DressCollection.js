@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 const DressCollection = () => {
     const [type, setType] = useState("popular");
     const [products, setProducts] = useState([]);
-    const [popular, setPopular] = useState("text-4xl font-bold");
-    const [recent, setRecent] = useState("text-2xl font-bold");
-    const [random, setRandom] = useState("text-2xl font-bold");
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -21,21 +18,12 @@ const DressCollection = () => {
 
     const handlePopular = (e) => {
         setType("popular");
-        setPopular("text-4xl font-bold");
-        setRecent("text-2xl font-bold");
-        setRandom("text-2xl font-bold");
     };
     const handleRecent = () => {
         setType("recent");
-        setPopular("text-2xl font-bold");
-        setRecent("text-4xl font-bold");
-        setRandom("text-2xl font-bold");
     };
     const handleRandom = () => {
         setType("random");
-        setPopular("text-2xl font-bold");
-        setRecent("text-2xl font-bold");
-        setRandom("text-4xl font-bold");
     };
 
     return (
@@ -46,15 +34,36 @@ const DressCollection = () => {
                     Dress Collecton
                 </p>
                 <h1 className="uppercase tracking-widest text-3xl cursor-pointer">
-                    <span className={popular} onClick={() => handlePopular()}>
+                    <span
+                        className={
+                            type === "popular"
+                                ? "text-4xl font-bold"
+                                : "text-2xl font-bold"
+                        }
+                        onClick={() => handlePopular()}
+                    >
                         Popular
                     </span>
                     {" / "}
-                    <span className={recent} onClick={() => handleRecent()}>
+                    <span
+                        className={
+                            type === "recent"
+                                ? "text-4xl font-bold"
+                                : "text-2xl font-bold"
+                        }
+                        onClick={() => handleRecent()}
+                    >
                         Recent
                     </span>
                     {" / "}
-                    <span className={random} onClick={() => handleRandom()}>
+                    <span
+                        className={
+                            type === "random"
+                                ? "text-4xl font-bold"
+                                : "text-2xl font-bold"
+                        }
+                        onClick={() => handleRandom()}
+                    >
                         Random
                     </span>
                 </h1>
