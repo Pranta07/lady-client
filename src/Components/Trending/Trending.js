@@ -45,7 +45,9 @@ const Trending = () => {
                                     <p className="text-2xl font-bold">
                                         $ {product.price}
                                     </p>
-                                    <Link to={`/shopSingle/${product._id}`}>
+                                    <Link
+                                        to={`/shopSingle/${product._id}?type=trending`}
+                                    >
                                         <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
                                             VIEW DETAILS
                                         </button>

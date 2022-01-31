@@ -34,11 +34,14 @@ const ShopSingle = () => {
     const [singleProduct, setSingleProduct] = useState({});
 
     const { id } = useParams();
+    const queryParams = new URLSearchParams(window.location.search);
+    const type = queryParams.get("type");
+
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${id}`)
+        fetch(`http://localhost:5000/singleProduct/${id}?type=${type}`)
             .then((res) => res.json())
             .then((data) => setSingleProduct(data));
-    }, [id]);
+    }, [type, id]);
 
     return (
         <>
