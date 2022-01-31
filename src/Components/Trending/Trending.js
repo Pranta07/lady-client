@@ -2,45 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Trending.css";
 
-const trendingProducts = [
-    {
-        imgUrl: "https://i.ibb.co/jHWpfRY/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg",
-        title: "White Gown Dress",
-        price: 30.5,
-    },
-    {
-        imgUrl: "https://i.ibb.co/VwKdPPJ/rocknwool-GUzkgot7-LN8-unsplash.jpg",
-        title: "Rocknwool Dress",
-        price: 20.5,
-    },
-    {
-        imgUrl: "https://i.ibb.co/bvWNJvB/ehimetalor-akhere-unuabona-qi3qc-Q3v-Yu-I-unsplash.jpg",
-        title: "WJ Bags",
-        price: 20.3,
-    },
-    {
-        imgUrl: "https://i.ibb.co/chF8MKG/jasmin-chew-4-IULx-F9-Z0-YA-unsplash.jpg",
-        title: "Denim Jeans",
-        price: 19.4,
-    },
-    {
-        imgUrl: "https://i.ibb.co/DM8JFzM/kayan-baby-msq6-ZTv-Manw-unsplash.jpg",
-        title: "Baby Girl Frock",
-        price: 23.2,
-    },
-    {
-        imgUrl: "https://i.ibb.co/RDk0Bf0/mohammad-metri-E-0-ON3-VGr-Bc-unsplash.jpg",
-        title: "Pencil Hill",
-        price: 30.2,
-    },
-    {
-        imgUrl: "https://i.ibb.co/BGHqWwk/engin-akyurt-RSm7-GBu-Mqos-unsplash.jpg",
-        title: "Dress Combo",
-        price: 99.9,
-    },
-];
-
 const Trending = () => {
+    const [trendingProducts, setTrendingProducts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/trending")
+            .then((res) => res.json())
+            .then((data) => setTrendingProducts(data));
+    }, []);
+
     return (
         <div className="container mx-auto">
             {/* Heading Part */}
