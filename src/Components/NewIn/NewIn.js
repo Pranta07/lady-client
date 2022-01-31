@@ -3,40 +3,34 @@ import React from "react";
 const newProducts = [
     [
         {
-            id: "1",
-            imgUrl: "https://i.ibb.co/0fWRMGf/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg",
+            imgUrl: "https://i.ibb.co/ccNcX9R/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg",
             name: "FLARE STRAP DRESS",
             price: "19.6",
         },
         {
-            id: "2",
-            imgUrl: "https://i.ibb.co/zsJV92D/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
+            imgUrl: "https://i.ibb.co/MpMY0y0/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
             name: "ABSTRACT DOOTED DRESS",
             price: "21.5",
         },
         {
-            id: "3",
-            imgUrl: "https://i.ibb.co/8M6wWCd/tamara-bellis-21fa847g-ZBs-unsplash.jpg",
+            imgUrl: "https://i.ibb.co/0QZwQd5/tamara-bellis-21fa847g-ZBs-unsplash.jpg",
             name: "CHIFON & FLORAL DRESS",
             price: "21.5",
         },
     ],
     [
         {
-            id: "4",
-            imgUrl: "https://i.ibb.co/WWVtBMp/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
+            imgUrl: "https://i.ibb.co/987Jkd7/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
             name: "CAMI STRAP DRESS",
             price: "23.5",
         },
         {
-            id: "5",
-            imgUrl: "https://i.ibb.co/17jgrXW/tamara-bellis-Rqp-HXWNHep8-unsplash.jpg",
+            imgUrl: "https://i.ibb.co/d0WtRRB/tamara-bellis-Rqp-HXWNHep8-unsplash.jpg",
             name: "FLARE STRAP DRESS",
             price: "19.6",
         },
         {
-            id: "6",
-            imgUrl: "https://i.ibb.co/PzxPXPW/tamara-bellis-3t6rfs-Ca-Wi-Q-unsplash.jpg",
+            imgUrl: "https://i.ibb.co/fr1g215/tamara-bellis-3t6rfs-Ca-Wi-Q-unsplash.jpg",
             name: "ABSTRACT DOOTED DRESS",
             price: "21.5",
         },

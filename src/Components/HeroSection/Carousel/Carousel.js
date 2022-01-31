@@ -10,21 +10,21 @@ const Carousel = () => {
             <div className="carousel-inner relative w-full h-screen overflow-hidden">
                 <div className="carousel-item active relative float-left w-full opacity-60">
                     <img
-                        src="https://i.ibb.co/pWSS7tm/freestocks-3-Q3ts-J01nc-unsplash.jpg"
+                        src="https://i.ibb.co/Wzrk0Yw/freestocks-3-Q3ts-J01nc-unsplash.jpg"
                         className="block w-full object-cover h-screen"
                         alt="lady-shopping"
                     />
                 </div>
                 <div className="carousel-item relative float-left w-full opacity-60">
                     <img
-                        src="https://i.ibb.co/rdDfDVm/priscilla-du-preez-dlx-LGIy-2-VU-unsplash.jpg"
+                        src="https://i.ibb.co/P1ynFw0/priscilla-du-preez-dlx-LGIy-2-VU-unsplash.jpg"
                         className="block w-full object-fill h-screen"
                         alt="dresses"
                     />
                 </div>
                 <div className="carousel-item relative float-left w-full opacity-60">
                     <img
-                        src="https://i.ibb.co/xXznRp1/kristina-petrick-qmyebf-Kk3pw-unsplash.jpg"
+                        src="https://i.ibb.co/vXPJzBc/kristina-petrick-qmyebf-Kk3pw-unsplash.jpg"
                         className="block w-full object-fill h-screen"
                         alt="Exotic Fasion"
                     />
