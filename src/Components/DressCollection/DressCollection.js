@@ -82,7 +82,9 @@ const DressCollection = () => {
                                             className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                                         />
                                     </div>
-                                    <Link to="/shopSingle">
+                                    <Link
+                                        to={`/shopSingle/${product._id}?type=${type}`}
+                                    >
                                         <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
                                             <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
                                                 VIEW DETAILS
@@ -91,13 +93,7 @@ const DressCollection = () => {
                                     </Link>
                                     <div className="mt-4">
                                         <h3 className="text-sm text-gray-700 py-3">
-                                            <a href={product.href}>
-                                                <span
-                                                    aria-hidden="true"
-                                                    className="absolute inset-0"
-                                                />
-                                                {product.name}
-                                            </a>
+                                            {product.name}
                                         </h3>
                                         <p className="text-xl font-medium text-gray-900">
                                             $ {product.price}
