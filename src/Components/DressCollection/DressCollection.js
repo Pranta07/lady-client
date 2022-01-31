@@ -16,16 +16,6 @@ const DressCollection = () => {
             });
     }, [type]);
 
-    const handlePopular = (e) => {
-        setType("popular");
-    };
-    const handleRecent = () => {
-        setType("recent");
-    };
-    const handleRandom = () => {
-        setType("random");
-    };
-
     return (
         <div className="container mx-auto">
             {/* Heading */}
@@ -40,7 +30,7 @@ const DressCollection = () => {
                                 ? "text-4xl font-bold"
                                 : "text-2xl font-bold"
                         }
-                        onClick={() => handlePopular()}
+                        onClick={() => setType("popular")}
                     >
                         Popular
                     </span>
@@ -51,7 +41,7 @@ const DressCollection = () => {
                                 ? "text-4xl font-bold"
                                 : "text-2xl font-bold"
                         }
-                        onClick={() => handleRecent()}
+                        onClick={() => setType("recent")}
                     >
                         Recent
                     </span>
@@ -62,7 +52,7 @@ const DressCollection = () => {
                                 ? "text-4xl font-bold"
                                 : "text-2xl font-bold"
                         }
-                        onClick={() => handleRandom()}
+                        onClick={() => setType("random")}
                     >
                         Random
                     </span>
