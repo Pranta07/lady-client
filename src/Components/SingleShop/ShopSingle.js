@@ -45,6 +45,21 @@ const ShopSingle = () => {
 
     const handleAddToCart = () => {
         // console.log("added ", quantity);
+        const data = JSON.parse(localStorage.getItem("cart"));
+        console.log(data);
+        if (!data) {
+            localStorage.setItem("cart", JSON.stringify({}));
+        }
+
+        let newCart = {};
+        if (data) {
+            newCart = data;
+            if (newCart[id]) newCart[id] += quantity;
+            else newCart[id] = 1;
+        } else {
+            newCart[id] = 1;
+        }
+        localStorage.setItem("cart", JSON.stringify(newCart));
     };
 
     return (
