@@ -28,15 +28,16 @@ const ShopCatalog = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/products?type=catalog")
+        fetch(`http://localhost:5000/products?type=catalog&&page=${pageNum}`)
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
-                setPageCount(Math.ceil(data.length / 4));
+                /* setPageCount(Math.ceil(data.length / 8));
                 const Products = data.filter(
-                    (product, id) => id >= pageNum * 4 && id < pageNum * 4 + 4
-                );
-                setDisplayProducts(Products);
+                    (product, id) => id >= pageNum * 8 && id < pageNum * 8 + 8
+                ); */
+                setPageCount(Math.ceil(data.count / 8));
+                setDisplayProducts(data.result);
             });
     }, [pageNum]);
 

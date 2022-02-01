@@ -11,7 +11,7 @@ const Trending = () => {
         fetch("http://localhost:5000/products?type=trending")
             .then((res) => res.json())
             .then((data) => {
-                setTrendingProducts(data);
+                setTrendingProducts(data.result);
                 setLoading(false);
             });
     }, []);

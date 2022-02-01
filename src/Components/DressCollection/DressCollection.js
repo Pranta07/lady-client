@@ -11,7 +11,7 @@ const DressCollection = () => {
         fetch(`http://localhost:5000/products?type=${type}`)
             .then((res) => res.json())
             .then((data) => {
-                setProducts(data);
+                setProducts(data.result);
                 setLoading(false);
             });
     }, [type]);
