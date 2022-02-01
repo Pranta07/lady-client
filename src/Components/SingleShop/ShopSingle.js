@@ -38,10 +38,14 @@ const ShopSingle = () => {
     const type = queryParams.get("type");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${id}?type=${type}`)
+        fetch(`http://localhost:5000/singleProduct/${id}`)
             .then((res) => res.json())
             .then((data) => setSingleProduct(data));
     }, [type, id]);
+
+    const handleAddToCart = () => {
+        // console.log("added ", quantity);
+    };
 
     return (
         <>
@@ -113,7 +117,10 @@ const ShopSingle = () => {
                             +
                         </button>
                         <br></br>
-                        <button className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer">
+                        <button
+                            onClick={handleAddToCart}
+                            className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer"
+                        >
                             add to cart
                         </button>
                         <p className="text-sm">
