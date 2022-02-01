@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Trending.css";
 
-const Images = [
-    "https://i.ibb.co/VwKdPPJ/rocknwool-GUzkgot7-LN8-unsplash.jpg",
-    "https://i.ibb.co/bvWNJvB/ehimetalor-akhere-unuabona-qi3qc-Q3v-Yu-I-unsplash.jpg",
-    "https://i.ibb.co/chF8MKG/jasmin-chew-4-IULx-F9-Z0-YA-unsplash.jpg",
-    "https://i.ibb.co/DM8JFzM/kayan-baby-msq6-ZTv-Manw-unsplash.jpg",
-    "https://i.ibb.co/RDk0Bf0/mohammad-metri-E-0-ON3-VGr-Bc-unsplash.jpg",
-    "https://i.ibb.co/BGHqWwk/engin-akyurt-RSm7-GBu-Mqos-unsplash.jpg",
-];
-
 const Trending = () => {
+    const [trendingProducts, setTrendingProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        fetch("http://localhost:5000/products?type=trending")
+            .then((res) => res.json())
+            .then((data) => {
+                setTrendingProducts(data);
+                setLoading(false);
+            });
+    }, []);
+
     return (
         <div className="container mx-auto">
             {/* Heading Part */}
@@ -29,49 +33,43 @@ const Trending = () => {
             </div>
 
             {/* Products Section */}
-            <div className="bg-white m-6 lg:flex">
-                <div className="w-full lg:flex">
-                    <div className="md:w-full lg:w-1/4 overflow-hidden relative cursor-crosshair product">
-                        <img
-                            src="https://i.ibb.co/jHWpfRY/nathan-walker-C0j-Ixemc-Lo-unsplash.jpg"
-                            alt=""
-                            className="h-full hover:scale-125 duration-300"
-                        />
-                        <div className="absolute top-60 md:top-96 lg:top-48 xl:top-60 left-24 md:left-64 lg:left-8 xl:left-14 animate-pulse rounded-t-md price">
-                            <p className="text-2xl font-bold">$ 99.00</p>
-                            <Link to="/shopSingle">
-                                <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
-                                    VIEW DETAILS
-                                </button>
-                            </Link>
+            {loading ? (
+                <svg
+                    class="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
+                    viewBox="0 0 24 24"
+                ></svg>
+            ) : (
+                <div className="bg-white m-6 lg:flex">
+                    <div className="w-full lg:flex">
+                        <div className="grid grid-rows-2 grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-0">
+                            {trendingProducts.map((product) => (
+                                <div
+                                    key={product._id}
+                                    className="h-full overflow-hidden relative cursor-crosshair product first:row-span-2"
+                                >
+                                    <img
+                                        src={product.imgUrl}
+                                        alt=""
+                                        className="w-full h-full hover:scale-110 duration-300"
+                                    />
+                                    <div className="absolute top-32 md:top-32 lg:top-16 xl:top-24 left-24 md:left-20 lg:left-7 xl:left-14 animate-pulse rounded-t-md price duration-300">
+                                        <p className="text-2xl font-bold">
+                                            $ {product.price}
+                                        </p>
+                                        <Link
+                                            to={`/shopSingle/${product._id}?type=trending`}
+                                        >
+                                            <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
+                                                VIEW DETAILS
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                    <div className="md:w-full lg:w-3/4 h-full grid md:grid-cols-2 lg:grid-cols-3 gap-0">
-                        {Images.map((url, index) => (
-                            <div
-                                key={index}
-                                className="h-full overflow-hidden relative cursor-crosshair product"
-                            >
-                                <img
-                                    src={url}
-                                    alt=""
-                                    className="w-full h-full hover:scale-125 duration-300"
-                                />
-                                <div className="absolute top-32 md:top-32 lg:top-16 xl:top-24 left-24 md:left-20 lg:left-7 xl:left-14 animate-pulse rounded-t-md price">
-                                    <p className="text-2xl font-bold">
-                                        $ 99.00
-                                    </p>
-                                    <Link to="/shopSingle">
-                                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900">
-                                            VIEW DETAILS
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };

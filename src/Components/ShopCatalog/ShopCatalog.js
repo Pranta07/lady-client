@@ -8,89 +8,6 @@ import {
     ChevronRightIcon,
 } from "@heroicons/react/solid";
 
-const allProducts = [
-    {
-        imgUrl: "https://i.ibb.co/ccNcX9R/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg",
-        name: "FLARE STRAP DRESS",
-        price: "19.6",
-    },
-    {
-        imgUrl: "https://i.ibb.co/MpMY0y0/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
-        name: "ABSTRACT DOOTED DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/0QZwQd5/tamara-bellis-21fa847g-ZBs-unsplash.jpg",
-        name: "CHIFON & FLORAL DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/987Jkd7/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
-        name: "CAMI STRAP DRESS",
-        price: "23.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/d0WtRRB/tamara-bellis-Rqp-HXWNHep8-unsplash.jpg",
-        name: "FLARE STRAP DRESS",
-        price: "19.6",
-    },
-    {
-        imgUrl: "https://i.ibb.co/fr1g215/tamara-bellis-3t6rfs-Ca-Wi-Q-unsplash.jpg",
-        name: "ABSTRACT DOOTED DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/N2nvTmY/dmitry-vechorko-y-Xh-J-e-QK0m-E-unsplash.jpg",
-        name: "CHIFON & FLORAL DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/Kbp3BYg/valerie-elash-Rfo-ISVd-KM4-U-unsplash.jpg",
-        name: "CAMI STRAP DRESS",
-        price: "23.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/N2nvTmY/dmitry-vechorko-y-Xh-J-e-QK0m-E-unsplash.jpg",
-        name: "CHIFON & FLORAL DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/Kbp3BYg/valerie-elash-Rfo-ISVd-KM4-U-unsplash.jpg",
-        name: "CAMI STRAP DRESS",
-        price: "23.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/0QZwQd5/tamara-bellis-21fa847g-ZBs-unsplash.jpg",
-        name: "CHIFON & FLORAL DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/987Jkd7/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
-        name: "CAMI STRAP DRESS",
-        price: "23.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/d0WtRRB/tamara-bellis-Rqp-HXWNHep8-unsplash.jpg",
-        name: "FLARE STRAP DRESS",
-        price: "19.6",
-    },
-    {
-        imgUrl: "https://i.ibb.co/fr1g215/tamara-bellis-3t6rfs-Ca-Wi-Q-unsplash.jpg",
-        name: "ABSTRACT DOOTED DRESS",
-        price: "21.5",
-    },
-    {
-        imgUrl: "https://i.ibb.co/ccNcX9R/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg",
-        name: "FLARE STRAP DRESS",
-        price: "19.6",
-    },
-    {
-        imgUrl: "https://i.ibb.co/MpMY0y0/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
-        name: "ABSTRACT DOOTED DRESS",
-        price: "21.5",
-    },
-];
-
 const sortItems = [
     { name: "Best Sellers", href: "" },
     { name: "Lower Prices", href: "" },
@@ -104,16 +21,22 @@ function classNames(...classes) {
 
 const ShopCatalog = () => {
     const [pageNum, setPageNum] = useState(0);
-    const [pageCount, setPageCount] = useState(
-        Math.ceil(allProducts.length / 4)
-    );
+    const [pageCount, setPageCount] = useState(0);
     const [displayProducts, setDisplayProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const Products = allProducts.filter(
-            (product, id) => id >= pageNum * 4 && id < pageNum * 4 + 4
-        );
-        setDisplayProducts(Products);
+        setLoading(true);
+        fetch("http://localhost:5000/products?type=catalog")
+            .then((res) => res.json())
+            .then((data) => {
+                setLoading(false);
+                setPageCount(Math.ceil(data.length / 4));
+                const Products = data.filter(
+                    (product, id) => id >= pageNum * 4 && id < pageNum * 4 + 4
+                );
+                setDisplayProducts(Products);
+            });
     }, [pageNum]);
 
     return (
@@ -176,98 +99,108 @@ const ShopCatalog = () => {
                     </Menu>
                 </div>
 
-                {/* Products Section */}
-                <div>
-                    <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            {displayProducts.map((product, index) => (
-                                <div
-                                    key={index}
-                                    className="group relative product"
-                                >
-                                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
-                                        <img
-                                            src={product.imgUrl}
-                                            alt=""
-                                            className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-                                        />
-                                    </div>
-                                    <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
-                                        <button className="uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
-                                            Add to cart
-                                        </button>
-                                    </div>
-                                    <div className="mt-4">
-                                        <h3 className="text-sm text-gray-700 py-3">
-                                            <a href={product.href}>
-                                                <span
-                                                    aria-hidden="true"
-                                                    className="absolute inset-0"
+                {loading ? (
+                    <svg
+                        class="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
+                        viewBox="0 0 24 24"
+                    ></svg>
+                ) : (
+                    <>
+                        {/* Products Section */}
+                        <div>
+                            <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
+                                <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                                    {displayProducts.map((product, index) => (
+                                        <div
+                                            key={index}
+                                            className="group relative product"
+                                        >
+                                            <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
+                                                <img
+                                                    src={product.imgUrl}
+                                                    alt=""
+                                                    className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                                                 />
-                                                {product.name}
-                                            </a>
-                                        </h3>
-                                        <p className="text-xl font-medium text-gray-900">
-                                            $ {product.price}
-                                        </p>
-                                    </div>
+                                            </div>
+                                            <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
+                                                <button className="uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                                    Add to cart
+                                                </button>
+                                            </div>
+                                            <div className="mt-4">
+                                                <h3 className="text-sm text-gray-700 py-3">
+                                                    <a href={product.href}>
+                                                        <span
+                                                            aria-hidden="true"
+                                                            className="absolute inset-0"
+                                                        />
+                                                        {product.name}
+                                                    </a>
+                                                </h3>
+                                                <p className="text-xl font-medium text-gray-900">
+                                                    $ {product.price}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                {/* pagination */}
-                <div>
-                    <nav
-                        className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
-                        aria-label="Pagination"
-                    >
-                        <button
-                            onClick={() => {
-                                pageNum > 0 && setPageNum(pageNum - 1);
-                            }}
-                            className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400"
-                        >
-                            <span className="sr-only">Previous</span>
-                            <ChevronLeftIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                            />
-                        </button>
-
-                        {[...Array(pageCount).keys()].map((number) => (
-                            <button
-                                key={number}
-                                onClick={() => {
-                                    setPageNum(number);
-                                }}
-                                className={
-                                    pageNum === number
-                                        ? "bg-yellow-400 border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-                                        : "bg-white border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-                                }
+                        {/* pagination */}
+                        <div>
+                            <nav
+                                className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                                aria-label="Pagination"
                             >
-                                {number}
-                            </button>
-                        ))}
+                                <button
+                                    onClick={() => {
+                                        pageNum > 0 && setPageNum(pageNum - 1);
+                                    }}
+                                    className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400"
+                                >
+                                    <span className="sr-only">Previous</span>
+                                    <ChevronLeftIcon
+                                        className="h-5 w-5"
+                                        aria-hidden="true"
+                                    />
+                                </button>
 
-                        <button
-                            onClick={() => {
-                                pageNum < pageCount - 1 &&
-                                    setPageNum(pageNum + 1);
-                            }}
-                            className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400"
-                        >
-                            <span className="sr-only">Next</span>
-                            <ChevronRightIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                            />
-                        </button>
-                    </nav>
-                </div>
+                                {[...Array(pageCount).keys()].map((number) => (
+                                    <button
+                                        key={number}
+                                        onClick={() => {
+                                            setPageNum(number);
+                                        }}
+                                        className={
+                                            pageNum === number
+                                                ? "bg-yellow-400 border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                                : "bg-white border-gray-300 text-gray-900 hover:bg-yellow-400 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                        }
+                                    >
+                                        {number}
+                                    </button>
+                                ))}
+
+                                <button
+                                    onClick={() => {
+                                        pageNum < pageCount - 1 &&
+                                            setPageNum(pageNum + 1);
+                                    }}
+                                    className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-yellow-400"
+                                >
+                                    <span className="sr-only">Next</span>
+                                    <ChevronRightIcon
+                                        className="h-5 w-5"
+                                        aria-hidden="true"
+                                    />
+                                </button>
+                            </nav>
+                        </div>
+                    </>
+                )}
             </div>
+
             <DressGallery></DressGallery>
         </>
     );
