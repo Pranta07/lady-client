@@ -34,14 +34,14 @@ const ShopSingle = () => {
     const [singleProduct, setSingleProduct] = useState({});
 
     const { id } = useParams();
-    const queryParams = new URLSearchParams(window.location.search);
-    const type = queryParams.get("type");
+    /* const queryParams = new URLSearchParams(window.location.search);
+    const type = queryParams.get("type"); */
 
     useEffect(() => {
         fetch(`http://localhost:5000/singleProduct/${id}`)
             .then((res) => res.json())
             .then((data) => setSingleProduct(data));
-    }, [type, id]);
+    }, [id]);
 
     const handleAddToCart = () => {
         // console.log("added ", quantity);
@@ -55,7 +55,7 @@ const ShopSingle = () => {
         if (data) {
             newCart = data;
             if (newCart[id]) newCart[id] += quantity;
-            else newCart[id] = 1;
+            else newCart[id] = quantity;
         } else {
             newCart[id] = 1;
         }
