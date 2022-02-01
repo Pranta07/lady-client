@@ -56,8 +56,9 @@ const ShopSingle = () => {
             newCart = data;
             if (newCart[id]) newCart[id] += quantity;
             else newCart[id] = quantity;
+            // newCart["price"] = singleProduct.price * quantity;
         } else {
-            newCart[id] = 1;
+            newCart[id] = quantity;
         }
         localStorage.setItem("cart", JSON.stringify(newCart));
     };
