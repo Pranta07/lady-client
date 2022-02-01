@@ -11,6 +11,7 @@ import TopHeader from "./Components/Shared/Navigation/TopHeader";
 import Deals from "./Components/Deals/Deals";
 import Blogs from "./Components/Blogs/Blogs";
 import About from "./Components/About/About";
+import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path="deals" element={<Deals />} />
                     <Route path="blogs" element={<Blogs />} />
                     <Route path="about" element={<About />} />
+                    <Route path="cart" element={<ShoppingCart />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <SubscribeSection></SubscribeSection>
