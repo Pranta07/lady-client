@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import CartTable from "../CartTable/CartTable";
@@ -12,6 +12,9 @@ const ShoppingCart = () => {
     const handleChange = (e) => {
         setText(e.target.value);
     };
+    useEffect(() => {
+        sessionStorage.clear();
+    }, []);
 
     const handleCoupon = () => {
         const couponCode = "LAGBENAKI";

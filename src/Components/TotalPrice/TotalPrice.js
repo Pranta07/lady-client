@@ -14,7 +14,7 @@ const TotalPrice = ({ total, discount }) => {
                 <p className="uppercase text-xl">Shipping Fee:</p>
                 <p className="text-xl">FREE</p>
             </div>
-            {discount !== 0 && (
+            {discount !== 0 && discount !== null && (
                 <div className="flex justify-between mt-4 pb-4 border-b-2 border-gray-900">
                     <p className="uppercase text-xl">Discount:</p>
                     <p className="text-xl">- ${discount}</p>

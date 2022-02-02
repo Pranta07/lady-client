@@ -6,6 +6,7 @@ import TotalPrice from "../TotalPrice/TotalPrice";
 const CheckoutPage = () => {
     const { cart, total } = useCart();
     const discount = JSON.parse(sessionStorage.getItem("discount"));
+    console.log(discount);
 
     return (
         <>
