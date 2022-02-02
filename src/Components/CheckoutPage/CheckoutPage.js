@@ -12,9 +12,13 @@ const CheckoutPage = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        console.log(data);
+        // reset();
+    };
 
     return (
         <>
@@ -237,14 +241,14 @@ const CheckoutPage = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                        {/* <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                             <button
                                                 type="submit"
                                                 className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
                                             >
                                                 Place Order
                                             </button>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </form>
                             </div>
@@ -263,34 +267,46 @@ const CheckoutPage = () => {
                         <h1 className="uppercase tracking-widest text-3xl pb-2 mb-3 border-b-4 border-gray-900">
                             Payment Method
                         </h1>
-                        <div className="flex items-center border p-4 mb-2">
-                            <input
-                                id="stripe"
-                                name="stripe"
-                                type="checkbox"
-                                className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            />
-                            <label
-                                htmlFor="stripe"
-                                className="uppercase ml-3 block text-md font-semibold tracking-wider text-gray-900"
-                            >
-                                Stripe
-                            </label>
-                        </div>
-                        <div className="flex items-center border p-4">
-                            <input
-                                id="ssl"
-                                name="ssl"
-                                type="checkbox"
-                                className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            />
-                            <label
-                                htmlFor="ssl"
-                                className="uppercase ml-3 block text-md font-semibold tracking-wider text-gray-900"
-                            >
-                                SSL Commerz
-                            </label>
-                        </div>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="flex items-center border p-4 mb-2">
+                                <input
+                                    id="stripe"
+                                    type="radio"
+                                    {...register("payType")}
+                                    className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                    value="stripe"
+                                />
+                                <label
+                                    htmlFor="stripe"
+                                    className="uppercase ml-3 block text-md font-semibold tracking-wider text-gray-900"
+                                >
+                                    Stripe
+                                </label>
+                            </div>
+                            <div className="flex items-center border p-4">
+                                <input
+                                    id="ssl"
+                                    type="radio"
+                                    {...register("payType")}
+                                    className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                    value="ssl"
+                                />
+                                <label
+                                    htmlFor="ssl"
+                                    className="uppercase ml-3 block text-md font-semibold tracking-wider text-gray-900"
+                                >
+                                    SSL Commerz
+                                </label>
+                            </div>
+                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                <button
+                                    type="submit"
+                                    className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
+                                >
+                                    Proceed To Pay
+                                </button>
+                            </div>
+                        </form>
                     </div>
                     <div className="mx-5 md:mx-8">
                         <TotalPrice
