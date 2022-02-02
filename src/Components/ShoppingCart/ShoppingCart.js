@@ -23,6 +23,7 @@ const ShoppingCart = () => {
                 const discount = (total / 100) * 10;
                 setDisPrice(discount);
                 setDiscount(false);
+                sessionStorage.setItem("discount", discount);
             } else {
                 alert("Invalid Coupon! Try Again.");
             }
