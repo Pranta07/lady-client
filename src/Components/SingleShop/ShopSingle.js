@@ -6,22 +6,22 @@ import { useParams } from "react-router-dom";
 
 const relatedProducts = [
     {
-        imgUrl: "https://i.ibb.co/zsJV92D/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
+        imgUrl: "https://i.ibb.co/Kbp3BYg/valerie-elash-Rfo-ISVd-KM4-U-unsplash.jpg",
         name: "ABSTRACT DOOTED DRESS",
         price: "21.5",
     },
     {
-        imgUrl: "https://i.ibb.co/8M6wWCd/tamara-bellis-21fa847g-ZBs-unsplash.jpg",
+        imgUrl: "https://i.ibb.co/987Jkd7/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
         name: "CHIFON & FLORAL DRESS",
         price: "21.5",
     },
     {
-        imgUrl: "https://i.ibb.co/WWVtBMp/oleg-ivanov-sg-g-Rhb-YXhc-unsplash.jpg",
+        imgUrl: "https://i.ibb.co/MpMY0y0/aiony-haust-IXYxq-P4zejo-unsplash.jpg",
         name: "CAMI STRAP DRESS",
         price: "23.5",
     },
     {
-        imgUrl: "https://i.ibb.co/17jgrXW/tamara-bellis-Rqp-HXWNHep8-unsplash.jpg",
+        imgUrl: "https://i.ibb.co/ccNcX9R/jonathan-borba-Mkq-Vie-Spi5-U-unsplash.jpg",
         name: "FLARE STRAP DRESS",
         price: "19.6",
     },
@@ -34,14 +34,34 @@ const ShopSingle = () => {
     const [singleProduct, setSingleProduct] = useState({});
 
     const { id } = useParams();
-    const queryParams = new URLSearchParams(window.location.search);
-    const type = queryParams.get("type");
+    /* const queryParams = new URLSearchParams(window.location.search);
+    const type = queryParams.get("type"); */
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${id}?type=${type}`)
+        fetch(`http://localhost:5000/singleProduct/${id}`)
             .then((res) => res.json())
             .then((data) => setSingleProduct(data));
-    }, [type, id]);
+    }, [id]);
+
+    const handleAddToCart = () => {
+        // console.log("added ", quantity);
+        const data = JSON.parse(localStorage.getItem("cart"));
+        console.log(data);
+        if (!data) {
+            localStorage.setItem("cart", JSON.stringify({}));
+        }
+
+        let newCart = {};
+        if (data) {
+            newCart = data;
+            if (newCart[id]) newCart[id] += quantity;
+            else newCart[id] = quantity;
+            // newCart["price"] = singleProduct.price * quantity;
+        } else {
+            newCart[id] = quantity;
+        }
+        localStorage.setItem("cart", JSON.stringify(newCart));
+    };
 
     return (
         <>
@@ -113,7 +133,10 @@ const ShopSingle = () => {
                             +
                         </button>
                         <br></br>
-                        <button className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer">
+                        <button
+                            onClick={handleAddToCart}
+                            className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer"
+                        >
                             add to cart
                         </button>
                         <p className="text-sm">

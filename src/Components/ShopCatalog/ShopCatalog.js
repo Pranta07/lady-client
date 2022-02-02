@@ -7,6 +7,7 @@ import {
     ChevronLeftIcon,
     ChevronRightIcon,
 } from "@heroicons/react/solid";
+import { Link } from "react-router-dom";
 
 const sortItems = [
     { name: "Best Sellers", href: "" },
@@ -27,15 +28,16 @@ const ShopCatalog = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/products?type=catalog")
+        fetch(`http://localhost:5000/products?type=catalog&&page=${pageNum}`)
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
-                setPageCount(Math.ceil(data.length / 4));
+                /* setPageCount(Math.ceil(data.length / 8));
                 const Products = data.filter(
-                    (product, id) => id >= pageNum * 4 && id < pageNum * 4 + 4
-                );
-                setDisplayProducts(Products);
+                    (product, id) => id >= pageNum * 8 && id < pageNum * 8 + 8
+                ); */
+                setPageCount(Math.ceil(data.count / 8));
+                setDisplayProducts(data.result);
             });
     }, [pageNum]);
 
@@ -110,9 +112,9 @@ const ShopCatalog = () => {
                         <div>
                             <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
                                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                                    {displayProducts.map((product, index) => (
+                                    {displayProducts.map((product) => (
                                         <div
-                                            key={index}
+                                            key={product._id}
                                             className="group relative product"
                                         >
                                             <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
@@ -122,20 +124,18 @@ const ShopCatalog = () => {
                                                     className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                                                 />
                                             </div>
-                                            <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
-                                                <button className="uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
-                                                    Add to cart
-                                                </button>
-                                            </div>
+                                            <Link
+                                                to={`/shopSingle/${product._id}?type=catalog`}
+                                            >
+                                                <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
+                                                    <button className="uppercase bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                                        Add to cart
+                                                    </button>
+                                                </div>
+                                            </Link>
                                             <div className="mt-4">
                                                 <h3 className="text-sm text-gray-700 py-3">
-                                                    <a href={product.href}>
-                                                        <span
-                                                            aria-hidden="true"
-                                                            className="absolute inset-0"
-                                                        />
-                                                        {product.name}
-                                                    </a>
+                                                    {product.name}
                                                 </h3>
                                                 <p className="text-xl font-medium text-gray-900">
                                                     $ {product.price}
