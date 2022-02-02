@@ -3,7 +3,7 @@ import React from "react";
 const TotalPrice = ({ total, discount }) => {
     return (
         <div className="lg:w-3/4">
-            <h1 className="uppercase text-2xl font-semibold tracking-wider py-3 border-b-2 border-gray-900">
+            <h1 className="uppercase tracking-widest text-3xl my-5 md:my-8 pb-2 border-b-4 border-gray-900">
                 Total Price
             </h1>
             <div className="flex justify-between my-6">

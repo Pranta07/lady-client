@@ -186,7 +186,7 @@ const CheckoutPage = () => {
                                         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                             <button
                                                 type="submit"
-                                                className="uppercase tracking-wider inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-yellow-400 bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                                className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
                                             >
                                                 Place Order
                                             </button>
@@ -203,11 +203,46 @@ const CheckoutPage = () => {
                         </h1>
                         <div>
                             <CartTable cart={cart}></CartTable>
-                            <TotalPrice
-                                total={total}
-                                discount={discount}
-                            ></TotalPrice>
                         </div>
+                    </div>
+                    <div className="m-5 md:m-8">
+                        <h1 className="uppercase tracking-widest text-3xl pb-2 mb-3 border-b-4 border-gray-900">
+                            Payment Method
+                        </h1>
+                        <div className="flex items-center border p-4 mb-2">
+                            <input
+                                id="remember-me"
+                                name="remember-me"
+                                type="checkbox"
+                                className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                            />
+                            <label
+                                htmlFor="remember-me"
+                                className="ml-3 block text-md font-semibold tracking-wider text-gray-900"
+                            >
+                                Stripe
+                            </label>
+                        </div>
+                        <div className="flex items-center border p-4">
+                            <input
+                                id="remember-me"
+                                name="remember-me"
+                                type="checkbox"
+                                className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                            />
+                            <label
+                                htmlFor="remember-me"
+                                className="ml-3 block text-md font-semibold tracking-wider text-gray-900"
+                            >
+                                SSL Commerze
+                            </label>
+                        </div>
+                    </div>
+                    <div className="mx-5 md:mx-8">
+                        <TotalPrice
+                            total={total}
+                            discount={discount}
+                        ></TotalPrice>
                     </div>
                 </div>
             </div>
