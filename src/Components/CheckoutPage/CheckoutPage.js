@@ -211,30 +211,30 @@ const CheckoutPage = () => {
                         </h1>
                         <div className="flex items-center border p-4 mb-2">
                             <input
-                                id="remember-me"
-                                name="remember-me"
+                                id="stripe"
+                                name="stripe"
                                 type="checkbox"
                                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                             />
                             <label
-                                htmlFor="remember-me"
-                                className="ml-3 block text-md font-semibold tracking-wider text-gray-900"
+                                htmlFor="stripe"
+                                className="uppercase ml-3 block text-md font-semibold tracking-wider text-gray-900"
                             >
                                 Stripe
                             </label>
                         </div>
                         <div className="flex items-center border p-4">
                             <input
-                                id="remember-me"
-                                name="remember-me"
+                                id="ssl"
+                                name="ssl"
                                 type="checkbox"
                                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                             />
                             <label
-                                htmlFor="remember-me"
-                                className="ml-3 block text-md font-semibold tracking-wider text-gray-900"
+                                htmlFor="ssl"
+                                className="uppercase ml-3 block text-md font-semibold tracking-wider text-gray-900"
                             >
-                                SSL Commerze
+                                SSL Commerz
                             </label>
                         </div>
                     </div>
