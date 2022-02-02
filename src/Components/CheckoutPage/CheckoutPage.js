@@ -2,11 +2,19 @@ import React from "react";
 import useCart from "../../hooks/useCart";
 import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
+import { useForm } from "react-hook-form";
 
 const CheckoutPage = () => {
     const { cart, total } = useCart();
     const discount = JSON.parse(sessionStorage.getItem("discount"));
-    console.log(discount);
+    // console.log(discount);
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const onSubmit = (data) => console.log(data);
 
     return (
         <>
@@ -26,160 +34,206 @@ const CheckoutPage = () => {
                         </h1>
                         <div className="mt-10 sm:mt-0 mx-5 md:mx-8">
                             <div className="mt-5 md:mt-0 md:col-span-2">
-                                <form>
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="shadow-lg overflow-hidden sm:rounded-md">
                                         <div className="px-4 py-5 bg-white sm:p-6">
                                             <div className="grid grid-cols-6 gap-6">
                                                 <div className="col-span-6 sm:col-span-3">
-                                                    <label
-                                                        htmlFor="first-name"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         First name
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="first-name"
-                                                        id="first-name"
+                                                        {...register(
+                                                            "firstName",
+                                                            {
+                                                                required: true,
+                                                                maxLength: 20,
+                                                            }
+                                                        )}
                                                         autoComplete="given-name"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
+                                                    {errors?.firstName?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
+                                                    {errors?.firstName?.type ===
+                                                        "maxLength" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            First name cannot
+                                                            exceed 20 characters
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-3">
-                                                    <label
-                                                        htmlFor="last-name"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         Last name
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="last-name"
-                                                        id="last-name"
+                                                        {...register(
+                                                            "lastName"
+                                                        )}
                                                         autoComplete="given-name"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-4">
-                                                    <label
-                                                        htmlFor="email-address"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         Email address
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="email-address"
-                                                        id="email-address"
+                                                        {...register("email", {
+                                                            required: true,
+                                                        })}
                                                         autoComplete="email"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
+                                                    {errors?.email?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-3">
-                                                    <label
-                                                        htmlFor="country"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         Country
                                                     </label>
                                                     <select
-                                                        id="country"
-                                                        name="country"
+                                                        {...register(
+                                                            "country",
+                                                            { required: true }
+                                                        )}
                                                         autoComplete="country-name"
-                                                        className="mt-1 block w-full py-2 px-3 border outline-gray-500 bg-gray-100 rounded-md shadow-sm sm:text-sm"
+                                                        className="mt-1 block w-full py-2 px-3 border bg-gray-100 focus:outline-yellow-300 rounded-md shadow-sm sm:text-sm"
                                                     >
-                                                        <option>
+                                                        <option value="Bangladesh">
                                                             Bangladesh
                                                         </option>
-                                                        <option>
+                                                        <option value="United States">
                                                             United States
                                                         </option>
-                                                        <option>Canada</option>
-                                                        <option>Mexico</option>
+                                                        <option value="Canada">
+                                                            Canada
+                                                        </option>
+                                                        <option value="Mexico">
+                                                            Mexico
+                                                        </option>
                                                     </select>
+                                                    {errors?.country?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-3">
-                                                    <label
-                                                        htmlFor="last-name"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         Phone
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="phone"
-                                                        id="phone"
+                                                        {...register("phone", {
+                                                            required: true,
+                                                        })}
                                                         autoComplete="phone"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
+                                                    {errors?.phone?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6">
-                                                    <label
-                                                        htmlFor="street-address"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         Street address
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="street-address"
-                                                        id="street-address"
+                                                        {...register("street", {
+                                                            required: true,
+                                                        })}
                                                         autoComplete="street-address"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
+                                                    {errors?.street?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                                                    <label
-                                                        htmlFor="city"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         City
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="city"
-                                                        id="city"
+                                                        {...register("city", {
+                                                            required: true,
+                                                        })}
                                                         autoComplete="address-level2"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
+                                                    {errors?.city?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                                    <label
-                                                        htmlFor="region"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         State / Province
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="region"
-                                                        id="region"
+                                                        {...register("region")}
                                                         autoComplete="address-level1"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                                    <label
-                                                        htmlFor="postal-code"
-                                                        className="block text-sm font-medium text-gray-700"
-                                                    >
+                                                    <label className="block text-sm font-medium text-gray-700">
                                                         ZIP / Postal code
                                                     </label>
                                                     <input
-                                                        type="text"
-                                                        name="postal-code"
-                                                        id="postal-code"
+                                                        {...register(
+                                                            "postCode",
+                                                            { required: true }
+                                                        )}
                                                         autoComplete="postal-code"
-                                                        className="mt-1 p-2 border bg-gray-100 outline-gray-500 block w-full shadow-md sm:text-sm rounded-md"
+                                                        className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
+                                                    {errors?.postCode?.type ===
+                                                        "required" && (
+                                                        <p className="text-red-600 ml-2 mt-2">
+                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            This field is
+                                                            required
+                                                        </p>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>

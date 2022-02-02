@@ -58,7 +58,7 @@ const ShoppingCart = () => {
                                     type="text"
                                     name="coupon"
                                     placeholder="Coupon Code"
-                                    className="md:w-1/2 rounded-sm p-3 bg-gray-300 text-gray-800 focus:border-2 border-gray-900 placeholder:uppercase"
+                                    className="md:w-1/2 rounded-sm p-3 shadow-md bg-gray-100 focus:outline-yellow-300 text-gray-800 border placeholder:uppercase"
                                 />
                                 <button
                                     onClick={handleCoupon}
