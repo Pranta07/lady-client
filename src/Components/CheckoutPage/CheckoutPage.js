@@ -1,7 +1,11 @@
 import React from "react";
 import useCart from "../../hooks/useCart";
+import CartTable from "../CartTable/CartTable";
+import TotalPrice from "../TotalPrice/TotalPrice";
+
 const CheckoutPage = () => {
     const { cart, total } = useCart();
+    const discount = JSON.parse(sessionStorage.getItem("discount"));
 
     return (
         <>
@@ -14,7 +18,7 @@ const CheckoutPage = () => {
                 </p>
             </div>
             <div className="bg-white py-10 border-b-2 border-gray-300">
-                <div className="container mx-auto text-left grid grid-cols-2 gap-4">
+                <div className="container mx-auto text-left grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
                         <h1 className="uppercase tracking-widest text-3xl m-8 pb-2 border-b-4 border-gray-900">
                             Billing Details
@@ -191,10 +195,18 @@ const CheckoutPage = () => {
                             </div>
                         </div>
                     </div>
+
                     <div>
-                        <h1 className="uppercase tracking-widest text-3xl m-8 pb-2 border-b-4 border-gray-900">
+                        <h1 className="uppercase tracking-widest text-3xl my-8 pb-2 border-b-4 border-gray-900">
                             Product Details
                         </h1>
+                        <div>
+                            <CartTable cart={cart}></CartTable>
+                            <TotalPrice
+                                total={total}
+                                discount={discount}
+                            ></TotalPrice>
+                        </div>
                     </div>
                 </div>
             </div>
