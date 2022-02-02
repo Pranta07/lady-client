@@ -21,10 +21,10 @@ const CheckoutPage = () => {
             <div className="bg-white py-10 border-b-2 border-gray-300">
                 <div className="container mx-auto text-left grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
-                        <h1 className="uppercase tracking-widest text-3xl m-8 pb-2 border-b-4 border-gray-900">
+                        <h1 className="uppercase tracking-widest text-3xl m-5 md:m-8 pb-2 border-b-4 border-gray-900">
                             Billing Details
                         </h1>
-                        <div className="mt-10 sm:mt-0 mx-8">
+                        <div className="mt-10 sm:mt-0 mx-5 md:mx-8">
                             <div className="mt-5 md:mt-0 md:col-span-2">
                                 <form>
                                     <div className="shadow-lg overflow-hidden sm:rounded-md">
@@ -197,7 +197,7 @@ const CheckoutPage = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="mx-5 md:mx-8">
                         <h1 className="uppercase tracking-widest text-3xl my-8 pb-2 border-b-4 border-gray-900">
                             Product Details
                         </h1>
