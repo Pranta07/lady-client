@@ -22,7 +22,13 @@ const useCart = () => {
         // console.log(newCart);
         setCart(newCart);
     };
-    return { cart };
+
+    const total = cart.reduce(
+        (previous, current) => previous + current.price * current.quantity,
+        0
+    );
+
+    return { cart, total };
 };
 
 export default useCart;

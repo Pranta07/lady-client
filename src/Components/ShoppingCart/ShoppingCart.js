@@ -4,15 +4,10 @@ import useCart from "../../hooks/useCart";
 import SingleRow from "../SingleRow/SingleRow";
 
 const ShoppingCart = () => {
-    const { cart } = useCart();
+    const { cart, total } = useCart();
     const [text, setText] = useState("");
     const [discount, setDiscount] = useState(true);
     const [disPrice, setDisPrice] = useState(0);
-
-    const total = cart.reduce(
-        (previous, current) => previous + current.price * current.quantity,
-        0
-    );
 
     const orderTotal = total - disPrice;
 
@@ -120,7 +115,7 @@ const ShoppingCart = () => {
                                     type="text"
                                     name="coupon"
                                     placeholder="Coupon Code"
-                                    className="w-1/2 rounded-sm p-3 bg-gray-300 text-gray-800 focus:border-2 border-gray-900 placeholder:uppercase"
+                                    className="md:w-1/2 rounded-sm p-3 bg-gray-300 text-gray-800 focus:border-2 border-gray-900 placeholder:uppercase"
                                 />
                                 <button
                                     onClick={handleCoupon}
@@ -129,7 +124,7 @@ const ShoppingCart = () => {
                                     Apply
                                 </button>
                             </div>
-                            <div className="w-3/4">
+                            <div className="lg:w-3/4">
                                 <h1 className="uppercase text-2xl font-semibold tracking-wider py-3 border-b-2 border-gray-900">
                                     Total Price
                                 </h1>
