@@ -1,45 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 import SingleRow from "../SingleRow/SingleRow";
 
 const ShoppingCart = () => {
+    const { cart } = useCart();
     const [text, setText] = useState("");
-    const [subtotal, setSubtotal] = useState(0);
     const [discount, setDiscount] = useState(true);
+    const [disPrice, setDisPrice] = useState(0);
 
-    const data = JSON.parse(localStorage.getItem("cart"));
-    // console.log(data);
-    const keys = Object.keys(data);
-    // console.log(keys);
+    const total = cart.reduce(
+        (previous, current) => previous + current.price * current.quantity,
+        0
+    );
 
-    useEffect(() => {
-        fetch("http://localhost:5000/allProducts")
-            .then((res) => res.json())
-            .then((data) => {
-                handleSubtotal(data);
-            });
-    }, []);
-
-    const handleSubtotal = (products) => {
-        let total = 0;
-        const cartItems = products.filter((product) => data[product._id]);
-        // console.log(cartItems);
-        cartItems.forEach((item) => {
-            total += item.price * data[item._id];
-        });
-        // console.log(total);
-        setSubtotal(total);
-    };
+    const orderTotal = total - disPrice;
 
     const handleChange = (e) => {
         setText(e.target.value);
     };
+
     const handleCoupon = () => {
         const couponCode = "LAGBENAKI";
         if (discount) {
             if (text === couponCode) {
                 // console.log("lagbe");
-                const discount = (subtotal / 100) * 10;
-                setSubtotal(subtotal - discount);
+                const discount = (total / 100) * 10;
+                setDisPrice(discount);
                 setDiscount(false);
             } else {
                 alert("Invalid Coupon! Try Again.");
@@ -59,7 +46,7 @@ const ShoppingCart = () => {
                     </span>
                 </p>
             </div>
-            <div className="bg-white py-10">
+            <div className="bg-white py-10 border-b-2 border-gray-300">
                 <div className="container mx-auto text-left">
                     <h1 className="uppercase tracking-widest text-4xl m-8">
                         Shopping Cart
@@ -112,11 +99,10 @@ const ShoppingCart = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {keys.map((key, index) => (
+                                                {cart.map((item, index) => (
                                                     <SingleRow
-                                                        key={key}
-                                                        id={key}
-                                                        quantity={data[key]}
+                                                        key={item._id}
+                                                        item={item}
                                                         num={index}
                                                     ></SingleRow>
                                                 ))}
@@ -151,7 +137,7 @@ const ShoppingCart = () => {
                                     <p className="uppercase text-xl">
                                         Subtotal:
                                     </p>
-                                    <p className="text-xl">${subtotal}</p>
+                                    <p className="text-xl">${total}</p>
                                 </div>
                                 <div className="flex justify-between mt-6 pb-4 border-b-2 border-gray-900">
                                     <p className="uppercase text-xl">
@@ -159,12 +145,25 @@ const ShoppingCart = () => {
                                     </p>
                                     <p className="text-xl">FREE</p>
                                 </div>
+                                {!discount && (
+                                    <div className="flex justify-between mt-4 pb-4 border-b-2 border-gray-900">
+                                        <p className="uppercase text-xl">
+                                            Discount:
+                                        </p>
+                                        <p className="text-xl">- ${disPrice}</p>
+                                    </div>
+                                )}
                                 <div className="flex justify-between my-4">
                                     <p className="uppercase text-xl">
                                         Order Total:
                                     </p>
-                                    <p className="text-xl">${subtotal}</p>
+                                    <p className="text-xl">${orderTotal}</p>
                                 </div>
+                                <Link to="/checkout">
+                                    <button className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer">
+                                        process to checkout
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

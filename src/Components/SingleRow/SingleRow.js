@@ -1,16 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const SingleRow = ({ id, quantity, num }) => {
-    const [item, setItem] = useState({});
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setItem(data);
-            });
-    }, [id]);
-
+const SingleRow = ({ item, num }) => {
     return (
         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -31,10 +21,10 @@ const SingleRow = ({ id, quantity, num }) => {
                 $ {item?.price}
             </td>
             <td class="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                {quantity}
+                {item?.quantity}
             </td>
             <td class="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                $ {quantity * item?.price}
+                $ {item?.quantity * item?.price}
             </td>
         </tr>
     );
