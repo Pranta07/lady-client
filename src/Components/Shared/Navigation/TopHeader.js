@@ -18,6 +18,7 @@ const TopHeader = () => {
                                 LOGIN / SIGN-UP
                             </span>
                             <Link to="/cart">
+                                <i class="fas fa-shopping-cart text-xl pr-2 text-yellow-400"></i>
                                 <span className="hover:text-yellow-400">
                                     {cart.length} ITEMS $
                                     {parseFloat(total).toFixed(2)}
