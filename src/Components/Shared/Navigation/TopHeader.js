@@ -10,7 +10,9 @@ const TopHeader = () => {
             <div className="container mx-auto px-3 ">
                 <div className="block md:flex text-sm  justify-between pb-5">
                     <div>
-                        <p className="">FREE SHIPPING OVER $50</p>
+                        <p className="hover:text-yellow-400 cursor-pointer">
+                            FREE SHIPPING OVER $50
+                        </p>
                     </div>
                     <div className="text-center pt-3  md:pt-0">
                         <p className="cursor-pointer">
