@@ -26,7 +26,7 @@ const About = () => {
                         <div className="bg-white border-2 border-gray-300 rounded-md p-6 mb-8">
                             <div className="overflow-hidden">
                                 <img
-                                    src="https://i.ibb.co/rdDfDVm/priscilla-du-preez-dlx-LGIy-2-VU-unsplash.jpg"
+                                    src="https://i.ibb.co/P1ynFw0/priscilla-du-preez-dlx-LGIy-2-VU-unsplash.jpg"
                                     alt=""
                                     className="hover:scale-110 duration-300 h-80 w-full"
                                 />
