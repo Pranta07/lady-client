@@ -5,7 +5,7 @@ const NotFound = () => {
     return (
         <div
             style={{ height: "400px", width: "90%" }}
-            class="shadow-2xl mx-auto bg-white rounded-md my-20 py-10"
+            className="shadow-2xl mx-auto bg-white rounded-md my-20 py-10"
         >
             <h1 className="font-extrabold text-8xl pt-8">404</h1>
             <h4 className="font-bold my-8">

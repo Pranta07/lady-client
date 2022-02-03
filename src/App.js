@@ -14,6 +14,7 @@ import About from "./Components/About/About";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import CheckoutPage from "./Components/CheckoutPage/CheckoutPage";
 import Success from "./Components/CheckoutPage/Success";
+import Contact from "./Components/Contact/Contact";
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path="cart" element={<ShoppingCart />} />
                     <Route path="checkout" element={<CheckoutPage />} />
                     <Route path="success/:id" element={<Success />} />
+                    <Route path="contact" element={<Contact />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <SubscribeSection></SubscribeSection>
