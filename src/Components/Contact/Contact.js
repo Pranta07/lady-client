@@ -3,7 +3,11 @@ import "./Contact.css"
 
 const Contact = () => {
     return (
-        <div className='pt-16 pb-16 '>
+        <div className=' pb-16 '>
+              <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
+                Home /{" "}
+                <span className=" bg-black text-yellow-400 p-2">Contact</span>
+            </p>
             <div className='flex flex-col lg:w-4/6 mx-auto md:w-4/6'>
                 <h1 className='font-bold text-5xl'>Contact</h1>
                 <div className="mt-8 font">
