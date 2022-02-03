@@ -5,13 +5,7 @@
     border: 2px solid rgb(7, 7, 7);
 }
 
-.contact input:focus{
-  border: 6px double rgb(243, 240, 89);
-}
-.contact textarea{
+.contact textarea {
     background-color: transparent;
-    border:2px solid black;
-}
-.contact textarea:focus{
-    border: 6px double rgb(243, 240, 89);
+    border: 2px solid black;
 }
