@@ -18,7 +18,7 @@ const CheckoutPage = () => {
 
     const onSubmit = (data) => {
         const newData = { ...data, total: total - discount, products: cart };
-        // console.log(newData);
+        console.log(newData);
         // reset();
         fetch("http://localhost:5000/init", {
             method: "POST",
@@ -285,7 +285,7 @@ const CheckoutPage = () => {
                                 <input
                                     id="stripe"
                                     type="radio"
-                                    {...register("payType")}
+                                    {...register("payType", { required: true })}
                                     className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                                     value="stripe"
                                 />
@@ -300,7 +300,7 @@ const CheckoutPage = () => {
                                 <input
                                     id="ssl"
                                     type="radio"
-                                    {...register("payType")}
+                                    {...register("payType", { required: true })}
                                     className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                                     value="ssl"
                                 />
@@ -312,6 +312,12 @@ const CheckoutPage = () => {
                                 </label>
                             </div>
                             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                {errors?.payType?.type === "required" && (
+                                    <p className="text-red-600 ml-2 mt-2">
+                                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                                        Select a Payment Method
+                                    </p>
+                                )}
                                 <button
                                     type="submit"
                                     className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
