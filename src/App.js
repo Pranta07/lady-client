@@ -13,6 +13,7 @@ import Blogs from "./Components/Blogs/Blogs";
 import About from "./Components/About/About";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import CheckoutPage from "./Components/CheckoutPage/CheckoutPage";
+import Success from "./Components/CheckoutPage/Success";
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                     <Route path="about" element={<About />} />
                     <Route path="cart" element={<ShoppingCart />} />
                     <Route path="checkout" element={<CheckoutPage />} />
+                    <Route path="success/:id" element={<Success />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <SubscribeSection></SubscribeSection>
