@@ -22,7 +22,7 @@ const ShoppingCart = () => {
             if (text === couponCode) {
                 // console.log("lagbe");
                 const discount = (total / 100) * 10;
-                setDiscount(discount);
+                setDiscount(parseFloat(discount).toFixed(2));
                 sessionStorage.setItem("discount", JSON.stringify(discount));
             } else {
                 alert("Invalid Coupon! Try Again.");

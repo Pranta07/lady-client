@@ -19,7 +19,8 @@ const TopHeader = () => {
                             </span>
                             <Link to="/cart">
                                 <span className="hover:text-yellow-400">
-                                    {cart.length} ITEMS ${total}
+                                    {cart.length} ITEMS $
+                                    {parseFloat(total).toFixed(2)}
                                 </span>
                             </Link>
                         </p>
