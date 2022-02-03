@@ -15,9 +15,22 @@ const CheckoutPage = () => {
         reset,
         formState: { errors },
     } = useForm();
+
     const onSubmit = (data) => {
-        console.log(data);
+        const newData = { ...data, total: total - discount, products: cart };
+        // console.log(newData);
         // reset();
+        fetch("http://localhost:5000/init", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(newData),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                window.location.replace(data);
+            });
     };
 
     return (
