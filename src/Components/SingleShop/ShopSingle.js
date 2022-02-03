@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DressGallery from "../DressGallery/DressGallery";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../Redux/slices/counterSlice";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const relatedProducts = [
     {
@@ -61,6 +61,7 @@ const ShopSingle = () => {
             newCart[id] = quantity;
         }
         localStorage.setItem("cart", JSON.stringify(newCart));
+        alert("Product Added Successfully!");
     };
 
     return (
@@ -133,12 +134,14 @@ const ShopSingle = () => {
                             +
                         </button>
                         <br></br>
-                        <button
-                            onClick={handleAddToCart}
-                            className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer"
-                        >
-                            add to cart
-                        </button>
+                        <Link to="/shopCatalog">
+                            <button
+                                onClick={handleAddToCart}
+                                className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer"
+                            >
+                                add to cart
+                            </button>
+                        </Link>
                         <p className="text-sm">
                             Like your favorite lightweight sweater, only
                             sleeker, chicer, and longer, this maxi dress is as

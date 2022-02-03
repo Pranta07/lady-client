@@ -18,13 +18,13 @@ const SingleRow = ({ item, num }) => {
                 S
             </td>
             <td class="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                $ {item?.price}
+                $ {parseFloat(item?.price).toFixed(2)}
             </td>
             <td class="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
                 {item?.quantity}
             </td>
             <td class="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap">
-                $ {item?.quantity * item?.price}
+                $ {parseFloat(item?.quantity * item?.price).toFixed(2)}
             </td>
         </tr>
     );

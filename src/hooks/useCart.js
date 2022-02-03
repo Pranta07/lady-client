@@ -23,9 +23,11 @@ const useCart = () => {
         setCart(newCart);
     };
 
-    const total = cart.reduce(
-        (previous, current) => previous + current.price * current.quantity,
-        0
+    const total = parseFloat(
+        cart.reduce(
+            (previous, current) => previous + current.price * current.quantity,
+            0
+        )
     );
 
     return { cart, total };

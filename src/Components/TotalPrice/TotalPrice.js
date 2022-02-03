@@ -8,7 +8,7 @@ const TotalPrice = ({ total, discount }) => {
             </h1>
             <div className="flex justify-between my-6">
                 <p className="uppercase text-xl">Subtotal:</p>
-                <p className="text-xl">${total}</p>
+                <p className="text-xl">${parseFloat(total).toFixed(2)}</p>
             </div>
             <div className="flex justify-between mt-6 pb-4 border-b-2 border-gray-900">
                 <p className="uppercase text-xl">Shipping Fee:</p>
@@ -17,12 +17,16 @@ const TotalPrice = ({ total, discount }) => {
             {discount !== 0 && discount !== null && (
                 <div className="flex justify-between mt-4 pb-4 border-b-2 border-gray-900">
                     <p className="uppercase text-xl">Discount:</p>
-                    <p className="text-xl">- ${discount}</p>
+                    <p className="text-xl">
+                        - ${parseFloat(discount).toFixed(2)}
+                    </p>
                 </div>
             )}
             <div className="flex justify-between my-4">
                 <p className="uppercase text-xl">Order Total:</p>
-                <p className="text-xl">${total - discount}</p>
+                <p className="text-xl">
+                    ${parseFloat(total - discount).toFixed(2)}
+                </p>
             </div>
         </div>
     );

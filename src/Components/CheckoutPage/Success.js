@@ -28,6 +28,8 @@ const Success = () => {
                 if (result.modifiedCount) {
                     alert("Order Placed Successfully!");
                     window.location.replace("http://localhost:3000");
+                    localStorage.clear();
+                    sessionStorage.clear();
                 } else {
                     alert("Confirm Your Order First!");
                 }
