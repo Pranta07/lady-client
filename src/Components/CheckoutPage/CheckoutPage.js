@@ -269,14 +269,13 @@ const CheckoutPage = () => {
                         </div>
                     </div>
 
-                    <div className="mx-5 md:mx-8">
+                    <div className="px-8">
                         <h1 className="uppercase tracking-widest text-3xl my-8 pb-2 border-b-4 border-gray-900">
                             Product Details
                         </h1>
-                        <div>
-                            <CartTable cart={cart}></CartTable>
-                        </div>
+                        <CartTable cart={cart}></CartTable>
                     </div>
+
                     <div className="m-5 md:m-8">
                         <h1 className="uppercase tracking-widest text-3xl pb-2 mb-3 border-b-4 border-gray-900">
                             Payment Method
