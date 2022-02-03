@@ -7,18 +7,19 @@ import { useForm } from "react-hook-form";
 const CheckoutPage = () => {
     const { cart, total } = useCart();
     const discount = JSON.parse(sessionStorage.getItem("discount"));
-    // console.log(discount);
 
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm();
 
     const onSubmit = (data) => {
-        const newData = { ...data, total: total - discount, products: cart };
-        console.log(newData);
+        const newData = {
+            ...data,
+            total: parseFloat(total - discount).toFixed(2),
+            products: cart,
+        };
         // reset();
         fetch("http://localhost:5000/init", {
             method: "POST",
