@@ -16,9 +16,11 @@ const TopHeader = () => {
                     </div>
                     <div className="text-center pt-3  md:pt-0">
                         <p className="cursor-pointer">
-                            <span className="pr-3 hover:text-yellow-400">
-                                LOGIN / SIGN-UP
-                            </span>
+                            <Link to="/login">
+                                <span className="pr-3 hover:text-yellow-400">
+                                    LOGIN / SIGN-UP
+                                </span>
+                            </Link>
                             <Link to="/cart">
                                 <i class="fas fa-shopping-cart text-xl pr-2 text-yellow-400"></i>
                                 <span className="hover:text-yellow-400">
