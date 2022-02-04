@@ -10,14 +10,19 @@ const TopHeader = () => {
             <div className="container mx-auto px-3 ">
                 <div className="block md:flex text-sm  justify-between pb-5">
                     <div>
-                        <p className="">FREE SHIPPING OVER $50</p>
+                        <p className="hover:text-yellow-400 cursor-pointer">
+                            FREE SHIPPING OVER $50
+                        </p>
                     </div>
                     <div className="text-center pt-3  md:pt-0">
                         <p className="cursor-pointer">
-                            <span className="pr-3 hover:text-yellow-400">
-                                LOGIN / SIGN-UP
-                            </span>
+                            <Link to="/login">
+                                <span className="pr-3 hover:text-yellow-400">
+                                    LOGIN / SIGN-UP
+                                </span>
+                            </Link>
                             <Link to="/cart">
+                                <i class="fas fa-shopping-cart text-xl pr-2 text-yellow-400"></i>
                                 <span className="hover:text-yellow-400">
                                     {cart.length} ITEMS $
                                     {parseFloat(total).toFixed(2)}

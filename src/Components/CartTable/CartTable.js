@@ -3,10 +3,10 @@ import SingleRow from "../SingleRow/SingleRow";
 
 const CartTable = ({ cart }) => {
     return (
-        <div class="flex flex-col">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="flex flex-col overflow-x-scroll">
+            <div class="sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
+                    <div class="">
                         <table class="min-w-full">
                             <thead class="bg-white border-2 border-gray-900">
                                 <tr>
