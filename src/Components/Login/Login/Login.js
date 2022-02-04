@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const {
@@ -62,9 +63,11 @@ const Login = () => {
                                 </p>
                             )}
 
-                            <p className="text-sm tracking-wider hover:text-blue-500 font-semibold cursor-pointer">
-                                New User? Please Register.
-                            </p>
+                            <Link to="/register">
+                                <p className="text-sm tracking-wider hover:text-blue-500 font-semibold cursor-pointer">
+                                    New User? Please Register.
+                                </p>
+                            </Link>
 
                             <button
                                 type="submit"
