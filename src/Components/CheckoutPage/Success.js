@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import CartTable from "../CartTable/CartTable";
 
 const Success = () => {
     const [order, setOrder] = useState({});
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
+        setLoading(true);
         fetch(`http://localhost:5000/orders/${id}`)
             .then((res) => res.json())
-            .then((data) => setOrder(data));
+            .then((data) => {
+                if (!data) {
+                    navigate("/");
+                } else setOrder(data);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, [id]);
     // console.log(order);
 
@@ -36,6 +46,17 @@ const Success = () => {
             });
     };
 
+    if (loading) {
+        return (
+            <div className="m-10">
+                <svg
+                    class="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
+                    viewBox="0 0 24 24"
+                ></svg>
+            </div>
+        );
+    }
+
     return (
         <div>
             <h1 className="uppercase m-8 text-3xl tracking-widest">
@@ -46,7 +67,7 @@ const Success = () => {
             </p>
             <div className="mx-5 md:mx-8">
                 <div>
-                    {order.ordered_products && (
+                    {order?.ordered_products && (
                         <CartTable cart={order.ordered_products}></CartTable>
                     )}
                 </div>

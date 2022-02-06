@@ -42,7 +42,14 @@ function App() {
                             </RequireAuth>
                         }
                     />
-                    <Route path="success/:id" element={<Success />} />
+                    <Route
+                        path="success/:id"
+                        element={
+                            <RequireAuth>
+                                <Success />
+                            </RequireAuth>
+                        }
+                    />
                     <Route path="contact" element={<Contact />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
