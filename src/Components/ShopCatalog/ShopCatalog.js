@@ -103,7 +103,7 @@ const ShopCatalog = () => {
 
                 {loading ? (
                     <svg
-                        class="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
+                        className="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
                         viewBox="0 0 24 24"
                     ></svg>
                 ) : (

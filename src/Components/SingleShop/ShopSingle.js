@@ -3,7 +3,6 @@ import DressGallery from "../DressGallery/DressGallery";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../Redux/slices/counterSlice";
 import { Link, useParams } from "react-router-dom";
-import useCart from "../../hooks/useCart";
 
 const relatedProducts = [
     {
@@ -31,7 +30,6 @@ const relatedProducts = [
 const ShopSingle = () => {
     const quantity = useSelector((state) => state.counter.quantity); //read data from store
     const dispatch = useDispatch();
-    const { handleCart } = useCart();
 
     const [singleProduct, setSingleProduct] = useState({});
 
@@ -64,7 +62,6 @@ const ShopSingle = () => {
         }
         localStorage.setItem("cart", JSON.stringify(newCart));
         alert("Product Added Successfully!");
-        handleCart();
     };
 
     return (

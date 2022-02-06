@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useCart = () => {
     const [cart, setCart] = useState([]);
+    const [products, setProducts] = useState([]);
 
     const data = JSON.parse(localStorage.getItem("cart"));
 
-    const handleCart = () => {
+    useEffect(() => {
         fetch("http://localhost:5000/allProducts")
             .then((res) => res.json())
             .then((data) => {
-                handleSubtotal(data);
+                setProducts(data);
+                handleSubtotal();
             });
-    };
+    }, []);
 
-    const handleSubtotal = (products) => {
+    const handleSubtotal = () => {
         const cartItems = products.filter((product) => data[product._id]);
         const newCart = cartItems.map((item) => {
             item.quantity = data[item._id];
@@ -30,7 +32,7 @@ const useCart = () => {
         )
     ).toFixed(2);
 
-    return { cart, total, handleCart };
+    return { cart, total };
 };
 
 export default useCart;

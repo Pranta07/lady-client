@@ -5,7 +5,7 @@ import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
 
 const ShoppingCart = () => {
-    const { cart, total, handleCart } = useCart();
+    const { cart, total } = useCart();
     const [text, setText] = useState("");
     const [discount, setDiscount] = useState(0);
 
@@ -14,8 +14,7 @@ const ShoppingCart = () => {
     };
     useEffect(() => {
         sessionStorage.clear();
-        handleCart();
-    });
+    }, []);
 
     const handleCoupon = () => {
         const couponCode = "LAGBENAKI";
