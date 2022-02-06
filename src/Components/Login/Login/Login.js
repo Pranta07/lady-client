@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useFirebase from "../../../hooks/useFirebase";
 
@@ -9,7 +10,11 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { user, handleGoogleSignIn } = useFirebase();
+    const { handleGoogleSignIn } = useFirebase();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const onSubmit = (data) => {
         // console.log(data);
@@ -83,7 +88,9 @@ const Login = () => {
                             </p>
                             <div>
                                 <i
-                                    onClick={handleGoogleSignIn}
+                                    onClick={() =>
+                                        handleGoogleSignIn(from, navigate)
+                                    }
                                     class="fab fa-google p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"
                                 ></i>
                                 <i class="fab fa-facebook-f p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
