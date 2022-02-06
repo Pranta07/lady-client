@@ -3,8 +3,10 @@ import useCart from "../../hooks/useCart";
 import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
 import { useForm } from "react-hook-form";
+import useFirebase from "../../hooks/useFirebase";
 
 const CheckoutPage = () => {
+    const { user } = useFirebase();
     const { cart, total } = useCart();
     const discount = JSON.parse(sessionStorage.getItem("discount"));
 
@@ -69,6 +71,9 @@ const CheckoutPage = () => {
                                                             }
                                                         )}
                                                         autoComplete="given-name"
+                                                        value={
+                                                            user?.displayName
+                                                        }
                                                         className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
                                                     {errors?.firstName?.type ===
@@ -111,6 +116,7 @@ const CheckoutPage = () => {
                                                             required: true,
                                                         })}
                                                         autoComplete="email"
+                                                        value={user?.email}
                                                         className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
                                                     {errors?.email?.type ===
