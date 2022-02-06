@@ -84,67 +84,71 @@ const Navigation = () => {
                                             </button>
 
                                             {/* Profile dropdown */}
-                                            <Menu
-                                                as="div"
-                                                className="ml-3 relative"
-                                            >
-                                                <div>
-                                                    <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                                                        <span className="sr-only">
-                                                            Open user menu
-                                                        </span>
-                                                        <img
-                                                            className="h-8 w-8 rounded-full"
-                                                            src={user?.photoURL}
-                                                            alt="user-img"
-                                                        />
-                                                    </Menu.Button>
-                                                </div>
-                                                <Transition
-                                                    as={Fragment}
-                                                    enter="transition ease-out duration-100"
-                                                    enterFrom="transform opacity-0 scale-95"
-                                                    enterTo="transform opacity-100 scale-100"
-                                                    leave="transition ease-in duration-75"
-                                                    leaveFrom="transform opacity-100 scale-100"
-                                                    leaveTo="transform opacity-0 scale-95"
+                                            {user?.email && (
+                                                <Menu
+                                                    as="div"
+                                                    className="ml-3 relative"
                                                 >
-                                                    <Menu.Items className="origin-top-right absolute z-40 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                        {userNavigation.map(
-                                                            (item) => (
-                                                                <Menu.Item
-                                                                    key={
-                                                                        item.name
-                                                                    }
-                                                                >
-                                                                    {({
-                                                                        active,
-                                                                    }) => (
-                                                                        <Link
-                                                                            to={
-                                                                                item.to
-                                                                            }
-                                                                        >
-                                                                            <button
-                                                                                className={classNames(
-                                                                                    active
-                                                                                        ? "bg-gray-700 text-white"
-                                                                                        : "text-gray-700",
-                                                                                    "block w-full px-4 py-2 text-sm"
-                                                                                )}
-                                                                            >
-                                                                                {
-                                                                                    item.name
+                                                    <div>
+                                                        <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                                                            <span className="sr-only">
+                                                                Open user menu
+                                                            </span>
+                                                            <img
+                                                                className="h-8 w-8 rounded-full"
+                                                                src={
+                                                                    user?.photoURL
+                                                                }
+                                                                alt="user-img"
+                                                            />
+                                                        </Menu.Button>
+                                                    </div>
+                                                    <Transition
+                                                        as={Fragment}
+                                                        enter="transition ease-out duration-100"
+                                                        enterFrom="transform opacity-0 scale-95"
+                                                        enterTo="transform opacity-100 scale-100"
+                                                        leave="transition ease-in duration-75"
+                                                        leaveFrom="transform opacity-100 scale-100"
+                                                        leaveTo="transform opacity-0 scale-95"
+                                                    >
+                                                        <Menu.Items className="origin-top-right absolute z-40 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                            {userNavigation.map(
+                                                                (item) => (
+                                                                    <Menu.Item
+                                                                        key={
+                                                                            item.name
+                                                                        }
+                                                                    >
+                                                                        {({
+                                                                            active,
+                                                                        }) => (
+                                                                            <Link
+                                                                                to={
+                                                                                    item.to
                                                                                 }
-                                                                            </button>
-                                                                        </Link>
-                                                                    )}
-                                                                </Menu.Item>
-                                                            )
-                                                        )}
-                                                    </Menu.Items>
-                                                </Transition>
-                                            </Menu>
+                                                                            >
+                                                                                <button
+                                                                                    className={classNames(
+                                                                                        active
+                                                                                            ? "bg-gray-700 text-white"
+                                                                                            : "text-gray-700",
+                                                                                        "block w-full px-4 py-2 text-sm"
+                                                                                    )}
+                                                                                >
+                                                                                    {
+                                                                                        item.name
+                                                                                    }
+                                                                                </button>
+                                                                            </Link>
+                                                                        )}
+                                                                    </Menu.Item>
+                                                                )
+                                                            )}
+                                                        </Menu.Items>
+                                                    </Transition>
+                                                </Menu>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="-mr-2 flex md:hidden">

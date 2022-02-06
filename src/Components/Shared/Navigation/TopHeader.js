@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../../hooks/useCart";
+import useFirebase from "../../../hooks/useFirebase";
 
 const TopHeader = () => {
     const { cart, total } = useCart();
+    const { user, handleSignOut } = useFirebase();
 
     return (
         <div className="bg-gray-900 text-white py-8">
@@ -16,11 +18,20 @@ const TopHeader = () => {
                     </div>
                     <div className="text-center pt-3  md:pt-0">
                         <p className="cursor-pointer">
-                            <Link to="/login">
-                                <span className="pr-3 hover:text-yellow-400">
-                                    LOGIN / SIGN-UP
+                            {user?.email ? (
+                                <span
+                                    onClick={handleSignOut}
+                                    className="pr-3 hover:text-yellow-400"
+                                >
+                                    SIGN-OUT
                                 </span>
-                            </Link>
+                            ) : (
+                                <Link to="/login">
+                                    <span className="pr-3 hover:text-yellow-400">
+                                        LOGIN / SIGN-UP
+                                    </span>
+                                </Link>
+                            )}
                             <Link to="/cart">
                                 <i class="fas fa-shopping-cart text-xl pr-2 text-yellow-400"></i>
                                 <span className="hover:text-yellow-400">

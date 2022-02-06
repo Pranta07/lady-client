@@ -7,6 +7,7 @@ import {
     signOut,
     onAuthStateChanged,
 } from "firebase/auth";
+import { useEffect } from "react";
 
 initializeFirebaseApp();
 
@@ -27,20 +28,24 @@ const useFirebase = () => {
         signOut(auth)
             .then(() => {
                 // Sign-out successful.
+                console.log("Sign-out successful.");
+                setUser({});
             })
             .catch((error) => {
                 setError(error.message);
             });
     };
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setUser(user);
-        } else {
-            // User is signed out
-            setUser({});
-        }
-    });
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                // User is signed out
+                setUser({});
+            }
+        });
+    }, [auth]);
     return { user, error, handleGoogleSignIn, handleSignOut };
 };
 

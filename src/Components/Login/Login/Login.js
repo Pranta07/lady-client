@@ -9,12 +9,11 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { user, error, handleGoogleSignIn } = useFirebase();
+    const { user, handleGoogleSignIn } = useFirebase();
 
     const onSubmit = (data) => {
         // console.log(data);
     };
-    console.log(user);
 
     return (
         <div className="container mx-auto">
