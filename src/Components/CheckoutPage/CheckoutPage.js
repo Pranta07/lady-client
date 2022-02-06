@@ -3,8 +3,10 @@ import useCart from "../../hooks/useCart";
 import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
 import { useForm } from "react-hook-form";
+import useFirebase from "../../hooks/useFirebase";
 
 const CheckoutPage = () => {
+    const { user } = useFirebase();
     const { cart, total } = useCart();
     const discount = JSON.parse(sessionStorage.getItem("discount"));
 
@@ -15,6 +17,9 @@ const CheckoutPage = () => {
     } = useForm();
 
     const onSubmit = (data) => {
+        data.firstName = user.displayName;
+        data.email = user.email;
+        // console.log(data);
         const newData = {
             ...data,
             total: parseFloat(total - discount).toFixed(2),
@@ -62,31 +67,14 @@ const CheckoutPage = () => {
                                                     </label>
                                                     <input
                                                         {...register(
-                                                            "firstName",
-                                                            {
-                                                                required: true,
-                                                                maxLength: 20,
-                                                            }
+                                                            "firstName"
                                                         )}
-                                                        autoComplete="given-name"
+                                                        readOnly
+                                                        value={
+                                                            user?.displayName
+                                                        }
                                                         className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
-                                                    {errors?.firstName?.type ===
-                                                        "required" && (
-                                                        <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
-                                                            This field is
-                                                            required
-                                                        </p>
-                                                    )}
-                                                    {errors?.firstName?.type ===
-                                                        "maxLength" && (
-                                                        <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
-                                                            First name cannot
-                                                            exceed 20 characters
-                                                        </p>
-                                                    )}
                                                 </div>
 
                                                 <div className="col-span-6 sm:col-span-3">
@@ -107,10 +95,9 @@ const CheckoutPage = () => {
                                                         Email address
                                                     </label>
                                                     <input
-                                                        {...register("email", {
-                                                            required: true,
-                                                        })}
-                                                        autoComplete="email"
+                                                        {...register("email")}
+                                                        readOnly
+                                                        value={user?.email}
                                                         className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
                                                     {errors?.email?.type ===

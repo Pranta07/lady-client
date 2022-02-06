@@ -3,46 +3,46 @@ import SingleRow from "../SingleRow/SingleRow";
 
 const CartTable = ({ cart }) => {
     return (
-        <div class="flex flex-col overflow-x-scroll">
-            <div class="sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="">
-                        <table class="min-w-full">
-                            <thead class="bg-white border-2 border-gray-900">
+        <div className="flex flex-col overflow-x-scroll">
+            <div className="sm:-mx-6 lg:-mx-8">
+                <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div className="">
+                        <table className="min-w-full">
+                            <thead className="bg-white border-2 border-gray-900">
                                 <tr>
                                     <th
                                         scope="col"
-                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     >
                                         #
                                     </th>
                                     <th
                                         scope="col"
-                                        class="font-semibold text-gray-900 px-6 py-4 text-left"
+                                        className="font-semibold text-gray-900 px-6 py-4 text-left"
                                     >
                                         Product
                                     </th>
                                     <th
                                         scope="col"
-                                        class="font-semibold text-gray-900 px-6 py-4 text-left"
+                                        className="font-semibold text-gray-900 px-6 py-4 text-left"
                                     >
                                         Size
                                     </th>
                                     <th
                                         scope="col"
-                                        class="font-semibold text-gray-900 px-6 py-4 text-left"
+                                        className="font-semibold text-gray-900 px-6 py-4 text-left"
                                     >
                                         Price
                                     </th>
                                     <th
                                         scope="col"
-                                        class="font-semibold text-gray-900 px-6 py-4 text-left"
+                                        className="font-semibold text-gray-900 px-6 py-4 text-left"
                                     >
                                         Quantity
                                     </th>
                                     <th
                                         scope="col"
-                                        class="font-semibold text-gray-900 px-6 py-4 text-left"
+                                        className="font-semibold text-gray-900 px-6 py-4 text-left"
                                     >
                                         Total
                                     </th>

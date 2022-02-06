@@ -17,6 +17,7 @@ import Success from "./Components/CheckoutPage/Success";
 import Contact from "./Components/Contact/Contact";
 import Login from "./Components/Login/Login/Login";
 import Register from "./Components/Login/Register/Register";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
 
 function App() {
     return (
@@ -33,8 +34,22 @@ function App() {
                     <Route path="blogs" element={<Blogs />} />
                     <Route path="about" element={<About />} />
                     <Route path="cart" element={<ShoppingCart />} />
-                    <Route path="checkout" element={<CheckoutPage />} />
-                    <Route path="success/:id" element={<Success />} />
+                    <Route
+                        path="checkout"
+                        element={
+                            <RequireAuth>
+                                <CheckoutPage />
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="success/:id"
+                        element={
+                            <RequireAuth>
+                                <Success />
+                            </RequireAuth>
+                        }
+                    />
                     <Route path="contact" element={<Contact />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />

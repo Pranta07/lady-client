@@ -44,9 +44,7 @@ const ShopSingle = () => {
     }, [id]);
 
     const handleAddToCart = () => {
-        // console.log("added ", quantity);
         const data = JSON.parse(localStorage.getItem("cart"));
-        console.log(data);
         if (!data) {
             localStorage.setItem("cart", JSON.stringify({}));
         }

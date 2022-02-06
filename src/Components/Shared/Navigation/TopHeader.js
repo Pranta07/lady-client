@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../../hooks/useCart";
+import useFirebase from "../../../hooks/useFirebase";
 
 const TopHeader = () => {
     const { cart, total } = useCart();
+    const { user, handleSignOut } = useFirebase();
 
     return (
         <div className="bg-gray-900 text-white py-8">
@@ -16,13 +18,22 @@ const TopHeader = () => {
                     </div>
                     <div className="text-center pt-3  md:pt-0">
                         <p className="cursor-pointer">
-                            <Link to="/login">
-                                <span className="pr-3 hover:text-yellow-400">
-                                    LOGIN / SIGN-UP
+                            {user?.email ? (
+                                <span
+                                    onClick={handleSignOut}
+                                    className="pr-3 hover:text-yellow-400"
+                                >
+                                    SIGN-OUT
                                 </span>
-                            </Link>
+                            ) : (
+                                <Link to="/login">
+                                    <span className="pr-3 hover:text-yellow-400">
+                                        LOGIN / SIGN-UP
+                                    </span>
+                                </Link>
+                            )}
                             <Link to="/cart">
-                                <i class="fas fa-shopping-cart text-xl pr-2 text-yellow-400"></i>
+                                <i className="fas fa-shopping-cart text-xl pr-2 text-yellow-400"></i>
                                 <span className="hover:text-yellow-400">
                                     {cart.length} ITEMS $
                                     {parseFloat(total).toFixed(2)}
@@ -33,19 +44,19 @@ const TopHeader = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="relative  hidden md:flex  float-left r text-gray-600 focus-within:border-2 border-yellow-300 w-6/12 mr-3">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-2 ">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-2 ">
                             <button
                                 type="submit"
-                                class="p-1 focus:outline-none focus:shadow-outline "
+                                className="p-1 focus:outline-none focus:shadow-outline "
                             >
                                 <svg
                                     fill="none"
                                     stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     viewBox="0 0 24 24"
-                                    class="w-6 h-6"
+                                    className="w-6 h-6"
                                 >
                                     <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
@@ -56,7 +67,6 @@ const TopHeader = () => {
                             name="q"
                             className="py-4 w-full text-xs  text-white bg-gray-800  pl-10 focus:outline-none  "
                             placeholder="SEARCH SOMETHING"
-                            autocomplete="off"
                         />
                     </div>
                     <img
