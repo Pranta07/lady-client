@@ -4,6 +4,7 @@ import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
+    TwitterAuthProvider,
     signOut,
     onAuthStateChanged,
 } from "firebase/auth";
@@ -17,12 +18,26 @@ const useFirebase = () => {
     const [loading, setLoading] = useState(true);
 
     const googleProvider = new GoogleAuthProvider();
+    const twitterProvider = new TwitterAuthProvider();
     const auth = getAuth();
 
     const handleGoogleSignIn = (from, navigate) => {
         setLoading(true);
         signInWithPopup(auth, googleProvider)
             .then((result) => {
+                setUser(result.user);
+                navigate(from);
+            })
+            .catch((error) => setError(error.message))
+            .finally(() => setLoading(false));
+    };
+
+    const handleTwitterSignIn = (from, navigate) => {
+        setLoading(true);
+        signInWithPopup(auth, twitterProvider)
+            .then((result) => {
+                console.log(result);
+                console.log(result.user);
                 setUser(result.user);
                 navigate(from);
             })
@@ -57,7 +72,14 @@ const useFirebase = () => {
         });
     }, [auth]);
 
-    return { user, error, loading, handleGoogleSignIn, handleSignOut };
+    return {
+        user,
+        error,
+        loading,
+        handleGoogleSignIn,
+        handleTwitterSignIn,
+        handleSignOut,
+    };
 };
 
 export default useFirebase;
