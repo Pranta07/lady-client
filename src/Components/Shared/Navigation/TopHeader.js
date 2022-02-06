@@ -1,11 +1,15 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../../hooks/useCart";
 import useFirebase from "../../../hooks/useFirebase";
 
 const TopHeader = () => {
-    const { cart, total } = useCart();
+    const { cart, total, handleCart } = useCart();
     const { user, handleSignOut } = useFirebase();
+    useEffect(() => {
+        handleCart();
+    });
 
     return (
         <div className="bg-gray-900 text-white py-8">

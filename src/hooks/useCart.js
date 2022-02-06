@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useCart = () => {
     const [cart, setCart] = useState([]);
 
     const data = JSON.parse(localStorage.getItem("cart"));
 
-    useEffect(() => {
+    const handleCart = () => {
         fetch("http://localhost:5000/allProducts")
             .then((res) => res.json())
             .then((data) => {
                 handleSubtotal(data);
             });
-    }, []);
+    };
 
     const handleSubtotal = (products) => {
         const cartItems = products.filter((product) => data[product._id]);
@@ -28,9 +28,9 @@ const useCart = () => {
             (previous, current) => previous + current.price * current.quantity,
             0
         )
-    );
+    ).toFixed(2);
 
-    return { cart, total };
+    return { cart, total, handleCart };
 };
 
 export default useCart;

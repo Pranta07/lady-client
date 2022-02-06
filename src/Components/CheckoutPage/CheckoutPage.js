@@ -4,10 +4,11 @@ import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
 import { useForm } from "react-hook-form";
 import useFirebase from "../../hooks/useFirebase";
+import { useEffect } from "react";
 
 const CheckoutPage = () => {
     const { user } = useFirebase();
-    const { cart, total } = useCart();
+    const { cart, total, handleCart } = useCart();
     const discount = JSON.parse(sessionStorage.getItem("discount"));
 
     const {
@@ -15,6 +16,10 @@ const CheckoutPage = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    useEffect(() => {
+        handleCart();
+    });
 
     const onSubmit = (data) => {
         const newData = {
