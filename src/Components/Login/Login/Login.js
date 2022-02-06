@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useFirebase from "../../../hooks/useFirebase";
 
 const Login = () => {
     const {
@@ -8,10 +9,12 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const { user, error, handleGoogleSignIn } = useFirebase();
 
     const onSubmit = (data) => {
         // console.log(data);
     };
+    console.log(user);
 
     return (
         <div className="container mx-auto">
@@ -80,7 +83,10 @@ const Login = () => {
                                 .......or Sign-up with.......
                             </p>
                             <div>
-                                <i class="fab fa-google p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
+                                <i
+                                    onClick={handleGoogleSignIn}
+                                    class="fab fa-google p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"
+                                ></i>
                                 <i class="fab fa-facebook-f p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
                                 <i class="fab fa-twitter p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
                                 <i class="fab fa-github p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>

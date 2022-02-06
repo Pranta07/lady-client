@@ -3,13 +3,8 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
+import useFirebase from "../../../hooks/useFirebase";
 
-const user = {
-    name: "Tom Cook",
-    email: "tom@example.com",
-    imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 const navigation = [
     { name: "Home", to: "/home", current: true },
     { name: "Shop Catalog", to: "/shopCatalog", current: false },
@@ -29,6 +24,7 @@ function classNames(...classes) {
 }
 
 const Navigation = () => {
+    const { user } = useFirebase();
     return (
         <>
             <div className="min-h-full">
@@ -99,8 +95,8 @@ const Navigation = () => {
                                                         </span>
                                                         <img
                                                             className="h-8 w-8 rounded-full"
-                                                            src={user.imageUrl}
-                                                            alt=""
+                                                            src={user?.photoURL}
+                                                            alt="user-img"
                                                         />
                                                     </Menu.Button>
                                                 </div>
@@ -201,16 +197,16 @@ const Navigation = () => {
                                         <div className="flex-shrink-0 border-2 rounded-full">
                                             <img
                                                 className="h-10 w-10 rounded-full"
-                                                src={user.imageUrl}
+                                                src={user?.photoURL}
                                                 alt=""
                                             />
                                         </div>
                                         <div className="ml-3 border-2 rounded-md p-2 bg-gray-900 text-white">
                                             <div className="text-base font-medium leading-none">
-                                                {user.name}
+                                                {user?.displayName}
                                             </div>
                                             <div className="text-sm font-medium leading-none">
-                                                {user.email}
+                                                {user?.email}
                                             </div>
                                         </div>
                                         <button
