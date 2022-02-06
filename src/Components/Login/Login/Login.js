@@ -10,7 +10,7 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { handleGoogleSignIn } = useFirebase();
+    const { handleGoogleSignIn, handleTwitterSignIn } = useFirebase();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -47,7 +47,7 @@ const Login = () => {
                             />
                             {errors?.email?.type === "required" && (
                                 <p className="text-red-600 ml-2 mb-2 text-left">
-                                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                                    <i className="fas fa-exclamation-triangle mr-1"></i>
                                     This field is required
                                 </p>
                             )}
@@ -65,7 +65,7 @@ const Login = () => {
                             />
                             {errors?.password?.type === "required" && (
                                 <p className="text-red-600 ml-2 mt-2 text-left">
-                                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                                    <i className="fas fa-exclamation-triangle mr-1"></i>
                                     This field is required
                                 </p>
                             )}
@@ -91,11 +91,16 @@ const Login = () => {
                                     onClick={() =>
                                         handleGoogleSignIn(from, navigate)
                                     }
-                                    class="fab fa-google p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"
+                                    className="fab fa-google p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"
                                 ></i>
-                                <i class="fab fa-facebook-f p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
-                                <i class="fab fa-twitter p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
-                                <i class="fab fa-github p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
+                                <i className="fab fa-facebook-f p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
+                                <i
+                                    onClick={() =>
+                                        handleTwitterSignIn(from, navigate)
+                                    }
+                                    className="fab fa-twitter p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"
+                                ></i>
+                                <i className="fab fa-github p-3 mr-2 text-xl rounded-md border hover:border-gray-800 hover:text-yellow-400"></i>
                             </div>
                         </form>
                     </div>
