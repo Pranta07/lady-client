@@ -5,7 +5,7 @@ import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
 
 const ShoppingCart = () => {
-    const { cart, total } = useCart();
+    const { cart, total, loading } = useCart();
     const [text, setText] = useState("");
     const [discount, setDiscount] = useState(0);
 
@@ -32,6 +32,17 @@ const ShoppingCart = () => {
         }
     };
 
+    if (loading) {
+        return (
+            <div className="m-10">
+                <svg
+                    className="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
+                    viewBox="0 0 24 24"
+                ></svg>
+            </div>
+        );
+    }
+
     return (
         <>
             <div className="container mx-auto">
@@ -42,7 +53,7 @@ const ShoppingCart = () => {
                     </span>
                 </p>
             </div>
-            {cart.length === 0 ? (
+            {cart?.length === 0 ? (
                 <div>
                     <p className="text-xl tracking-widest font-semibold mb-8">
                         Your cart is empty! Back to Shopping!
