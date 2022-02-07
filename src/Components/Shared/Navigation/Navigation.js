@@ -25,6 +25,7 @@ function classNames(...classes) {
 
 const Navigation = () => {
     const { user } = useFirebase();
+
     return (
         <>
             <div className="min-h-full">
@@ -84,7 +85,7 @@ const Navigation = () => {
                                             </button>
 
                                             {/* Profile dropdown */}
-                                            {user?.email && (
+                                            {(user?.email || user?.uid) && (
                                                 <Menu
                                                     as="div"
                                                     className="ml-3 relative"

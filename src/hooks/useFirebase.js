@@ -36,8 +36,6 @@ const useFirebase = () => {
         setLoading(true);
         signInWithPopup(auth, twitterProvider)
             .then((result) => {
-                console.log(result);
-                console.log(result.user);
                 setUser(result.user);
                 navigate(from);
             })
@@ -50,7 +48,7 @@ const useFirebase = () => {
         signOut(auth)
             .then(() => {
                 // Sign-out successful.
-                console.log("Sign-out successful.");
+                // console.log("Sign-out successful.");
                 setUser({});
             })
             .catch((error) => {

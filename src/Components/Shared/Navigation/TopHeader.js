@@ -18,7 +18,7 @@ const TopHeader = () => {
                     </div>
                     <div className="text-center pt-3  md:pt-0">
                         <p className="cursor-pointer">
-                            {user?.email ? (
+                            {user?.email || user?.uid ? (
                                 <span
                                     onClick={handleSignOut}
                                     className="pr-3 hover:text-yellow-400"
