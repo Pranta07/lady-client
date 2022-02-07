@@ -18,8 +18,6 @@ const CheckoutPage = () => {
 
     const onSubmit = (data) => {
         data.firstName = user.displayName;
-        data.email = user.email;
-        // console.log(data);
         const newData = {
             ...data,
             total: parseFloat(total - discount).toFixed(2),
@@ -34,8 +32,8 @@ const CheckoutPage = () => {
             body: JSON.stringify(newData),
         })
             .then((res) => res.json())
-            .then((data) => {
-                window.location.replace(data);
+            .then((url) => {
+                window.location.replace(url);
             });
     };
 
@@ -70,7 +68,7 @@ const CheckoutPage = () => {
                                                             "firstName"
                                                         )}
                                                         readOnly
-                                                        value={
+                                                        defaultValue={
                                                             user?.displayName
                                                         }
                                                         className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
@@ -95,15 +93,18 @@ const CheckoutPage = () => {
                                                         Email address
                                                     </label>
                                                     <input
-                                                        {...register("email")}
-                                                        readOnly
-                                                        value={user?.email}
+                                                        {...register("email", {
+                                                            required: true,
+                                                        })}
+                                                        defaultValue={
+                                                            user?.email
+                                                        }
                                                         className="mt-1 p-2 border bg-gray-100 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
                                                     />
                                                     {errors?.email?.type ===
                                                         "required" && (
                                                         <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            <i className="fas fa-exclamation-triangle mr-1"></i>
                                                             This field is
                                                             required
                                                         </p>
@@ -138,7 +139,7 @@ const CheckoutPage = () => {
                                                     {errors?.country?.type ===
                                                         "required" && (
                                                         <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            <i className="fas fa-exclamation-triangle mr-1"></i>
                                                             This field is
                                                             required
                                                         </p>
@@ -159,7 +160,7 @@ const CheckoutPage = () => {
                                                     {errors?.phone?.type ===
                                                         "required" && (
                                                         <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            <i className="fas fa-exclamation-triangle mr-1"></i>
                                                             This field is
                                                             required
                                                         </p>
@@ -180,7 +181,7 @@ const CheckoutPage = () => {
                                                     {errors?.street?.type ===
                                                         "required" && (
                                                         <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            <i className="fas fa-exclamation-triangle mr-1"></i>
                                                             This field is
                                                             required
                                                         </p>
@@ -201,7 +202,7 @@ const CheckoutPage = () => {
                                                     {errors?.city?.type ===
                                                         "required" && (
                                                         <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            <i className="fas fa-exclamation-triangle mr-1"></i>
                                                             This field is
                                                             required
                                                         </p>
@@ -234,7 +235,7 @@ const CheckoutPage = () => {
                                                     {errors?.postCode?.type ===
                                                         "required" && (
                                                         <p className="text-red-600 ml-2 mt-2">
-                                                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                                                            <i className="fas fa-exclamation-triangle mr-1"></i>
                                                             This field is
                                                             required
                                                         </p>
@@ -301,7 +302,7 @@ const CheckoutPage = () => {
                             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                 {errors?.payType?.type === "required" && (
                                     <p className="text-red-600 ml-2 mt-2">
-                                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                                        <i className="fas fa-exclamation-triangle mr-1"></i>
                                         Select a Payment Method
                                     </p>
                                 )}
