@@ -8,7 +8,7 @@ const Trending = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/products?type=trending")
+        fetch("https://ancient-dawn-22893.herokuapp.com/products?type=trending")
             .then((res) => res.json())
             .then((data) => {
                 setTrendingProducts(data.result);

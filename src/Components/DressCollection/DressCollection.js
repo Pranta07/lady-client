@@ -8,7 +8,7 @@ const DressCollection = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/products?type=${type}`)
+        fetch(`https://ancient-dawn-22893.herokuapp.com/products?type=${type}`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data.result);

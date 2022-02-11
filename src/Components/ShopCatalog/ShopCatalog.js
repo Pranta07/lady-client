@@ -28,7 +28,9 @@ const ShopCatalog = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/products?type=catalog&&page=${pageNum}`)
+        fetch(
+            `https://ancient-dawn-22893.herokuapp.com/products?type=catalog&&page=${pageNum}`
+        )
             .then((res) => res.json())
             .then((data) => {
                 setLoading(false);
