@@ -37,7 +37,9 @@ const Success = () => {
             .then((result) => {
                 if (result.modifiedCount) {
                     alert("Order Placed Successfully!");
-                    window.location.replace("http://localhost:3000");
+                    window.location.replace(
+                        "https://ladyecommerce-d15fd.web.app/"
+                    );
                     localStorage.clear();
                     sessionStorage.clear();
                 } else {
