@@ -18,6 +18,7 @@ import Contact from "./Components/Contact/Contact";
 import Login from "./Components/Login/Login/Login";
 import Register from "./Components/Login/Register/Register";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
+import MyOrders from "./Components/MyOrders/MyOrders";
 
 function App() {
     return (
@@ -47,6 +48,14 @@ function App() {
                         element={
                             <RequireAuth>
                                 <Success />
+                            </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="orders"
+                        element={
+                            <RequireAuth>
+                                <MyOrders />
                             </RequireAuth>
                         }
                     />
