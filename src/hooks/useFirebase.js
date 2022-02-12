@@ -49,7 +49,7 @@ const useFirebase = () => {
             email: newUser.email,
             role: "customer",
         };
-        fetch("http://localhost:5000/saveUser", {
+        fetch("http://localhost:5000/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -19,6 +19,8 @@ import Login from "./Components/Login/Login/Login";
 import Register from "./Components/Login/Register/Register";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import MyOrders from "./Components/MyOrders/MyOrders";
+import AdminRoute from "./Components/AdminRoute/AdminRoute";
+import ManageOrders from "./Components/ManageOrders/ManageOrders";
 
 function App() {
     return (
@@ -57,6 +59,14 @@ function App() {
                             <RequireAuth>
                                 <MyOrders />
                             </RequireAuth>
+                        }
+                    />
+                    <Route
+                        path="manageOrders"
+                        element={
+                            <AdminRoute>
+                                <ManageOrders />
+                            </AdminRoute>
                         }
                     />
                     <Route path="contact" element={<Contact />} />
