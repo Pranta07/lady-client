@@ -87,11 +87,18 @@ const Navigation = () => {
                                                     </Link>
                                                 )}
                                                 {user?.email && admin && (
-                                                    <Link to="/manageOrders">
-                                                        <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                            Manage Orders
-                                                        </button>
-                                                    </Link>
+                                                    <>
+                                                        <Link to="/manageOrders">
+                                                            <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                                Manage Orders
+                                                            </button>
+                                                        </Link>
+                                                        <Link to="/manageProducts">
+                                                            <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                                Manage Products
+                                                            </button>
+                                                        </Link>
+                                                    </>
                                                 )}
                                             </div>
                                         </div>
