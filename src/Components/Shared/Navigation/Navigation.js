@@ -16,7 +16,6 @@ const navigation = [
 const userNavigation = [
     { name: "Your Profile", to: "/profile" },
     { name: "Settings", to: "/settings" },
-    { name: "Sign out", to: "/" },
 ];
 
 function classNames(...classes) {
@@ -66,6 +65,13 @@ const Navigation = () => {
                                                         </button>
                                                     </Link>
                                                 ))}
+                                                {user?.email && (
+                                                    <Link to="/orders">
+                                                        <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                            My Orders
+                                                        </button>
+                                                    </Link>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -195,6 +201,16 @@ const Navigation = () => {
                                             </Disclosure.Button>
                                         </Link>
                                     ))}
+                                    {user?.email && (
+                                        <Link to="/orders">
+                                            <Disclosure.Button
+                                                className="text-black hover:bg-gray-900 hover:text-white
+                                                    block w-full px-3 py-2 rounded-md text-base font-medium"
+                                            >
+                                                My Orders
+                                            </Disclosure.Button>
+                                        </Link>
+                                    )}
                                 </div>
 
                                 <div className="pt-4 pb-3 border-t border-gray-700">
