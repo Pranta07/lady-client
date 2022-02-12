@@ -26,6 +26,7 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 setUser(result.user);
+                saveUser(result.user);
                 navigate(from);
             })
             .catch((error) => setError(error.message))
@@ -41,6 +42,20 @@ const useFirebase = () => {
             })
             .catch((error) => setError(error.message))
             .finally(() => setLoading(false));
+    };
+
+    const saveUser = (newUser) => {
+        const user = {
+            email: newUser.email,
+            role: "customer",
+        };
+        fetch("http://localhost:5000/saveUser", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
     };
 
     const handleSignOut = () => {
