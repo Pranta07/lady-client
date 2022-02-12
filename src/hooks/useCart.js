@@ -6,7 +6,7 @@ const useCart = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch("http://localhost:5000/allProducts")
+        fetch("https://ancient-dawn-22893.herokuapp.com/allProducts")
             .then((res) => res.json())
             .then((data) => handleSubtotal(data))
             .finally(() => setLoading(false));

@@ -38,7 +38,7 @@ const ShopSingle = () => {
     const type = queryParams.get("type"); */
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleProduct/${id}`)
+        fetch(`https://ancient-dawn-22893.herokuapp.com/singleProduct/${id}`)
             .then((res) => res.json())
             .then((data) => setSingleProduct(data));
     }, [id]);

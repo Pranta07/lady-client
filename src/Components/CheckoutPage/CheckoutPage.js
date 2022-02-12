@@ -24,7 +24,7 @@ const CheckoutPage = () => {
             products: cart,
         };
         // reset();
-        fetch("http://localhost:5000/init", {
+        fetch("https://ancient-dawn-22893.herokuapp.com/init", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -10,7 +10,7 @@ const Success = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/orders/${id}`)
+        fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 if (!data) {
@@ -26,7 +26,7 @@ const Success = () => {
     const handleConfirm = () => {
         const data = { tran_id: order.tran_id, val_id: order.val_id };
         // console.log(data);
-        fetch("http://localhost:5000/validate", {
+        fetch("https://ancient-dawn-22893.herokuapp.com/validate", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -37,7 +37,9 @@ const Success = () => {
             .then((result) => {
                 if (result.modifiedCount) {
                     alert("Order Placed Successfully!");
-                    window.location.replace("http://localhost:3000");
+                    window.location.replace(
+                        "https://ladyecommerce-d15fd.web.app/"
+                    );
                     localStorage.clear();
                     sessionStorage.clear();
                 } else {
