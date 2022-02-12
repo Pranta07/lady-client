@@ -29,7 +29,7 @@ const MyOrders = () => {
                     {orders.map((order) => (
                         <div
                             key={order._id}
-                            className="p-4 border rounded-md shadow-md"
+                            className="p-4 border border-yellow-300 rounded-md shadow-md"
                         >
                             <div className="text-left">
                                 <p>
