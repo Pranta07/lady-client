@@ -49,15 +49,8 @@ const Navigation = () => {
                                 <div className="flex items-center justify-between h-16">
                                     {/* main navigation */}
                                     <div className="flex items-center">
-                                        <div className="flex-shrink-0">
-                                            {/* <img
-                                                className="h-8 w-8"
-                                                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                                                alt="Workflow"
-                                            /> */}
-                                        </div>
-                                        <div className="hidden md:block">
-                                            <div className="ml-10 flex items-baseline space-x-4">
+                                        <div className="hidden lg:block">
+                                            <div className="flex items-center space-x-4">
                                                 {navigation.map((item) => (
                                                     <Link
                                                         key={item.name}
@@ -106,7 +99,7 @@ const Navigation = () => {
                                     </div>
 
                                     {/* userNavigation */}
-                                    <div className="hidden md:block">
+                                    <div className="hidden lg:block">
                                         <div className="ml-4 flex items-center md:ml-6">
                                             <button
                                                 type="button"
@@ -191,7 +184,7 @@ const Navigation = () => {
                                     </div>
 
                                     {/* hamburger */}
-                                    <div className="-mr-2 flex md:hidden">
+                                    <div className="-mr-2 flex lg:hidden">
                                         {/* Mobile menu button */}
                                         <Disclosure.Button className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                             <span className="sr-only">
@@ -213,7 +206,7 @@ const Navigation = () => {
                                 </div>
                             </div>
 
-                            <Disclosure.Panel className="md:hidden">
+                            <Disclosure.Panel className="lg:hidden">
                                 {/* main navigation */}
                                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                                     {navigation.map((item) => (
@@ -268,7 +261,7 @@ const Navigation = () => {
                                 </div>
 
                                 {/* user Navigation */}
-                                {user.email && (
+                                {user?.email && (
                                     <div className="pt-4 pb-3 border-t border-gray-700">
                                         <div className="flex items-center px-5">
                                             <div className="flex-shrink-0 border-2 rounded-full">

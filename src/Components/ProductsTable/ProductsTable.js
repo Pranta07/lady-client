@@ -55,9 +55,9 @@ const ProductsTable = ({ products, setIsUpdated /* setIsDeleted */ }) => {
                     </div>
                 </div>
 
-                <div className="ml-4 flex justify-end items-center md:ml-6">
+                <div className="container mx-auto px-4 md:px-6 flex justify-end items-center">
                     <Menu as="div" className="ml-3 relative">
-                        <div className="flex items-center md:mr-2 lg:mr-9 mb-2">
+                        <div className="flex items-center mb-2">
                             <span className="text-sm pr-3 font-semibold tracking-widest">
                                 Update Stock
                             </span>
@@ -97,10 +97,10 @@ const ProductsTable = ({ products, setIsUpdated /* setIsDeleted */ }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col overflow-x-scroll">
-                <div className="mx-2">
+            <div className="container mx-auto px-4 md:px-0">
+                <div className="flex flex-col">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                        <div className="">
+                        <div className="overflow-x-scroll">
                             <table className="min-w-full">
                                 <thead className="bg-gray-100 border border-gray-900">
                                     <tr>
