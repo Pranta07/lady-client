@@ -8,7 +8,7 @@ const ManageOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/allOrders`)
+        fetch(`https://ancient-dawn-22893.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data))
             .finally(() => setLoading(false));
@@ -16,7 +16,7 @@ const ManageOrders = () => {
 
     const handleDelete = (id) => {
         setIsDelete(false);
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
