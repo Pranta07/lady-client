@@ -49,7 +49,7 @@ const useFirebase = () => {
             email: newUser.email,
             role: "customer",
         };
-        fetch("http://localhost:5000/user", {
+        fetch("https://ancient-dawn-22893.herokuapp.com/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

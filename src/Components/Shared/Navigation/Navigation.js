@@ -29,7 +29,7 @@ const Navigation = () => {
 
     useEffect(() => {
         if (!loading) {
-            fetch(`http://localhost:5000/user/${user.email}`)
+            fetch(`https://ancient-dawn-22893.herokuapp.com/user/${user.email}`)
                 .then((res) => res.json())
                 .then((user) => {
                     if (user?.role === "admin") {
