@@ -47,6 +47,7 @@ const Navigation = () => {
                         <>
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                 <div className="flex items-center justify-between h-16">
+                                    {/* main navigation */}
                                     <div className="flex items-center">
                                         <div className="flex-shrink-0">
                                             {/* <img
@@ -103,6 +104,8 @@ const Navigation = () => {
                                             </div>
                                         </div>
                                     </div>
+
+                                    {/* userNavigation */}
                                     <div className="hidden md:block">
                                         <div className="ml-4 flex items-center md:ml-6">
                                             <button
@@ -186,6 +189,8 @@ const Navigation = () => {
                                             )}
                                         </div>
                                     </div>
+
+                                    {/* hamburger */}
                                     <div className="-mr-2 flex md:hidden">
                                         {/* Mobile menu button */}
                                         <Disclosure.Button className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -209,6 +214,7 @@ const Navigation = () => {
                             </div>
 
                             <Disclosure.Panel className="md:hidden">
+                                {/* main navigation */}
                                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                                     {navigation.map((item) => (
                                         <Link key={item.name} to={item.to}>
@@ -239,48 +245,74 @@ const Navigation = () => {
                                             </Disclosure.Button>
                                         </Link>
                                     )}
-                                </div>
-
-                                <div className="pt-4 pb-3 border-t border-gray-700">
-                                    <div className="flex items-center px-5">
-                                        <div className="flex-shrink-0 border-2 rounded-full">
-                                            <img
-                                                className="h-10 w-10 rounded-full"
-                                                src={user?.photoURL}
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div className="ml-3 border-2 rounded-md p-2 bg-gray-900 text-white">
-                                            <div className="text-base font-medium leading-none">
-                                                {user?.displayName}
-                                            </div>
-                                            <div className="text-sm font-medium leading-none">
-                                                {user?.email}
-                                            </div>
-                                        </div>
-                                        <button
-                                            type="button"
-                                            className="ml-auto bg-gray-800 flex-shrink-0 p-1 border-2 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                        >
-                                            <span className="sr-only">
-                                                View notifications
-                                            </span>
-                                            <BellIcon
-                                                className="h-6 w-6"
-                                                aria-hidden="true"
-                                            />
-                                        </button>
-                                    </div>
-                                    <div className="mt-3 px-2 space-y-1">
-                                        {userNavigation.map((item) => (
-                                            <Link key={item.name} to={item.to}>
-                                                <Disclosure.Button className="block w-full px-3 py-2 rounded-md text-base font-medium text-black hover:text-white hover:bg-gray-900">
-                                                    {item.name}
+                                    {user?.email && admin && (
+                                        <>
+                                            <Link to="/manageOrders">
+                                                <Disclosure.Button
+                                                    className="text-black hover:bg-gray-900 hover:text-white
+                                                    block w-full px-3 py-2 rounded-md text-base font-medium"
+                                                >
+                                                    Manage Orders
                                                 </Disclosure.Button>
                                             </Link>
-                                        ))}
-                                    </div>
+                                            <Link to="/manageProducts">
+                                                <Disclosure.Button
+                                                    className="text-black hover:bg-gray-900 hover:text-white
+                                                    block w-full px-3 py-2 rounded-md text-base font-medium"
+                                                >
+                                                    Manage Products
+                                                </Disclosure.Button>
+                                            </Link>
+                                        </>
+                                    )}
                                 </div>
+
+                                {/* user Navigation */}
+                                {user.email && (
+                                    <div className="pt-4 pb-3 border-t border-gray-700">
+                                        <div className="flex items-center px-5">
+                                            <div className="flex-shrink-0 border-2 rounded-full">
+                                                <img
+                                                    className="h-10 w-10 rounded-full"
+                                                    src={user?.photoURL}
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div className="ml-3 border-2 rounded-md p-2 bg-gray-900 text-white">
+                                                <div className="text-base font-medium leading-none">
+                                                    {user?.displayName}
+                                                </div>
+                                                <div className="text-sm font-medium leading-none">
+                                                    {user?.email}
+                                                </div>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                className="ml-auto bg-gray-800 flex-shrink-0 p-1 border-2 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                                            >
+                                                <span className="sr-only">
+                                                    View notifications
+                                                </span>
+                                                <BellIcon
+                                                    className="h-6 w-6"
+                                                    aria-hidden="true"
+                                                />
+                                            </button>
+                                        </div>
+                                        <div className="mt-3 px-2 space-y-1">
+                                            {userNavigation.map((item) => (
+                                                <Link
+                                                    key={item.name}
+                                                    to={item.to}
+                                                >
+                                                    <Disclosure.Button className="block w-full px-3 py-2 rounded-md text-base font-medium text-black hover:text-white hover:bg-gray-900">
+                                                        {item.name}
+                                                    </Disclosure.Button>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </Disclosure.Panel>
                         </>
                     )}
