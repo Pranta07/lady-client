@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import useFirebase from "../../../hooks/useFirebase";
+import { useEffect } from "react";
 
 const navigation = [
     { name: "Home", to: "/home", current: true },
@@ -23,7 +24,20 @@ function classNames(...classes) {
 }
 
 const Navigation = () => {
-    const { user } = useFirebase();
+    const [admin, setAdmin] = useState(false);
+    const { user, loading } = useFirebase();
+
+    useEffect(() => {
+        if (!loading) {
+            fetch(`http://localhost:5000/user/${user.email}`)
+                .then((res) => res.json())
+                .then((user) => {
+                    if (user?.role === "admin") {
+                        setAdmin(true);
+                    }
+                });
+        }
+    }, [loading]);
 
     return (
         <>
@@ -71,6 +85,20 @@ const Navigation = () => {
                                                             My Orders
                                                         </button>
                                                     </Link>
+                                                )}
+                                                {user?.email && admin && (
+                                                    <>
+                                                        <Link to="/manageOrders">
+                                                            <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                                Manage Orders
+                                                            </button>
+                                                        </Link>
+                                                        <Link to="/manageProducts">
+                                                            <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                                Manage Products
+                                                            </button>
+                                                        </Link>
+                                                    </>
                                                 )}
                                             </div>
                                         </div>

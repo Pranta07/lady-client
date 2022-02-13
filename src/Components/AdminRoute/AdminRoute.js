@@ -11,16 +11,18 @@ const AdminRoute = ({ children }) => {
     let location = useLocation();
 
     useEffect(() => {
-        setDone(false);
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
-            .then((res) => res.json())
-            .then((user) => {
-                if (user?.role === "admin") {
-                    setAdmin(true);
-                }
-            })
-            .finally(() => setDone(true));
-    }, [user?.email]);
+        if (!loading) {
+            setDone(false);
+            fetch(`http://localhost:5000/user/${user.email}`)
+                .then((res) => res.json())
+                .then((user) => {
+                    if (user?.role === "admin") {
+                        setAdmin(true);
+                    }
+                })
+                .finally(() => setDone(true));
+        }
+    }, [loading]);
 
     if (loading || !done) {
         return (
@@ -33,7 +35,7 @@ const AdminRoute = ({ children }) => {
         );
     }
 
-    if (user.email && admin) {
+    if (user?.email && admin) {
         return children;
     } else {
         return <Navigate to="/login" state={{ from: location }} replace />;

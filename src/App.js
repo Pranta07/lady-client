@@ -21,6 +21,7 @@ import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import MyOrders from "./Components/MyOrders/MyOrders";
 import AdminRoute from "./Components/AdminRoute/AdminRoute";
 import ManageOrders from "./Components/ManageOrders/ManageOrders";
+import ManageProducts from "./Components/ManageProducts/ManageProducts";
 
 function App() {
     return (
@@ -66,6 +67,14 @@ function App() {
                         element={
                             <AdminRoute>
                                 <ManageOrders />
+                            </AdminRoute>
+                        }
+                    />
+                    <Route
+                        path="manageProducts"
+                        element={
+                            <AdminRoute>
+                                <ManageProducts />
                             </AdminRoute>
                         }
                     />
