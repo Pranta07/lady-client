@@ -22,7 +22,7 @@ const ProductsTable = ({ products, setIsUpdated /* setIsDeleted */ }) => {
                 if (result.modifiedCount > 0) {
                     Swal.fire({
                         title: "Well done!",
-                        text: "Status Updated Successfully!",
+                        text: "Stock Status Updated Successfully!",
                         icon: "success",
                         timer: 1500,
                     });
@@ -74,16 +74,16 @@ const ProductsTable = ({ products, setIsUpdated /* setIsDeleted */ }) => {
                             <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-yellow-400 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none">
                                 <Menu.Item>
                                     <button
-                                        onClick={() => handleStock("active")}
-                                        className="font-semibold tracking-widest hover:bg-gray-800 text-white block w-full px-4 py-2 text-sm"
+                                        onClick={() => handleStock(false)}
+                                        className="font-semibold tracking-widest hover:bg-gray-800 hover:text-white block w-full px-4 py-2 text-sm"
                                     >
                                         Mark as Out of Stock
                                     </button>
                                 </Menu.Item>
                                 <Menu.Item>
                                     <button
-                                        onClick={() => handleStock("inActive")}
-                                        className="font-semibold tracking-widest hover:bg-gray-800 text-white block w-full px-4 py-2 text-sm"
+                                        onClick={() => handleStock(true)}
+                                        className="font-semibold tracking-widest hover:bg-gray-800 hover:text-white block w-full px-4 py-2 text-sm"
                                     >
                                         Mark as In Stock
                                     </button>

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import ProductEditModal from "../ProductEditModal/ProductEditModal";
-// import StudentEditModal from "../StudentEditModal/StudentEditModal";
-// import DeleteModal from "../../AddFood/DeleteModal/DeleteModal";
 
 const ProductRow = ({
     product,
