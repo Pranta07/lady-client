@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 const ProductEditModal = ({ setIsUpdated, product, open, setOpen }) => {
     const cancelButtonRef = useRef(null);
     const { name, price, imgUrl, stock } = product;
-    console.log(stock);
 
     const { register, handleSubmit, reset } = useForm({
         defaultValues: {
@@ -20,6 +19,9 @@ const ProductEditModal = ({ setIsUpdated, product, open, setOpen }) => {
 
     const onSubmit = (data) => {
         // console.log(data);
+        if (data.stock === "In Stock") data.stock = true;
+        else data.stock = false;
+
         setIsUpdated(false);
         setOpen(false);
         fetch(`http://localhost:5000/edit/${product._id}`, {
@@ -202,7 +204,7 @@ const ProductEditModal = ({ setIsUpdated, product, open, setOpen }) => {
                                                     <div className="py-3 sm:flex sm:flex-row-reverse px-4">
                                                         <button
                                                             type="submit"
-                                                            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:ml-3 sm:w-auto sm:text-sm"
+                                                            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 sm:ml-3 sm:w-auto sm:text-sm"
                                                         >
                                                             Save Changes
                                                         </button>
