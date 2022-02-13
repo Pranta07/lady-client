@@ -7,20 +7,21 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     const [pageNum, setPageNum] = useState(0);
     const [pageCount, setPageCount] = useState(0);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
+    const [isUpdated, setIsUpdated] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
+        // setLoading(true);
         fetch(
             `https://ancient-dawn-22893.herokuapp.com/products?type=catalog&&page=${pageNum}`
         )
             .then((res) => res.json())
             .then((data) => {
-                setLoading(false);
+                // setLoading(false);
                 setPageCount(Math.ceil(data.count / 8));
                 setProducts(data.result);
             });
-    }, [pageNum]);
+    }, [pageNum, isUpdated]);
 
     return (
         <>
@@ -32,7 +33,12 @@ const ManageProducts = () => {
                     </span>
                 </p>
             </div>
-            <ProductsTable products={products}></ProductsTable>
+
+            <ProductsTable
+                products={products}
+                setIsUpdated={setIsUpdated}
+            ></ProductsTable>
+
             {/* pagination */}
             <div className="my-5">
                 <nav

@@ -4,12 +4,12 @@ import React, { Fragment, useState } from "react";
 import Swal from "sweetalert2";
 import ProductRow from "../ProductRow/ProductRow";
 
-const ProductsTable = ({ products /* setIsUpdated, setIsDeleted */ }) => {
+const ProductsTable = ({ products, setIsUpdated /* setIsDeleted */ }) => {
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleStock = (status) => {
         // console.log(selectedItems);
-        // setIsUpdated(false);
+        setIsUpdated(false);
         fetch(`http://localhost:5000/products/update/${status}`, {
             method: "PUT",
             headers: {
@@ -26,7 +26,7 @@ const ProductsTable = ({ products /* setIsUpdated, setIsDeleted */ }) => {
                         icon: "success",
                         timer: 1500,
                     });
-                    // setIsUpdated(true);
+                    setIsUpdated(true);
                 } else {
                     Swal.fire({
                         title: "Warning!",
@@ -148,7 +148,7 @@ const ProductsTable = ({ products /* setIsUpdated, setIsDeleted */ }) => {
                                         <ProductRow
                                             key={product._id}
                                             product={product}
-                                            // setIsUpdated={setIsUpdated}
+                                            setIsUpdated={setIsUpdated}
                                             // setIsDeleted={setIsDeleted}
                                             selectedItems={selectedItems}
                                             setSelectedItems={setSelectedItems}

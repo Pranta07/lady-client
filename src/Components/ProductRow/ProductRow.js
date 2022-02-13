@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
+import ProductEditModal from "../ProductEditModal/ProductEditModal";
 // import StudentEditModal from "../StudentEditModal/StudentEditModal";
 // import DeleteModal from "../../AddFood/DeleteModal/DeleteModal";
 
 const ProductRow = ({
     product,
-    /* setIsUpdated,
-    setIsDeleted,*/
+    setIsUpdated,
+    // setIsDeleted,
     selectedItems,
     setSelectedItems,
 }) => {
     const [open, setOpen] = useState(false);
-    const [dmopen, setDmOpen] = useState(false);
+    // const [dmopen, setDmOpen] = useState(false);
     const { name, price, imgUrl, stock } = product;
 
     const handleSelect = (e) => {
-        // console.log(checked);
         const checked = e.target.checked;
         if (checked) {
             setSelectedItems([...selectedItems, product._id]);
@@ -61,7 +61,7 @@ const ProductRow = ({
                     <PencilAltIcon className="inline h-5 w-5"></PencilAltIcon>
                 </td>
                 <td
-                    onClick={() => setDmOpen(true)}
+                    // onClick={() => setDmOpen(true)}
                     className="text-sm font-semibold tracking-wider ml-2 text-gray-900 px-6 py-4 whitespace-nowrap hover:text-red-600"
                 >
                     <TrashIcon className="inline h-5 w-5"></TrashIcon>
@@ -69,13 +69,14 @@ const ProductRow = ({
             </tr>
 
             {/*Edit Modal */}
-            {/* <StudentEditModal
-                student={product}
+            <ProductEditModal
+                product={product}
                 setIsUpdated={setIsUpdated}
                 open={open}
                 setOpen={setOpen}
-            ></StudentEditModal>
-            <DeleteModal
+            ></ProductEditModal>
+
+            {/*<DeleteModal
                 id={product._id}
                 type="student"
                 setIsDeleted={setIsDeleted}
