@@ -19,6 +19,17 @@ const MyOrders = () => {
     }, [user?.email]);
     // console.log(orders);
 
+    if (loading) {
+        return (
+            <div className="m-10">
+                <svg
+                    className="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
+                    viewBox="0 0 24 24"
+                ></svg>
+            </div>
+        );
+    }
+
     return (
         <>
             <div className="container mx-auto">
@@ -29,12 +40,11 @@ const MyOrders = () => {
                     </span>
                 </p>
             </div>
-            {loading ? (
-                <div className="m-10">
-                    <svg
-                        className="animate-spin h-5 w-5 bg-yellow-400 mx-auto"
-                        viewBox="0 0 24 24"
-                    ></svg>
+            {orders.length === 0 ? (
+                <div>
+                    <p className="text-xl tracking-widest font-semibold mb-8">
+                        You have no orders to show! Back to Shopping!
+                    </p>
                 </div>
             ) : (
                 <div className="bg-gray-50 p-6 md:p-8 xl:p-14">
