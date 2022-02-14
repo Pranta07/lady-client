@@ -13,6 +13,7 @@ const AdminRoute = ({ children }) => {
     useEffect(() => {
         if (!loading) {
             setDone(false);
+            setAdmin(false);
             fetch(`https://ancient-dawn-22893.herokuapp.com/user/${user.email}`)
                 .then((res) => res.json())
                 .then((user) => {
@@ -38,7 +39,7 @@ const AdminRoute = ({ children }) => {
     if (user?.email && admin) {
         return children;
     } else {
-        return <Navigate to="/login" state={{ from: location }} replace />;
+        return <Navigate to="/" state={{ from: location }} replace />;
     }
 };
 

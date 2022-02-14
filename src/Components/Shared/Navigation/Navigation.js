@@ -28,16 +28,15 @@ const Navigation = () => {
     const { user, loading } = useFirebase();
 
     useEffect(() => {
-        if (!loading) {
-            fetch(`https://ancient-dawn-22893.herokuapp.com/user/${user.email}`)
-                .then((res) => res.json())
-                .then((user) => {
-                    if (user?.role === "admin") {
-                        setAdmin(true);
-                    }
-                });
-        }
-    }, [loading]);
+        setAdmin(false);
+        fetch(`https://ancient-dawn-22893.herokuapp.com/user/${user?.email}`)
+            .then((res) => res.json())
+            .then((user) => {
+                if (user?.role === "admin") {
+                    setAdmin(true);
+                }
+            });
+    }, [user?.email]);
 
     return (
         <>
@@ -73,27 +72,31 @@ const Navigation = () => {
                                                         </button>
                                                     </Link>
                                                 ))}
-                                                {user?.email && (
+                                                {!loading && user.email && (
                                                     <Link to="/orders">
                                                         <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                                             My Orders
                                                         </button>
                                                     </Link>
                                                 )}
-                                                {user?.email && admin && (
-                                                    <>
-                                                        <Link to="/manageOrders">
-                                                            <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                                Manage Orders
-                                                            </button>
-                                                        </Link>
-                                                        <Link to="/manageProducts">
-                                                            <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                                Manage Products
-                                                            </button>
-                                                        </Link>
-                                                    </>
-                                                )}
+                                                {!loading &&
+                                                    user.email &&
+                                                    admin && (
+                                                        <>
+                                                            <Link to="/manageOrders">
+                                                                <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                                    Manage
+                                                                    Orders
+                                                                </button>
+                                                            </Link>
+                                                            <Link to="/manageProducts">
+                                                                <button className="text-black hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                                    Manage
+                                                                    Products
+                                                                </button>
+                                                            </Link>
+                                                        </>
+                                                    )}
                                             </div>
                                         </div>
                                     </div>
