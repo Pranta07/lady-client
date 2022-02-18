@@ -1,50 +1,51 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import useFirebase from "../../hooks/useFirebase";
+import { TrashIcon } from "@heroicons/react/outline";
+import React, { useEffect, useState } from "react";
 
-const MyOrders = () => {
+const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
+    const [isDelete, setIsDelete] = useState(false);
     const [loading, setLoading] = useState(true);
-    const { user } = useFirebase();
 
     useEffect(() => {
         setLoading(true);
-        fetch(
-            `https://ancient-dawn-22893.herokuapp.com/orders?email=${user?.email}`
-        )
+        fetch(`https://ancient-dawn-22893.herokuapp.com/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data))
             .finally(() => setLoading(false));
-    }, [user?.email]);
-    // console.log(orders);
+    }, [isDelete]);
 
-    if (loading) {
-        return (
-            <div className="m-10">
-                <svg
-                    className="animate-spin h-5 w-5 bg-yellow-400 mx-auto ..."
-                    viewBox="0 0 24 24"
-                ></svg>
-            </div>
-        );
-    }
+    const handleDelete = (id) => {
+        setIsDelete(false);
+        fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.deletedCount) {
+                    alert("Deleted Successfully!");
+                    setIsDelete(true);
+                } else {
+                    alert("Try again! Something went wrong!");
+                }
+            });
+    };
 
     return (
         <>
             <div className="container mx-auto">
                 <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
-                    Home /{" "}
+                    Admin /{" "}
                     <span className=" bg-black text-yellow-400 p-2">
-                        My Orders
+                        Manage Orders
                     </span>
                 </p>
             </div>
-            {orders.length === 0 ? (
-                <div>
-                    <p className="text-xl tracking-widest font-semibold mb-8">
-                        You have no orders to show! Back to Shopping!
-                    </p>
+            {loading ? (
+                <div className="m-10">
+                    <svg
+                        className="animate-spin h-5 w-5 bg-yellow-400 mx-auto"
+                        viewBox="0 0 24 24"
+                    ></svg>
                 </div>
             ) : (
                 <div className="bg-gray-50 p-6 md:p-8 xl:p-14">
@@ -52,9 +53,21 @@ const MyOrders = () => {
                         {orders.map((order) => (
                             <div
                                 key={order._id}
-                                className="p-4 border border-yellow-300 rounded-md shadow-md"
+                                className="relative p-4 border border-yellow-300 rounded-md shadow-md"
                             >
+                                <div
+                                    onClick={() => handleDelete(order._id)}
+                                    className="absolute top-2 right-2 hover:text-red-600 cursor-pointer"
+                                >
+                                    <TrashIcon className="h-6 w-6"></TrashIcon>
+                                </div>
                                 <div className="text-left">
+                                    <p>
+                                        <span className="font-semibold">
+                                            Customer Email:{" "}
+                                        </span>
+                                        {order.cus_email}
+                                    </p>
                                     <p>
                                         <span className="font-semibold">
                                             TrxId:{" "}
@@ -116,4 +129,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageOrders;
