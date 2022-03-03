@@ -1,5 +1,6 @@
 import { TrashIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -15,27 +16,47 @@ const ManageOrders = () => {
     }, [isDelete]);
 
     const handleDelete = (id) => {
-        setIsDelete(false);
-        fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`, {
-            method: "DELETE",
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                if (result.deletedCount) {
-                    alert("Deleted Successfully!");
-                    setIsDelete(true);
-                } else {
-                    alert("Try again! Something went wrong!");
-                }
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setIsDelete(false);
+                fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`, {
+                    method: "DELETE",
+                })
+                    .then((res) => res.json())
+                    .then((result) => {
+                        if (result.deletedCount) {
+                            Swal.fire(
+                                "Deleted!",
+                                "Deleted Successfully!",
+                                "success"
+                            );
+                            setIsDelete(true);
+                        } else {
+                            Swal.fire(
+                                "Opps!",
+                                "Try again! Something went wrong!",
+                                "warning"
+                            );
+                        }
+                    });
+            }
+        });
     };
 
     return (
         <>
             <div className="container mx-auto">
-                <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
+                <p className="py-4 m-8 tracking-widest text-left uppercase cursor-pointer">
                     Admin /{" "}
-                    <span className=" bg-black text-yellow-400 p-2">
+                    <span className="p-2 text-yellow-400 bg-black ">
                         Manage Orders
                     </span>
                 </p>
@@ -43,13 +64,13 @@ const ManageOrders = () => {
             {loading ? (
                 <div className="m-10">
                     <svg
-                        className="animate-spin h-5 w-5 bg-yellow-400 mx-auto"
+                        className="w-5 h-5 mx-auto bg-yellow-400 animate-spin"
                         viewBox="0 0 24 24"
                     ></svg>
                 </div>
             ) : (
-                <div className="bg-gray-50 p-6 md:p-8 xl:p-14">
-                    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="p-6 bg-gray-50 md:p-8 xl:p-14">
+                    <div className="container grid grid-cols-1 gap-4 mx-auto md:grid-cols-2 lg:grid-cols-3">
                         {orders.map((order) => (
                             <div
                                 key={order._id}
@@ -57,9 +78,9 @@ const ManageOrders = () => {
                             >
                                 <div
                                     onClick={() => handleDelete(order._id)}
-                                    className="absolute top-2 right-2 hover:text-red-600 cursor-pointer"
+                                    className="absolute cursor-pointer top-2 right-2 hover:text-red-600"
                                 >
-                                    <TrashIcon className="h-6 w-6"></TrashIcon>
+                                    <TrashIcon className="w-6 h-6"></TrashIcon>
                                 </div>
                                 <div className="text-left">
                                     <p>
@@ -90,13 +111,13 @@ const ManageOrders = () => {
                                             : "PENDING"}
                                     </p>
                                 </div>
-                                <h2 className="text-xl my-2 font-semibold tracking-widest">
+                                <h2 className="my-2 text-xl font-semibold tracking-widest">
                                     Ordered Items
                                 </h2>
                                 {order.ordered_products?.map((product) => (
                                     <div
                                         key={product._id}
-                                        className="border p-2 flex items-center text-left"
+                                        className="flex items-center p-2 text-left border"
                                     >
                                         <div className="w-1/6">
                                             <img
