@@ -1,32 +1,35 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useFirebase from "../../../hooks/useFirebase";
 
 const Register = () => {
+    const { handleRegister } = useFirebase();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+    const navigate = useNavigate();
     const onSubmit = (data) => {
-        // console.log(data);
+        handleRegister(data.name, data.email, data.password, navigate);
     };
 
     return (
         <div className="container mx-auto">
-            <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
+            <p className="py-4 m-8 tracking-widest text-left uppercase cursor-pointer">
                 Home /{" "}
-                <span className=" bg-black text-yellow-400 p-2">Register</span>
+                <span className="p-2 text-yellow-400 bg-black ">Register</span>
             </p>
-            <div className="bg-white p-8 mb-12 rounded-md shadow-lg mx-8">
+            <div className="p-8 mx-8 mb-12 bg-white rounded-md shadow-lg">
                 <div className="flex justify-center">
                     <div>
-                        <h1 className="text-xl tracking-widest font-semibold mb-3">
+                        <h1 className="mb-3 text-xl font-semibold tracking-widest">
                             SIGN-UP WITH YOUR EMAIL ACCOUNT
                         </h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <label className="block text-sm text-left pl-1 font-medium text-gray-700">
+                            <label className="block pl-1 text-sm font-medium text-left text-gray-700">
                                 Name
                             </label>
                             <input
@@ -35,15 +38,15 @@ const Register = () => {
                                 })}
                                 autoComplete="email"
                                 placeholder="Your Name Goes Here..."
-                                className="mt-1 mb-3 p-3 border bg-black placeholder:text-yellow-400 text-yellow-400 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
+                                className="block w-full p-3 mt-1 mb-3 text-yellow-400 bg-black border rounded-md shadow-md placeholder:text-yellow-400 focus:outline-yellow-300 sm:text-sm"
                             />
                             {errors?.name?.type === "required" && (
-                                <p className="text-red-600 ml-2 mb-2 text-left">
+                                <p className="mb-2 ml-2 text-left text-red-600">
                                     <i class="fas fa-exclamation-triangle mr-1"></i>
                                     This field is required
                                 </p>
                             )}
-                            <label className="block text-sm text-left pl-1 font-medium text-gray-700">
+                            <label className="block pl-1 text-sm font-medium text-left text-gray-700">
                                 Email
                             </label>
                             <input
@@ -53,15 +56,15 @@ const Register = () => {
                                 })}
                                 autoComplete="email"
                                 placeholder="somebody@example.com"
-                                className="mt-1 mb-3 p-3 border bg-black placeholder:text-yellow-400 text-yellow-400 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
+                                className="block w-full p-3 mt-1 mb-3 text-yellow-400 bg-black border rounded-md shadow-md placeholder:text-yellow-400 focus:outline-yellow-300 sm:text-sm"
                             />
                             {errors?.email?.type === "required" && (
-                                <p className="text-red-600 ml-2 mb-2 text-left">
+                                <p className="mb-2 ml-2 text-left text-red-600">
                                     <i class="fas fa-exclamation-triangle mr-1"></i>
                                     This field is required
                                 </p>
                             )}
-                            <label className="block text-sm text-left pl-1 font-medium text-gray-700">
+                            <label className="block pl-1 text-sm font-medium text-left text-gray-700">
                                 Password
                             </label>
                             <input
@@ -71,29 +74,29 @@ const Register = () => {
                                 })}
                                 autoComplete="password"
                                 placeholder="Password"
-                                className="mt-1 mb-3 p-3 border bg-black placeholder:text-yellow-400 text-yellow-400 focus:outline-yellow-300 block w-full shadow-md sm:text-sm rounded-md"
+                                className="block w-full p-3 mt-1 mb-3 text-yellow-400 bg-black border rounded-md shadow-md placeholder:text-yellow-400 focus:outline-yellow-300 sm:text-sm"
                             />
                             {errors?.password?.type === "required" && (
-                                <p className="text-red-600 ml-2 mt-2 text-left">
+                                <p className="mt-2 ml-2 text-left text-red-600">
                                     <i class="fas fa-exclamation-triangle mr-1"></i>
                                     This field is required
                                 </p>
                             )}
 
                             <Link to="/login">
-                                <p className="text-sm tracking-wider hover:text-blue-500 font-semibold cursor-pointer">
+                                <p className="text-sm font-semibold tracking-wider cursor-pointer hover:text-blue-500">
                                     Already have an account? Please Login.
                                 </p>
                             </Link>
 
                             <button
                                 type="submit"
-                                className="uppercase rounded-md bg-black text-yellow-400 tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
+                                className="px-8 py-3 my-4 tracking-wider text-yellow-400 uppercase bg-black rounded-md cursor-pointer hover:bg-gray-900"
                             >
                                 Register
                             </button>
 
-                            <p className="text-sm tracking-wider font-semibold pb-3">
+                            <p className="pb-3 text-sm font-semibold tracking-wider">
                                 .......or Sign-up with.......
                             </p>
                             <div>
