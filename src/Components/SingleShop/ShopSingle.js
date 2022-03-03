@@ -3,6 +3,7 @@ import DressGallery from "../DressGallery/DressGallery";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../Redux/slices/counterSlice";
 import { Link, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const relatedProducts = [
     {
@@ -59,20 +60,20 @@ const ShopSingle = () => {
             newCart[id] = quantity;
         }
         localStorage.setItem("cart", JSON.stringify(newCart));
-        alert("Product Added Successfully!");
+        Swal.fire("Success!", "Product Added Successfully!", "success");
     };
 
     return (
         <>
             {/* Single Item */}
             <div className="container mx-auto">
-                <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
+                <p className="py-4 m-8 tracking-widest text-left uppercase cursor-pointer">
                     Dress Collection /{" "}
-                    <span className=" bg-black text-yellow-400 p-2">
+                    <span className="p-2 text-yellow-400 bg-black ">
                         Shop Single
                     </span>
                 </p>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-8 mb-16">
+                <div className="grid grid-cols-1 gap-10 mx-8 mb-16 lg:grid-cols-2">
                     <div>
                         <img
                             src={singleProduct.imgUrl}
@@ -81,39 +82,39 @@ const ShopSingle = () => {
                         />
                     </div>
                     <div className="tracking-widest text-left">
-                        <p className="uppercase text-3xl py-4 my-4">
+                        <p className="py-4 my-4 text-3xl uppercase">
                             $ {singleProduct.price}
                         </p>
-                        <h1 className="uppercase tracking-widest text-4xl font-semibold">
+                        <h1 className="text-4xl font-semibold tracking-widest uppercase">
                             {singleProduct.name}
                         </h1>
-                        <p className="h-3 bg-yellow-400 my-6"></p>
-                        <h1 className="uppercase tracking-widest text-2xl font-semibold mb-6">
+                        <p className="h-3 my-6 bg-yellow-400"></p>
+                        <h1 className="mb-6 text-2xl font-semibold tracking-widest uppercase">
                             size chart
                         </h1>
-                        <div className="cursor-pointer text-xl flex flex-wrap">
-                            <span className="bg-black text-yellow-400 px-8 py-2 mr-3 mt-2">
+                        <div className="flex flex-wrap text-xl cursor-pointer">
+                            <span className="px-8 py-2 mt-2 mr-3 text-yellow-400 bg-black">
                                 S
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
+                            <span className="px-8 py-2 mt-2 mr-3 text-gray-700 hover:bg-black hover:text-yellow-400">
                                 M
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
+                            <span className="px-8 py-2 mt-2 mr-3 text-gray-700 hover:bg-black hover:text-yellow-400">
                                 L
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
+                            <span className="px-8 py-2 mt-2 mr-3 text-gray-700 hover:bg-black hover:text-yellow-400">
                                 XL
                             </span>
-                            <span className="text-gray-700 px-8 py-2 mr-3 mt-2 hover:bg-black hover:text-yellow-400">
+                            <span className="px-8 py-2 mt-2 mr-3 text-gray-700 hover:bg-black hover:text-yellow-400">
                                 XXL
                             </span>
                         </div>
-                        <h1 className="uppercase tracking-widest text-2xl font-semibold my-8">
+                        <h1 className="my-8 text-2xl font-semibold tracking-widest uppercase">
                             Quantity
                         </h1>
                         <button
                             onClick={() => dispatch(decrement())}
-                            className="py-1 px-3 bg-black text-yellow-400 text-xl hover:bg-gray-900 cursor-pointer"
+                            className="px-3 py-1 text-xl text-yellow-400 bg-black cursor-pointer hover:bg-gray-900"
                         >
                             -
                         </button>
@@ -123,11 +124,11 @@ const ShopSingle = () => {
                             name=""
                             id=""
                             value={quantity}
-                            className="w-10 mx-2 p-1 bg-gray-200"
+                            className="w-10 p-1 mx-2 bg-gray-200"
                         />
                         <button
                             onClick={() => dispatch(increment())}
-                            className="py-1 px-2 bg-black text-yellow-400 text-xl hover:bg-gray-900 cursor-pointer"
+                            className="px-2 py-1 text-xl text-yellow-400 bg-black cursor-pointer hover:bg-gray-900"
                         >
                             +
                         </button>
@@ -135,7 +136,7 @@ const ShopSingle = () => {
                         <Link to="/shopCatalog">
                             <button
                                 onClick={handleAddToCart}
-                                className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer"
+                                className="px-8 py-3 my-8 tracking-wider text-yellow-400 uppercase bg-black cursor-pointer hover:bg-gray-900"
                             >
                                 add to cart
                             </button>
@@ -153,33 +154,33 @@ const ShopSingle = () => {
             </div>
 
             {/* Related Items */}
-            <div className="bg-white p-10">
-                <h1 className="uppercase text-4xl font-bold tracking-widest">
+            <div className="p-10 bg-white">
+                <h1 className="text-4xl font-bold tracking-widest uppercase">
                     related items
                 </h1>
-                <p className="w-1/6 h-3 bg-yellow-400 my-5 mx-auto "></p>
+                <p className="w-1/6 h-3 mx-auto my-5 bg-yellow-400 "></p>
                 <div>
-                    <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <div className="max-w-2xl px-4 py-6 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
+                        <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                             {relatedProducts.map((product, index) => (
                                 <div
                                     key={index}
-                                    className="group relative product"
+                                    className="relative group product"
                                 >
-                                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
+                                    <div className="w-full overflow-hidden duration-300 bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110">
                                         <img
                                             src={product.imgUrl}
                                             alt=""
-                                            className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                                            className="object-cover object-center w-full h-full lg:w-full lg:h-full"
                                         />
                                     </div>
-                                    <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
-                                        <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                    <div className="absolute z-20 top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 price">
+                                        <button className="px-6 py-3 m-4 tracking-wider text-yellow-400 bg-black cursor-pointer hover:bg-gray-900">
                                             VIEW DETAILS
                                         </button>
                                     </div>
                                     <div className="mt-4">
-                                        <h3 className="text-sm text-gray-700 py-3">
+                                        <h3 className="py-3 text-sm text-gray-700">
                                             <a href={product.href}>
                                                 <span
                                                     aria-hidden="true"

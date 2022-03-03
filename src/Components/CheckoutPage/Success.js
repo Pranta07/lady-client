@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import CartTable from "../CartTable/CartTable";
 
 const Success = () => {
@@ -36,14 +37,18 @@ const Success = () => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount) {
-                    alert("Order Placed Successfully!");
+                    Swal.fire(
+                        "Success!",
+                        "Order Placed Successfully!",
+                        "success"
+                    );
                     window.location.replace(
                         "https://ladyecommerce-d15fd.web.app/"
                     );
                     localStorage.clear();
                     sessionStorage.clear();
                 } else {
-                    alert("Confirm Your Order First!");
+                    Swal.fire("Opps!", "Confirm Your Order First!", "warning");
                 }
             });
     };
@@ -61,10 +66,10 @@ const Success = () => {
 
     return (
         <div>
-            <h1 className="uppercase m-8 text-3xl tracking-widest">
+            <h1 className="m-8 text-3xl tracking-widest uppercase">
                 Order Summery
             </h1>
-            <p className="uppercase text-xl py-2">
+            <p className="py-2 text-xl uppercase">
                 Payment Received : ${order?.total_amount}
             </p>
             <div className="mx-5 md:mx-8">
@@ -77,7 +82,7 @@ const Success = () => {
             <button
                 onClick={handleConfirm}
                 type="submit"
-                className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-4 hover:bg-gray-900 cursor-pointer"
+                className="px-8 py-3 my-4 tracking-wider text-yellow-400 uppercase bg-black cursor-pointer hover:bg-gray-900"
             >
                 Confirm Order
             </button>

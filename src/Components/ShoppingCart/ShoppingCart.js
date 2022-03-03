@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import useCart from "../../hooks/useCart";
 import CartTable from "../CartTable/CartTable";
 import TotalPrice from "../TotalPrice/TotalPrice";
@@ -21,14 +22,19 @@ const ShoppingCart = () => {
         if (discount === 0) {
             if (text === couponCode) {
                 // console.log("lagbe");
+                Swal.fire(
+                    "Success!",
+                    "Discount Applied Successfully!",
+                    "success"
+                );
                 const discount = (total / 100) * 10;
                 setDiscount(parseFloat(discount).toFixed(2));
                 sessionStorage.setItem("discount", JSON.stringify(discount));
             } else {
-                alert("Invalid Coupon! Try Again.");
+                Swal.fire("Opps!", "Invalid Coupon! Try Again.", "warning");
             }
         } else {
-            alert("Already Applied!");
+            Swal.fire("Warning!", "Already Grabbed Discount Offer!", "warning");
         }
     };
 
@@ -46,23 +52,23 @@ const ShoppingCart = () => {
     return (
         <>
             <div className="container mx-auto">
-                <p className="uppercase py-4 tracking-widest text-left m-8 cursor-pointer">
+                <p className="py-4 m-8 tracking-widest text-left uppercase cursor-pointer">
                     Home /{" "}
-                    <span className=" bg-black text-yellow-400 p-2">
+                    <span className="p-2 text-yellow-400 bg-black ">
                         Shopping Cart
                     </span>
                 </p>
             </div>
             {cart?.length === 0 ? (
                 <div>
-                    <p className="text-xl tracking-widest font-semibold mb-8">
+                    <p className="mb-8 text-xl font-semibold tracking-widest">
                         Your cart is empty! Back to Shopping!
                     </p>
                 </div>
             ) : (
-                <div className="bg-white py-10 border-b-2 border-gray-300">
+                <div className="py-10 bg-white border-b-2 border-gray-300">
                     <div className="container mx-auto text-left">
-                        <h1 className="uppercase tracking-widest text-4xl m-8">
+                        <h1 className="m-8 text-4xl tracking-widest uppercase">
                             Shopping Cart
                         </h1>
                         <div className="m-8">
@@ -76,11 +82,11 @@ const ShoppingCart = () => {
                                         type="text"
                                         name="coupon"
                                         placeholder="Coupon Code"
-                                        className="md:w-1/2 rounded-sm p-3 shadow-md bg-gray-100 focus:outline-yellow-300 text-gray-800 border placeholder:uppercase"
+                                        className="p-3 text-gray-800 bg-gray-100 border rounded-sm shadow-md md:w-1/2 focus:outline-yellow-300 placeholder:uppercase"
                                     />
                                     <button
                                         onClick={handleCoupon}
-                                        className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 ml-2 hover:bg-gray-900 cursor-pointer"
+                                        className="px-8 py-3 my-8 ml-2 tracking-wider text-yellow-400 uppercase bg-black cursor-pointer hover:bg-gray-900"
                                     >
                                         Apply
                                     </button>
@@ -91,7 +97,7 @@ const ShoppingCart = () => {
                                         discount={discount}
                                     ></TotalPrice>
                                     <Link to="/checkout">
-                                        <button className="uppercase bg-black text-yellow-400 tracking-wider px-8 py-3 my-8 hover:bg-gray-900 cursor-pointer">
+                                        <button className="px-8 py-3 my-8 tracking-wider text-yellow-400 uppercase bg-black cursor-pointer hover:bg-gray-900">
                                             process to checkout
                                         </button>
                                     </Link>
