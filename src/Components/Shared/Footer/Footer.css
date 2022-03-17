@@ -1,60 +1,69 @@
-.title{
+* {
+    box-sizing: border-box;
+}
+.title {
     text-decoration: transparent;
+    text-align: left;
+    padding-left: 0.7rem;
 }
-.title:hover{
+.title:hover {
     text-decoration: underline;
- text-decoration-color: rgb(247, 3, 3);
+    text-decoration-color: rgb(253, 188, 47);
 }
-.link a{
-border-left:5px solid transparent ;
-margin-top: 0.3rem;
-padding: 0.4rem;
-}
-.link a:hover{
-    border-left:4px solid rgb(8, 225, 253) ;
-    border-radius:8px ;
-    color: rgb(252, 14, 232);
-    margin-left: 0.8rem;
-    transition: all 0.5s;
 
+.link a {
+    border-left: 5px solid transparent;
+    margin-top: 0.3rem;
+    padding: 0.4rem;
 }
-.font i{
+.link a:hover {
+    border-left: 4px solid rgb(253, 188, 47);
+    border-radius: 8px;
+    color: rgb(253, 188, 47);
+    margin-left: 0.7rem;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.font i {
     padding: 0.5rem;
     margin: 0.2rem;
     font-size: 1.5rem;
     border: 1px solid transparent;
 }
-.font i:hover{
+.font i:hover {
     border: 1px solid grey;
     border-radius: 0.5rem;
-    color: darkturquoise;
+    border-color: white;
+    color: rgb(250, 188, 47);
 }
-.box span{
-    background-color:rgb(70, 69, 69);
+
+.box span {
+    background-color: rgb(70, 69, 69);
     margin: 0.2rem;
     border-radius: 2px;
     text-align: center;
-    padding: 0.3rem;
-    font-size: 1rem;
+    padding: 0.6rem;
+    font-size: 0.9rem;
 }
-.box span:hover{
-    background-color: rgb(250, 175, 12);
+.box span:hover {
+    background-color: rgb(253, 188, 47);
     color: #000;
     transition: all 0.2s;
-    cursor:pointer;
-    font-weight: 400;
+    cursor: pointer;
 }
-.blogs-item p{
-    border-left:4px transparent;
-    border-left:5px solid transparent ;
+
+.blogs-item p {
+    border-left: 4px transparent;
+    border-left: 5px solid transparent;
     margin-top: 0.3rem;
     padding: 0.4rem;
 }
 .blogs-item p:hover {
-    border-left:4px solid rgb(8, 225, 253) ;
-    border-radius:8px ;
-    color:  rgb(252, 14, 232);
+    border-left: 4px solid rgb(250, 188, 47);
+    border-radius: 8px;
+    color: rgb(250, 188, 47);
     margin-left: 0.8rem;
-    transition: all 0.5s;
-   cursor: pointer;
+    transition: all 0.3s;
+    cursor: pointer;
 }
