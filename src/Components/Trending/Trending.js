@@ -26,7 +26,7 @@ const Trending = () => {
                 <h1 className="uppercase text-4xl font-bold tracking-widest">
                     Trending
                 </h1>
-                <p className="w-1/5 h-3 bg-yellow-400 my-4 mx-auto "></p>
+                <p className="w-1/3 md:w-1/5 h-3 bg-yellow-400 my-4 mx-auto"></p>
                 <p className="tracking-widest">
                     DEFINE YOUR WARDROBE WITH ACCESSORIES
                 </p>

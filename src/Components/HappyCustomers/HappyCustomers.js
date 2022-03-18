@@ -2,15 +2,15 @@ import React from "react";
 
 const reviews = [
     {
-        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi temporibus accusantiumagnam consectetur optio porro ex numquamrecusandae cum corrupti.",
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi temporibus accusantiumagnam consectetul.",
         name: "Pranta Pal",
     },
     {
-        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi temporibus accusantiumagnam consectetur optio porro ex numquamrecusandae cum corrupti.",
-        name: "Ema Watsom",
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi temporibus accusantiumagnam consectetur.",
+        name: "Ema Watson",
     },
     {
-        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi temporibus accusantiumagnam consectetur optio porro ex numquamrecusandae cum corrupti.",
+        desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi temporibus accusantiumagnam consectetup.",
         name: "David Josh",
     },
 ];
@@ -26,7 +26,7 @@ const HappyCustomers = () => {
                 <h1 className="uppercase text-4xl font-bold tracking-widest">
                     HAPPY CUSTOMERS
                 </h1>
-                <p className="w-1/5 h-3 bg-yellow-400 my-5 mx-auto "></p>
+                <p className="w-1/3 md:w-1/5 h-3 bg-yellow-400 my-5 mx-auto "></p>
             </div>
 
             {/* Reviews */}
@@ -46,10 +46,10 @@ const HappyCustomers = () => {
                             }
                         >
                             <div className="w-2/3 h-80 mx-auto flex flex-col justify-center">
-                                <p className="text-xl tracking-wide">
+                                <p className="tracking-wide text-white">
                                     {review.desc}
                                 </p>
-                                <h1 className="text-2xl tracking-wide font-bold m-4">
+                                <h1 className="text-2xl tracking-wide font-semibold m-4">
                                     {review.name}
                                 </h1>
                             </div>

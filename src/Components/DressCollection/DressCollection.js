@@ -19,7 +19,7 @@ const DressCollection = () => {
     return (
         <div className="container mx-auto">
             {/* Heading */}
-            <div className="my-3">
+            <div className="m-3">
                 <p className="uppercase py-4 tracking-widest">
                     Dress Collecton
                 </p>
@@ -57,7 +57,7 @@ const DressCollection = () => {
                         Random
                     </span>
                 </h1>
-                <p className="w-1/5 h-3 bg-yellow-400 my-4 mx-auto"></p>
+                <p className="w-1/3 md:w-1/5 h-3 bg-yellow-400 my-4 mx-auto"></p>
             </div>
             {/* Products Section */}
             {loading ? (
