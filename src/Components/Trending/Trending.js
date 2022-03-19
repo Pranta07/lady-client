@@ -52,7 +52,7 @@ const Trending = () => {
                                         alt=""
                                         className="w-full h-full hover:scale-110 duration-300"
                                     />
-                                    <div className="absolute top-32 md:top-32 lg:top-16 xl:top-24 left-24 md:left-20 lg:left-7 xl:left-14 animate-pulse rounded-t-md price duration-300">
+                                    <div className="animate-pulse rounded-t-md price duration-300">
                                         <p className="text-2xl font-bold">
                                             $ {product.price}
                                         </p>

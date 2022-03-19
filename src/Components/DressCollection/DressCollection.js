@@ -84,7 +84,7 @@ const DressCollection = () => {
                                     <Link
                                         to={`/shopSingle/${product._id}?type=${type}`}
                                     >
-                                        <div className="absolute top-40 md:top-32 left-24 md:left-14 lg:left-5 xl:left-10 z-20 price">
+                                        <div className="z-20 price">
                                             <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
                                                 VIEW DETAILS
                                             </button>
