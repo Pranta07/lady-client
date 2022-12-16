@@ -24,7 +24,7 @@ const ProductEditModal = ({ setIsUpdated, product, open, setOpen }) => {
 
         setIsUpdated(false);
         setOpen(false);
-        fetch(`https://ancient-dawn-22893.herokuapp.com/edit/${product._id}`, {
+        fetch(`https://lady.up.railway.app/edit/${product._id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

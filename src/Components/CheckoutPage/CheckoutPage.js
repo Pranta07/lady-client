@@ -24,7 +24,7 @@ const CheckoutPage = () => {
             products: cart,
         };
         // reset();
-        fetch("https://ancient-dawn-22893.herokuapp.com/init", {
+        fetch("https://lady.up.railway.app/init", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

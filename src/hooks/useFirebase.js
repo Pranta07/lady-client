@@ -96,7 +96,7 @@ const useFirebase = () => {
             email: newUser.email,
             role: "customer",
         };
-        fetch("https://ancient-dawn-22893.herokuapp.com/user", {
+        fetch("https://lady.up.railway.app/user", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

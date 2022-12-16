@@ -13,7 +13,7 @@ const ManageProducts = () => {
     useEffect(() => {
         // setLoading(true);
         fetch(
-            `https://ancient-dawn-22893.herokuapp.com/products?type=catalog&&page=${pageNum}`
+            `https://lady.up.railway.app/products?type=catalog&&page=${pageNum}`
         )
             .then((res) => res.json())
             .then((data) => {

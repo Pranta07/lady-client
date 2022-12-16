@@ -10,9 +10,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(
-            `https://ancient-dawn-22893.herokuapp.com/orders?email=${user?.email}`
-        )
+        fetch(`https://lady.up.railway.app/orders?email=${user?.email}`)
             .then((res) => res.json())
             .then((data) => setOrders(data))
             .finally(() => setLoading(false));

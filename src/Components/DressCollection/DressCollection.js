@@ -8,7 +8,7 @@ const DressCollection = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://ancient-dawn-22893.herokuapp.com/products?type=${type}`)
+        fetch(`https://lady.up.railway.app/products?type=${type}`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data.result);
@@ -20,10 +20,10 @@ const DressCollection = () => {
         <div className="container mx-auto">
             {/* Heading */}
             <div className="m-3">
-                <p className="uppercase py-4 tracking-widest">
+                <p className="py-4 tracking-widest uppercase">
                     Dress Collecton
                 </p>
-                <h1 className="uppercase tracking-widest text-3xl cursor-pointer">
+                <h1 className="text-3xl tracking-widest uppercase cursor-pointer">
                     <span
                         className={
                             type === "popular"
@@ -57,7 +57,7 @@ const DressCollection = () => {
                         Random
                     </span>
                 </h1>
-                <p className="w-1/3 md:w-1/5 h-3 bg-yellow-400 my-4 mx-auto"></p>
+                <p className="w-1/3 h-3 mx-auto my-4 bg-yellow-400 md:w-1/5"></p>
             </div>
             {/* Products Section */}
             {loading ? (
@@ -67,31 +67,31 @@ const DressCollection = () => {
                 ></svg>
             ) : (
                 <div className="">
-                    <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <div className="max-w-2xl px-4 py-6 mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
+                        <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                             {products.map((product, index) => (
                                 <div
                                     key={index}
-                                    className="group relative product"
+                                    className="relative group product"
                                 >
-                                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110 duration-300">
+                                    <div className="w-full overflow-hidden duration-300 bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 lg:h-80 lg:aspect-none group-hover:scale-105 md:group-hover:scale-110">
                                         <img
                                             src={product.imgUrl}
                                             alt=""
-                                            className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                                            className="object-cover object-center w-full h-full lg:w-full lg:h-full"
                                         />
                                     </div>
                                     <Link
                                         to={`/shopSingle/${product._id}?type=${type}`}
                                     >
                                         <div className="z-20 price">
-                                            <button className="bg-black text-yellow-400 tracking-wider px-6 py-3 m-4 hover:bg-gray-900 cursor-pointer">
+                                            <button className="px-6 py-3 m-4 tracking-wider text-yellow-400 bg-black cursor-pointer hover:bg-gray-900">
                                                 VIEW DETAILS
                                             </button>
                                         </div>
                                     </Link>
                                     <div className="mt-4">
-                                        <h3 className="text-sm text-gray-700 py-3">
+                                        <h3 className="py-3 text-sm text-gray-700">
                                             {product.name}
                                         </h3>
                                         <p className="text-xl font-medium text-gray-900">

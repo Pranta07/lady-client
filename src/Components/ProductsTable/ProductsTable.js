@@ -10,16 +10,13 @@ const ProductsTable = ({ products, setIsUpdated /* setIsDeleted */ }) => {
     const handleStock = (status) => {
         // console.log(selectedItems);
         setIsUpdated(false);
-        fetch(
-            `https://ancient-dawn-22893.herokuapp.com/products/update/${status}`,
-            {
-                method: "PUT",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(selectedItems),
-            }
-        )
+        fetch(`https://lady.up.railway.app/products/update/${status}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(selectedItems),
+        })
             .then((res) => res.json())
             .then((result) => {
                 if (result.modifiedCount > 0) {

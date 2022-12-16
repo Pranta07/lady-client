@@ -9,7 +9,7 @@ const ManageOrders = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://ancient-dawn-22893.herokuapp.com/allOrders`)
+        fetch(`https://lady.up.railway.app/allOrders`)
             .then((res) => res.json())
             .then((data) => setOrders(data))
             .finally(() => setLoading(false));
@@ -27,7 +27,7 @@ const ManageOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 setIsDelete(false);
-                fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`, {
+                fetch(`https://lady.up.railway.app/orders/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

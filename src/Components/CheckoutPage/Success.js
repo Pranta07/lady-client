@@ -11,7 +11,7 @@ const Success = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://ancient-dawn-22893.herokuapp.com/orders/${id}`)
+        fetch(`https://lady.up.railway.app/orders/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 if (!data) {
@@ -27,7 +27,7 @@ const Success = () => {
     const handleConfirm = () => {
         const data = { tran_id: order.tran_id, val_id: order.val_id };
         // console.log(data);
-        fetch("https://ancient-dawn-22893.herokuapp.com/validate", {
+        fetch("https://lady.up.railway.app/validate", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

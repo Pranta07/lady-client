@@ -39,7 +39,7 @@ const ShopSingle = () => {
     const type = queryParams.get("type"); */
 
     useEffect(() => {
-        fetch(`https://ancient-dawn-22893.herokuapp.com/singleProduct/${id}`)
+        fetch(`https://lady.up.railway.app/singleProduct/${id}`)
             .then((res) => res.json())
             .then((data) => setSingleProduct(data));
     }, [id]);
